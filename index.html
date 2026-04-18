@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynmo — Your AI that never stops earning.</title>
     <meta name="description" content="Get your own AI assistant that answers customers, books appointments, and closes deals — 24/7. Free demo. No commitment.">
-    <meta name="robots" content="index, follow">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,6 +14,8 @@
         :root {
             --blue: #217CFF;
             --blue-dark: #1A63CC;
+            --blue-glow: rgba(33,124,255,0.15);
+            --purple: #7B2FBE;
             --black: #000000;
             --white: #FFFFFF;
             --gray: #888888;
@@ -37,11 +38,11 @@
             left: 0;
             right: 0;
             z-index: 100;
-            padding: 20px 40px;
+            padding: 16px 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0,0,0,0.8);
+            background: rgba(0,0,0,0.85);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
@@ -49,33 +50,28 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-decoration: none;
             color: var(--white);
         }
 
-        .nav-logo-icon {
-            width: 32px;
-            height: 32px;
-        }
-
-        .nav-logo-text {
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+        .nav-logo img {
+            height: 28px;
+            width: auto;
         }
 
         .nav-cta {
             background: var(--blue);
             color: var(--white);
             border: none;
-            padding: 10px 24px;
+            padding: 10px 20px;
             border-radius: 8px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             text-decoration: none;
             transition: all 0.2s;
+            font-family: inherit;
         }
 
         .nav-cta:hover {
@@ -91,7 +87,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 120px 20px 80px;
+            padding: 120px 24px 80px;
             position: relative;
         }
 
@@ -105,6 +101,12 @@
             height: 600px;
             background: radial-gradient(circle, rgba(33,124,255,0.08) 0%, transparent 70%);
             pointer-events: none;
+        }
+
+        .hero-logo {
+            height: 80px;
+            width: auto;
+            margin-bottom: 40px;
         }
 
         .hero-badge {
@@ -135,7 +137,7 @@
         }
 
         .hero h1 {
-            font-size: clamp(40px, 7vw, 72px);
+            font-size: clamp(36px, 7vw, 68px);
             font-weight: 800;
             line-height: 1.05;
             letter-spacing: -2px;
@@ -148,16 +150,16 @@
         }
 
         .hero p {
-            font-size: 18px;
+            font-size: 17px;
             color: var(--gray-light);
             max-width: 520px;
             line-height: 1.6;
-            margin-bottom: 40px;
+            margin-bottom: 36px;
         }
 
         .hero-cta {
             display: flex;
-            gap: 16px;
+            gap: 12px;
             flex-wrap: wrap;
             justify-content: center;
         }
@@ -173,6 +175,7 @@
             cursor: pointer;
             text-decoration: none;
             transition: all 0.2s;
+            font-family: inherit;
         }
 
         .btn-primary:hover {
@@ -192,6 +195,7 @@
             cursor: pointer;
             text-decoration: none;
             transition: all 0.2s;
+            font-family: inherit;
         }
 
         .btn-secondary:hover {
@@ -200,21 +204,21 @@
         }
 
         .hero-proof {
-            margin-top: 24px;
+            margin-top: 20px;
             font-size: 13px;
             color: var(--gray);
         }
 
-        /* Logos/Social proof */
+        /* Social proof stats */
         .social-proof {
-            padding: 60px 20px;
+            padding: 60px 24px;
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.05);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .social-proof p {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--gray);
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -224,52 +228,50 @@
         .proof-stats {
             display: flex;
             justify-content: center;
-            gap: 60px;
+            gap: 48px;
             flex-wrap: wrap;
         }
 
-        .proof-stat {
-            text-align: center;
-        }
+        .proof-stat { text-align: center; }
 
         .proof-stat .number {
-            font-size: 36px;
+            font-size: 32px;
             font-weight: 800;
             color: var(--white);
         }
 
         .proof-stat .label {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--gray);
             margin-top: 4px;
         }
 
         /* Features */
         .features {
-            padding: 100px 20px;
+            padding: 80px 24px;
             max-width: 1100px;
             margin: 0 auto;
         }
 
         .features h2 {
-            font-size: clamp(32px, 5vw, 48px);
+            font-size: clamp(28px, 5vw, 44px);
             font-weight: 800;
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 48px;
             letter-spacing: -1px;
         }
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
         }
 
         .feature-card {
             background: rgba(255,255,255,0.03);
             border: 1px solid rgba(255,255,255,0.06);
             border-radius: 16px;
-            padding: 32px;
+            padding: 28px;
             transition: all 0.3s;
         }
 
@@ -279,231 +281,283 @@
         }
 
         .feature-icon {
-            font-size: 32px;
-            margin-bottom: 16px;
+            font-size: 28px;
+            margin-bottom: 14px;
         }
 
         .feature-card h3 {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .feature-card p {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--gray-light);
             line-height: 1.6;
         }
 
         /* How it works */
         .how-it-works {
-            padding: 100px 20px;
+            padding: 80px 24px;
             background: rgba(255,255,255,0.02);
             border-top: 1px solid rgba(255,255,255,0.05);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .how-it-works h2 {
-            font-size: clamp(32px, 5vw, 48px);
+            font-size: clamp(28px, 5vw, 44px);
             font-weight: 800;
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 48px;
             letter-spacing: -1px;
         }
 
         .steps {
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 40px;
+            gap: 36px;
         }
 
         .step {
             display: flex;
-            gap: 24px;
+            gap: 20px;
             align-items: flex-start;
         }
 
         .step-number {
-            width: 48px;
-            height: 48px;
-            min-width: 48px;
+            width: 44px;
+            height: 44px;
+            min-width: 44px;
             background: var(--blue);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 800;
         }
 
         .step-content h3 {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .step-content p {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--gray-light);
             line-height: 1.6;
         }
 
         /* Pricing */
         .pricing {
-            padding: 100px 20px;
-            max-width: 800px;
+            padding: 80px 24px;
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .pricing h2 {
-            font-size: clamp(32px, 5vw, 48px);
+            font-size: clamp(28px, 5vw, 44px);
             font-weight: 800;
             text-align: center;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             letter-spacing: -1px;
         }
 
         .pricing .subtitle {
             text-align: center;
             color: var(--gray-light);
-            margin-bottom: 60px;
-            font-size: 16px;
+            margin-bottom: 48px;
+            font-size: 15px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            align-items: start;
         }
 
         .pricing-card {
-            background: rgba(33,124,255,0.05);
-            border: 2px solid rgba(33,124,255,0.3);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 20px;
-            padding: 48px;
+            padding: 36px 28px;
             text-align: center;
+            transition: all 0.3s;
             position: relative;
+        }
+
+        .pricing-card:hover {
+            border-color: rgba(255,255,255,0.15);
+            transform: translateY(-4px);
+        }
+
+        .pricing-card.featured {
+            border-color: rgba(33,124,255,0.4);
+            background: rgba(33,124,255,0.05);
+            box-shadow: 0 0 60px rgba(33,124,255,0.1);
         }
 
         .pricing-card .popular {
             position: absolute;
-            top: -14px;
+            top: -13px;
             left: 50%;
             transform: translateX(-50%);
             background: var(--blue);
             padding: 4px 16px;
             border-radius: 100px;
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
+            white-space: nowrap;
         }
 
         .pricing-card h3 {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
+        }
+
+        .pricing-card .price-desc {
+            font-size: 13px;
+            color: var(--gray);
+            margin-bottom: 16px;
         }
 
         .pricing-card .price {
-            font-size: 56px;
+            font-size: 48px;
             font-weight: 800;
-            margin: 16px 0 4px;
         }
 
         .pricing-card .price-period {
             color: var(--gray);
-            font-size: 14px;
-            margin-bottom: 8px;
+            font-size: 13px;
+            margin-bottom: 4px;
         }
 
         .pricing-card .price-note {
             color: var(--gray);
-            font-size: 13px;
-            margin-bottom: 32px;
+            font-size: 12px;
+            margin-bottom: 24px;
         }
 
         .pricing-card ul {
             list-style: none;
             text-align: left;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
         }
 
         .pricing-card ul li {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            font-size: 14px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            font-size: 13px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            color: var(--gray-light);
+        }
+
+        .pricing-card ul li:last-child {
+            border-bottom: none;
         }
 
         .pricing-card ul li .check {
             color: var(--blue);
-            font-size: 16px;
+            font-size: 14px;
+            min-width: 14px;
+        }
+
+        .pricing-card .btn-primary {
+            width: 100%;
+            display: block;
+            text-align: center;
+            padding: 14px 24px;
+            font-size: 14px;
+        }
+
+        .pricing-card.featured .btn-primary {
+            background: var(--blue);
+        }
+
+        .pricing-card:not(.featured) .btn-primary {
+            background: rgba(255,255,255,0.08);
+        }
+
+        .pricing-card:not(.featured) .btn-primary:hover {
+            background: rgba(255,255,255,0.12);
         }
 
         /* Guarantee */
         .guarantee {
-            padding: 80px 20px;
+            padding: 60px 24px;
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        .guarantee-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-        }
+        .guarantee-icon { font-size: 40px; margin-bottom: 12px; }
 
         .guarantee h3 {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .guarantee p {
             color: var(--gray-light);
-            max-width: 500px;
+            max-width: 480px;
             margin: 0 auto;
             line-height: 1.6;
-            font-size: 15px;
+            font-size: 14px;
         }
 
-        /* CTA Section */
+        /* Final CTA */
         .final-cta {
-            padding: 100px 20px;
+            padding: 80px 24px;
             text-align: center;
             background: linear-gradient(180deg, transparent 0%, rgba(33,124,255,0.05) 100%);
         }
 
         .final-cta h2 {
-            font-size: clamp(32px, 5vw, 48px);
+            font-size: clamp(28px, 5vw, 44px);
             font-weight: 800;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
             letter-spacing: -1px;
         }
 
         .final-cta p {
             color: var(--gray-light);
-            margin-bottom: 32px;
-            font-size: 16px;
+            margin-bottom: 28px;
+            font-size: 15px;
         }
 
         /* Footer */
         footer {
-            padding: 40px 20px;
+            padding: 32px 24px;
             text-align: center;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
 
         footer p {
             color: var(--gray);
-            font-size: 13px;
+            font-size: 12px;
         }
 
         /* Mobile */
-        @media (max-width: 600px) {
-            nav { padding: 16px 20px; }
-            .proof-stats { gap: 30px; }
-            .pricing-card { padding: 32px 24px; }
-            .hero-cta { flex-direction: column; align-items: center; }
-            .btn-primary, .btn-secondary { width: 100%; max-width: 300px; text-align: center; }
+        @media (max-width: 768px) {
+            nav { padding: 12px 16px; }
+            .hero { padding: 100px 20px 60px; }
+            .hero-logo { height: 50px; }
+            .proof-stats { gap: 24px; }
+            .pricing-card { padding: 28px 20px; }
+            .hero-cta { flex-direction: column; align-items: center; width: 100%; max-width: 340px; }
+            .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+            .features { padding: 60px 20px; }
+            .pricing { padding: 60px 20px; }
         }
     </style>
 </head>
@@ -512,33 +566,30 @@
 <!-- Navigation -->
 <nav>
     <a href="#" class="nav-logo">
-        <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 24L12 8L20 18L28 4" stroke="#217CFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 8L20 24" stroke="#1A63CC" stroke-width="4" stroke-linecap="round"/>
-        </svg>
-        <span class="nav-logo-text">Dynmo</span>
+        <img src="dynmo-logo.jpg" alt="Dynmo">
     </a>
     <a href="#demo" class="nav-cta">Get Free Demo</a>
 </nav>
 
 <!-- Hero -->
 <section class="hero">
+    <img src="dynmo-logo.jpg" alt="Dynmo" class="hero-logo">
     <div class="hero-badge">
         <span class="hero-badge-dot"></span>
-        Now available — Limited launch pricing
+        Limited launch pricing — lock it in
     </div>
     <h1>Your AI that <span>never stops earning.</span></h1>
-    <p>An AI assistant that answers your customers, books your appointments, and closes your deals — 24 hours a day, 7 days a week. You just wake up to money.</p>
+    <p>An AI assistant that answers your customers, books your appointments, and closes your deals — 24/7. You wake up to money you didn't have to work for.</p>
     <div class="hero-cta">
-        <a href="#demo" class="btn-primary">Get Your Free Demo</a>
+        <a href="#pricing" class="btn-primary">Get Your Free Demo</a>
         <a href="#how" class="btn-secondary">See How It Works</a>
     </div>
     <p class="hero-proof">No credit card. No commitment. See it working in 24 hours.</p>
 </section>
 
-<!-- Social Proof -->
+<!-- Stats -->
 <section class="social-proof">
-    <p>Trusted by businesses everywhere</p>
+    <p>The numbers that matter</p>
     <div class="proof-stats">
         <div class="proof-stat">
             <div class="number">24/7</div>
@@ -546,11 +597,11 @@
         </div>
         <div class="proof-stat">
             <div class="number">3s</div>
-            <div class="label">Average response time</div>
+            <div class="label">Response time</div>
         </div>
         <div class="proof-stat">
             <div class="number">0</div>
-            <div class="label">Technical knowledge needed</div>
+            <div class="label">Tech knowledge needed</div>
         </div>
     </div>
 </section>
@@ -562,32 +613,32 @@
         <div class="feature-card">
             <div class="feature-icon">💬</div>
             <h3>Instant Replies</h3>
-            <p>Customer messages at midnight? No problem. Your AI answers in 3 seconds, every time. No queue, no waiting.</p>
+            <p>Customer messages at midnight? Your AI answers in 3 seconds, every time.</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">📅</div>
             <h3>Auto Booking</h3>
-            <p>Appointments fill your calendar while you sleep. Your AI handles scheduling, confirmations, and reminders automatically.</p>
+            <p>Appointments fill your calendar while you sleep. Scheduling handled automatically.</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">🧠</div>
             <h3>Knows Your Business</h3>
-            <p>Every price, every service, every hour. Your AI learns your business inside out and answers like you would.</p>
+            <p>Every price, every service, every hour. Trained on YOUR business inside out.</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">🗣️</div>
             <h3>Speaks Your Voice</h3>
-            <p>Friendly, professional, on-brand. Your customers won't know it's AI — they'll just love the instant service.</p>
+            <p>Friendly, professional, on-brand. Your customers won't know it's AI.</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">🌍</div>
             <h3>Any Language</h3>
-            <p>English, Polish, Spanish, Urdu — your AI speaks whatever your customers speak. No one gets left out.</p>
+            <p>English, Polish, Spanish, Urdu — speaks whatever your customers speak.</p>
         </div>
         <div class="feature-card">
             <div class="feature-icon">📱</div>
             <h3>Works Everywhere</h3>
-            <p>WhatsApp, Telegram, your website — wherever your customers are, your AI is there too.</p>
+            <p>WhatsApp, Telegram, your website — wherever your customers are.</p>
         </div>
     </div>
 </section>
@@ -600,47 +651,91 @@
             <div class="step-number">1</div>
             <div class="step-content">
                 <h3>Tell us about your business</h3>
-                <p>We learn your services, prices, hours, and how you like to talk to customers. Takes 10 minutes.</p>
+                <p>Your services, prices, hours, and how you talk to customers. 10 minutes of your time.</p>
             </div>
         </div>
         <div class="step">
             <div class="step-number">2</div>
             <div class="step-content">
                 <h3>We build your AI assistant</h3>
-                <p>Your personalised AI is ready within 24 hours. You test it on your phone. See it handle real questions.</p>
+                <p>Ready within 24 hours. You test it on your phone. See it handle real questions.</p>
             </div>
         </div>
         <div class="step">
             <div class="step-number">3</div>
             <div class="step-content">
                 <h3>Share it and start earning</h3>
-                <p>Send your AI link to customers. It starts answering, booking, and selling — while you get on with your life.</p>
+                <p>Send your AI link to customers. It answers, books, and sells — while you live your life.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Pricing -->
-<section class="pricing">
-    <h2>Simple pricing. No surprises.</h2>
-    <p class="subtitle">Launch price — will increase. Lock it in now.</p>
-    <div class="pricing-card">
-        <div class="popular">Launch Price</div>
-        <h3>Dynmo AI Assistant</h3>
-        <div class="price">£150</div>
-        <div class="price-period">one-time setup</div>
-        <div class="price-note">then £30/month — cancel anytime</div>
-        <ul>
-            <li><span class="check">✓</span> Your own AI assistant, personalised to your business</li>
-            <li><span class="check">✓</span> Works on WhatsApp, Telegram & more</li>
-            <li><span class="check">✓</span> 24/7 instant customer replies</li>
-            <li><span class="check">✓</span> Automatic appointment booking</li>
-            <li><span class="check">✓</span> Speaks any language</li>
-            <li><span class="check">✓</span> We set everything up — zero tech needed</li>
-            <li><span class="check">✓</span> Free updates and improvements</li>
-            <li><span class="check">✓</span> 30-day money-back guarantee</li>
-        </ul>
-        <a href="#demo" class="btn-primary" style="display:inline-block;">Get Your Free Demo</a>
+<!-- 3-Tier Pricing -->
+<section class="pricing" id="pricing">
+    <h2>Pick your plan.</h2>
+    <p class="subtitle">Launch pricing — goes up soon. Lock it in now.</p>
+    <div class="pricing-grid">
+        
+        <!-- Starter -->
+        <div class="pricing-card">
+            <h3>Starter</h3>
+            <p class="price-desc">Perfect for testing the waters</p>
+            <div class="price">£97</div>
+            <div class="price-period">one-time setup</div>
+            <div class="price-note">then £20/month — cancel anytime</div>
+            <ul>
+                <li><span class="check">✓</span> 1 AI assistant</li>
+                <li><span class="check">✓</span> WhatsApp or Telegram</li>
+                <li><span class="check">✓</span> 24/7 instant replies</li>
+                <li><span class="check">✓</span> Basic booking system</li>
+                <li><span class="check">✓</span> We set everything up</li>
+                <li><span class="check">✓</span> 30-day money-back guarantee</li>
+            </ul>
+            <a href="#demo" class="btn-primary">Get Started</a>
+        </div>
+
+        <!-- Growth (Featured) -->
+        <div class="pricing-card featured">
+            <div class="popular">Most Popular</div>
+            <h3>Growth</h3>
+            <p class="price-desc">For businesses ready to grow</p>
+            <div class="price">£150</div>
+            <div class="price-period">one-time setup</div>
+            <div class="price-note">then £30/month — cancel anytime</div>
+            <ul>
+                <li><span class="check">✓</span> 1 AI assistant</li>
+                <li><span class="check">✓</span> WhatsApp + Telegram + Website</li>
+                <li><span class="check">✓</span> 24/7 instant replies</li>
+                <li><span class="check">✓</span> Smart appointment booking</li>
+                <li><span class="check">✓</span> Speaks any language</li>
+                <li><span class="check">✓</span> Knows your business inside out</li>
+                <li><span class="check">✓</span> Priority support</li>
+                <li><span class="check">✓</span> 30-day money-back guarantee</li>
+            </ul>
+            <a href="#demo" class="btn-primary">Get Free Demo</a>
+        </div>
+
+        <!-- Agency -->
+        <div class="pricing-card">
+            <h3>Agency</h3>
+            <p class="price-desc">Multiple assistants, maximum earning</p>
+            <div class="price">£297</div>
+            <div class="price-period">one-time setup</div>
+            <div class="price-note">then £50/month — cancel anytime</div>
+            <ul>
+                <li><span class="check">✓</span> Up to 3 AI assistants</li>
+                <li><span class="check">✓</span> All platforms included</li>
+                <li><span class="check">✓</span> Everything in Growth</li>
+                <li><span class="check">✓</span> Custom voice & personality</li>
+                <li><span class="check">✓</span> Upselling & lead capture</li>
+                <li><span class="check">✓</span> Analytics dashboard</li>
+                <li><span class="check">✓</span> Dedicated account manager</li>
+                <li><span class="check">✓</span> 30-day money-back guarantee</li>
+            </ul>
+            <a href="#demo" class="btn-primary">Get Started</a>
+        </div>
+
     </div>
 </section>
 
@@ -648,19 +743,19 @@
 <section class="guarantee">
     <div class="guarantee-icon">🛡️</div>
     <h3>30-day money-back guarantee</h3>
-    <p>If your AI assistant doesn't pay for itself in the first 30 days, we'll refund every penny. No questions asked. Zero risk.</p>
+    <p>If your AI doesn't pay for itself in 30 days, we refund every penny. No questions asked. Zero risk.</p>
 </section>
 
 <!-- Final CTA -->
 <section class="final-cta" id="demo">
     <h2>Ready to never miss<br>a customer again?</h2>
-    <p>Get your free demo today. See your AI working within 24 hours.</p>
+    <p>Your free demo is one message away. See your AI working within 24 hours.</p>
     <a href="https://wa.me/YOUR_NUMBER?text=Hi!%20I'd%20like%20a%20free%20demo%20of%20Dynmo%20AI%20for%20my%20business" class="btn-primary">Get Free Demo on WhatsApp</a>
 </section>
 
 <!-- Footer -->
 <footer>
-    <p>&copy; 2026 Dynmo. Your AI that never stops earning.</p>
+    <p>&copy; 2026 Dynmo — Your AI that never stops earning.</p>
 </footer>
 
 </body>
