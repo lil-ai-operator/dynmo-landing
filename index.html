@@ -69,6 +69,17 @@
             border-radius: 4px;
         }
 
+        .nav-logo-icon {
+            width: 28px;
+            height: 28px;
+        }
+
+        .nav-logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
         .nav-cta {
             background: var(--blue);
             color: var(--white);
@@ -566,7 +577,8 @@
             }
             .hero { padding: 80px 16px 60px; }
             .nav-cta { font-size: 11px; padding: 6px 10px; }
-            .nav-logo img { height: 22px; }
+            .nav-logo-icon { width: 22px; height: 22px; }
+            .nav-logo-text { font-size: 16px; }
             .proof-stats { gap: 24px; }
             .pricing-card { padding: 28px 20px; }
             .hero-cta { flex-direction: column; align-items: center; width: 100%; max-width: 340px; }
@@ -581,9 +593,13 @@
 <!-- Navigation -->
 <nav>
     <a href="#" class="nav-logo">
-        <img src="dynmo-logo.jpg" alt="Dynmo">
+        <svg class="nav-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 26L14 8L22 20L28 6" stroke="#217CFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 8L22 26" stroke="#1A63CC" stroke-width="3.5" stroke-linecap="round"/>
+        </svg>
+        <span class="nav-logo-text">Dynmo</span>
     </a>
-    <a href="#demo" class="nav-cta">Get Free Demo</a>
+    <a href="#demo" class="nav-cta">Free Demo</a>
 </nav>
 
 <!-- Hero -->
