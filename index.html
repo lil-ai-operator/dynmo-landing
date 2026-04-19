@@ -495,7 +495,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
-            align-items: start;
+            align-items: stretch;
         }
 
         .pc {
@@ -506,6 +506,9 @@
             text-align: center;
             transition: all 0.3s;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .pc:hover {
@@ -568,6 +571,7 @@
             list-style: none;
             text-align: left;
             margin-bottom: 28px;
+            flex: 1;
         }
 
         .pc ul li {
