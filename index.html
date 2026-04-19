@@ -399,7 +399,7 @@
         .features-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 16px;
         }
 
         .feat {
@@ -615,6 +615,41 @@
             border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        .addons {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .addons-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            max-width: 800px;
+            margin: 24px auto 0;
+        }
+
+        .addon {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .addon-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .addon-price {
+            font-size: 13px;
+            color: var(--blue);
+            font-weight: 500;
+        }
+
         .gi {
             font-size: 40px;
             margin-bottom: 12px;
@@ -757,6 +792,16 @@
             .pricing-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
+
+            .addons-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
 
         @media (min-width: 769px) and (max-width: 900px) {
@@ -884,37 +929,128 @@
 
 <!-- Features -->
 <section class="features" id="features">
-    <h2 class="section-title">Everything you need.<br>Nothing you don't.</h2>
+    <h2 class="section-title">Everything your AI can do.</h2>
+    <p class="subtitle">24 services. One assistant. All the money.</p>
     <div class="features-grid">
         <div class="feat">
             <div class="feat-i">💬</div>
-            <h3>Instant Replies</h3>
-            <p>Customer messages at midnight? Your AI answers in 3 seconds, every time.</p>
+            <h3>24/7 Instant Replies</h3>
+            <p>Customer messages at midnight? AI replies in 3 seconds and books them before your rival's even woken up.</p>
         </div>
         <div class="feat">
             <div class="feat-i">📅</div>
-            <h3>Auto Booking</h3>
-            <p>Appointments fill your calendar while you sleep. Scheduling handled automatically.</p>
+            <h3>Automatic Booking</h3>
+            <p>No back-and-forth. One message. Booked. Zero friction = money.</p>
         </div>
         <div class="feat">
-            <div class="feat-i">🧠</div>
-            <h3>Knows Your Business</h3>
-            <p>Every price, every service, every hour. Trained on YOUR business inside out.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">🗣️</div>
-            <h3>Speaks Your Voice</h3>
-            <p>Friendly, professional, on-brand. Your customers won't know it's AI.</p>
+            <div class="feat-i">💰</div>
+            <h3>Built-In Upselling</h3>
+            <p>"Add a beard trim? £10." Every booking. Every time. Never forgets. Thousands extra per month.</p>
         </div>
         <div class="feat">
             <div class="feat-i">🌍</div>
-            <h3>Any Language</h3>
-            <p>English, Polish, Spanish, Urdu — speaks whatever your customers speak.</p>
+            <h3>Multi-Language</h3>
+            <p>Polish, Spanish, Arabic — speaks any language. Every new language = a new customer base.</p>
         </div>
         <div class="feat">
             <div class="feat-i">📱</div>
-            <h3>Works Everywhere</h3>
-            <p>WhatsApp, Telegram, your website — wherever your customers are.</p>
+            <h3>WhatsApp & Telegram</h3>
+            <p>2 billion users. Zero download. Message, book, done. Meet customers where they already are.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">🌐</div>
+            <h3>Website Live Chat</h3>
+            <p>Your website just went from expensive brochure to 24/7 sales rep that books while you sleep.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">🧠</div>
+            <h3>Trained On Your Business</h3>
+            <p>Every price, service, and offer on day one. Never sick. Never wrong. Costs £30/month.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">🎯</div>
+            <h3>Lead Capture</h3>
+            <p>Every chat = name, number, email saved. Build a customer list you OWN. A real business asset.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">📢</div>
+            <h3>Promotion Blasts</h3>
+            <p>Empty Tuesday? One blast: "20% off today." By noon you're rammed. Summon customers on demand.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">🔄</div>
+            <h3>Repeat Booking Reminders</h3>
+            <p>"Time for a trim?" 5 weeks later. One-time customers become lifetime customers.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">⭐</div>
+            <h3>Automatic Review Collection</h3>
+            <p>AI asks for a Google review after every visit. 12 → 120 reviews in 3 months. Ranking explodes.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">💳</div>
+            <h3>Take Payment At Booking</h3>
+            <p>They pay upfront. No-shows vanish. Revenue guaranteed before they walk through the door.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">📞</div>
+            <h3>Missed Call Text-Back</h3>
+            <p>They call, nobody answers, AI texts instantly. 67% of missed calls never call back. This saves them.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">🎁</div>
+            <h3>Loyalty Rewards</h3>
+            <p>"Your 5th visit is free!" Auto-tracks visits and rewards regulars. Keeps them coming back.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">📍</div>
+            <h3>Location & Directions</h3>
+            <p>Customer asks "where are you?" — AI sends map pin, hours, and parking info. Zero friction.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">🖼️</div>
+            <h3>Service Catalogue</h3>
+            <p>"What haircuts do you do?" — AI sends photos with prices. They see it, want it, book it.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">⏰</div>
+            <h3>Smart Scheduling</h3>
+            <p>AI knows your quiet hours and pushes off-peak bookings with discounts. Fills dead time.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">🤝</div>
+            <h3>Referral Machine</h3>
+            <p>"Refer a mate, you both get 20% off." Every happy customer becomes a salesperson.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">❄️</div>
+            <h3>Seasonal Offers</h3>
+            <p>Christmas, Ramadan, bank holidays — themed promos on autopilot. Every season = a revenue spike.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">📊</div>
+            <h3>Competitor Intel</h3>
+            <p>AI logs what customers say about rivals. Weekly insights on how to beat the competition.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">🔴</div>
+            <h3>Complaint Catcher</h3>
+            <p>Angry customer? AI responds instantly, fixes it, flags it. Bad review → saved relationship.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">🎉</div>
+            <h3>Birthday Rewards</h3>
+            <p>"Happy birthday! 25% off — book today." Personal touches that cost nothing and make money.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">🗣️</div>
+            <h3>Custom Voice & Personality</h3>
+            <p>AI sounds like YOUR brand. Cool for barbers. Warm for restaurants. Energetic for gyms.</p>
+        </div>
+        <div class="feat">
+            <div class="feat-i">🛡️</div>
+            <h3>30-Day Money-Back</h3>
+            <p>Doesn't pay for itself? Full refund. No questions. Zero risk.</p>
         </div>
     </div>
 </section>
@@ -954,57 +1090,100 @@
     <div class="pricing-grid">
         <div class="pc">
             <h3>Starter</h3>
-            <p class="pd">Perfect for testing the waters</p>
+            <p class="pd">Stop losing customers to silence</p>
             <div class="price">£97</div>
             <p class="pp">one-time setup</p>
             <p class="pn">then £20/month — cancel anytime</p>
             <ul>
-                <li>1 AI assistant</li>
-                <li>WhatsApp or Telegram</li>
-                <li>24/7 instant replies</li>
-                <li>Basic booking system</li>
-                <li>We set everything up</li>
-                <li>30-day money-back guarantee</li>
+                <li>✅ 24/7 Instant Replies</li>
+                <li>✅ Automatic Booking</li>
+                <li>✅ Trained On Your Business</li>
+                <li>✅ WhatsApp OR Telegram</li>
+                <li>✅ Missed Call Text-Back</li>
+                <li>✅ Location & Directions</li>
+                <li>✅ Service Catalogue</li>
+                <li>✅ Full Setup Included</li>
+                <li>✅ 30-Day Money-Back</li>
             </ul>
             <a href="#demo" class="btn-p">Get Started</a>
         </div>
         <div class="pc featured">
             <div class="pop">Most Popular</div>
             <h3>Growth</h3>
-            <p class="pd">For businesses ready to grow</p>
+            <p class="pd">Start selling on every channel, 24/7</p>
             <div class="price">£150</div>
             <p class="pp">one-time setup</p>
             <p class="pn">then £30/month — cancel anytime</p>
             <ul>
-                <li>1 AI assistant</li>
-                <li>WhatsApp + Telegram + Website</li>
-                <li>24/7 instant replies</li>
-                <li>Smart appointment booking</li>
-                <li>Speaks any language</li>
-                <li>Knows your business inside out</li>
-                <li>Priority support</li>
-                <li>30-day money-back guarantee</li>
+                <li>✅ Everything in Starter</li>
+                <li>✅ WhatsApp + Telegram + Website</li>
+                <li>✅ Built-In Upselling</li>
+                <li>✅ Multi-Language Support</li>
+                <li>✅ Lead Capture</li>
+                <li>✅ Repeat Booking Reminders</li>
+                <li>✅ Automatic Review Collection</li>
+                <li>✅ Take Payment At Booking</li>
+                <li>✅ Smart Scheduling</li>
+                <li>✅ Birthday Rewards</li>
+                <li>✅ Complaint Catcher</li>
+                <li>✅ Loyalty Rewards</li>
+                <li>✅ 30-Day Money-Back</li>
             </ul>
             <a href="#demo" class="btn-p">Get Free Demo</a>
         </div>
         <div class="pc">
             <div class="pop">Best Value</div>
             <h3>Agency</h3>
-            <p class="pd">Multiple assistants, maximum earning</p>
+            <p class="pd">A full sales team that never sleeps</p>
             <div class="price">£297</div>
             <p class="pp">one-time setup</p>
             <p class="pn">then £50/month — cancel anytime</p>
             <ul>
-                <li>Up to 3 AI assistants</li>
-                <li>All platforms included</li>
-                <li>Everything in Growth</li>
-                <li>Custom voice & personality</li>
-                <li>Upselling & lead capture</li>
-                <li>Analytics dashboard</li>
-                <li>Dedicated account manager</li>
-                <li>30-day money-back guarantee</li>
+                <li>✅ Everything in Growth</li>
+                <li>✅ Up to 3 AI Assistants</li>
+                <li>✅ Custom Voice & Personality</li>
+                <li>✅ Promotion Blasts</li>
+                <li>✅ Referral Machine</li>
+                <li>✅ Seasonal Offers On Autopilot</li>
+                <li>✅ Competitor Intelligence</li>
+                <li>✅ Analytics Dashboard</li>
+                <li>✅ Dedicated Account Manager</li>
+                <li>✅ Priority Support</li>
+                <li>✅ 30-Day Money-Back</li>
             </ul>
             <a href="#demo" class="btn-p">Get Started</a>
+        </div>
+    </div>
+
+    <!-- Add-ons -->
+    <div class="addons">
+        <h3 class="section-title" style="font-size:clamp(22px,4vw,32px);margin-bottom:8px;">Pick & Mix Extras</h3>
+        <p class="subtitle" style="margin-top:0">Add any of these to any plan.</p>
+        <div class="addons-grid">
+            <div class="addon">
+                <div class="addon-name">➕ Extra AI Assistant</div>
+                <div class="addon-price">£50/mo each</div>
+            </div>
+            <div class="addon">
+                <div class="addon-name">🗣️ Custom Voice & Personality</div>
+                <div class="addon-price">£99 one-time</div>
+            </div>
+            <div class="addon">
+                <div class="addon-name">📊 Advanced Analytics</div>
+                <div class="addon-price">£15/mo</div>
+            </div>
+            <div class="addon">
+                <div class="addon-name">📍 Multi-Location Support</div>
+                <div class="addon-price">£25/mo per location</div>
+            </div>
+            <div class="addon">
+                <div class="addon-name">⚡ Priority Support</div>
+                <div class="addon-price">£15/mo</div>
+            </div>
+            <div class="addon">
+                <div class="addon-name">🎨 Custom Branding Package</div>
+                <div class="addon-price">£149 one-time</div>
+            </div>
         </div>
     </div>
 </section>
