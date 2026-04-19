@@ -88,7 +88,7 @@
         }
 
         .nav-links {
-            display: flex;
+            display: none;
             align-items: center;
             justify-content: flex-end;
             gap: 8px;
@@ -131,7 +131,7 @@
 
         /* Hamburger */
         .hamburger {
-            display: none;
+            display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -400,7 +400,7 @@
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr;
             gap: 20px;
         }
 
@@ -496,7 +496,7 @@
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr;
             gap: 20px;
             align-items: stretch;
         }
@@ -669,7 +669,93 @@
         }
 
         /* ============ RESPONSIVE ============ */
-        @media (max-width: 900px) {
+        .nav {
+            padding: 0 16px;
+            height: 56px;
+            justify-content: space-between;
+            gap: 0;
+        }
+
+        .nav-left {
+            width: 100%;
+            justify-content: space-between;
+            min-width: 0;
+        }
+
+        .nav-logo {
+            flex-shrink: 1;
+            min-width: 0;
+        }
+
+        .nav-logo img {
+            height: 28px;
+            max-width: min(118px, 32vw);
+        }
+
+        section {
+            padding: 72px 20px;
+        }
+
+        .hero {
+            min-height: 100svh;
+            padding-top: 80px;
+            padding-bottom: 60px;
+        }
+
+        @media (min-width: 769px) {
+            .nav {
+                padding: 0 28px;
+                height: 76px;
+                justify-content: space-between;
+            }
+
+            .nav-left {
+                width: auto;
+                justify-content: flex-start;
+                flex-shrink: 0;
+            }
+
+            .nav-logo img {
+                height: 44px;
+                max-width: 100%;
+            }
+
+            .nav-links {
+                display: flex;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            section {
+                padding: 100px 24px;
+            }
+
+            .hero {
+                padding-top: 80px;
+                padding-bottom: 80px;
+            }
+
+            .hero-btns {
+                flex-direction: row;
+            }
+
+            .btn-p, .btn-s {
+                width: auto;
+                max-width: none;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 900px) {
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -686,46 +772,6 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hamburger {
-                display: flex;
-            }
-
-            .nav {
-                padding: 0 16px;
-                height: 56px;
-                justify-content: space-between;
-                gap: 0;
-            }
-
-            .nav-left {
-                width: 100%;
-                justify-content: space-between;
-                min-width: 0;
-            }
-
-            .nav-logo {
-                flex-shrink: 1;
-                min-width: 0;
-            }
-
-            .nav-logo img {
-                height: 28px;
-                max-width: min(118px, 32vw);
-            }
-
-            section {
-                padding: 72px 20px;
-            }
-
-            .hero {
-                min-height: 100svh;
-                padding-top: 80px;
-                padding-bottom: 60px;
-            }
 
             .hero h1 {
                 letter-spacing: -1px;
