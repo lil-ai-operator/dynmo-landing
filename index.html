@@ -665,13 +665,19 @@
 
             .hamburger {
                 display: flex;
-                margin-left: 16px;
                 flex-shrink: 0;
             }
 
             .nav {
-                padding: 0 24px;
+                padding: 0 20px;
                 height: 56px;
+                justify-content: space-between;
+            }
+
+            .nav-left {
+                display: flex;
+                align-items: center;
+                flex-shrink: 0;
             }
 
             .nav-logo {
@@ -738,22 +744,21 @@
 
 <!-- Navigation -->
 <nav class="nav">
-    <a href="#" class="nav-logo">
-        <img src="dynmo-logo-nav.png" alt="Dynmo">
-    </a>
-
+    <div class="nav-left">
+        <a href="#" class="nav-logo">
+            <img src="dynmo-logo-nav.png" alt="Dynmo">
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     <ul class="nav-links">
         <li><a href="#features">Features</a></li>
         <li><a href="#how">How it works</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#demo" class="nav-cta">Free Demo</a></li>
     </ul>
-
-    <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
 </nav>
 
 <!-- Mobile Menu -->
