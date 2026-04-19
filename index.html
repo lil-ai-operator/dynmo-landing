@@ -115,11 +115,14 @@
             gap: 5px;
             width: 28px;
             height: 28px;
+            min-width: 28px;
             cursor: pointer;
             z-index: 1001;
             background: none;
             border: none;
             padding: 0;
+            margin-left: auto;
+            flex-shrink: 0;
         }
 
         .hamburger span {
@@ -662,15 +665,21 @@
 
             .hamburger {
                 display: flex;
+                margin-left: 16px;
+                flex-shrink: 0;
             }
 
             .nav {
-                padding: 0 16px;
-                height: 60px;
+                padding: 0 12px 0 12px;
+                height: 56px;
+            }
+
+            .nav-logo {
+                flex-shrink: 0;
             }
 
             .nav-logo img {
-                height: 30px;
+                height: 28px;
             }
 
             section {
