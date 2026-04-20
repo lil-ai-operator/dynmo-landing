@@ -699,6 +699,66 @@
             font-size: 15px;
         }
 
+        /* ============ OUTCOMES SECTION ============ */
+        .outcomes {
+            padding: 80px 24px 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .outcomes .section-title {
+            font-size: 26px;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+        .outcomes .subtitle {
+            color: var(--gray-light);
+            font-size: 15px;
+            max-width: 620px;
+            margin: 0 auto 40px;
+        }
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .outcome-card {
+            background: rgba(33, 124, 255, 0.06);
+            border: 1px solid rgba(33, 124, 255, 0.15);
+            border-radius: 12px;
+            padding: 24px 28px;
+            text-align: left;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        .outcome-icon {
+            font-size: 28px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .outcome-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 4px;
+        }
+        .outcome-card p {
+            font-size: 14px;
+            color: var(--gray-light);
+            line-height: 1.5;
+        }
+        .outcomes-close {
+            margin-top: 32px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray);
+            font-style: italic;
+        }
+
         /* ============ PAIN SECTION ============ */
         .pain {
             padding: 80px 24px 60px;
@@ -1008,6 +1068,40 @@
         </div>
     </div>
     <p class="pain-close">Dynmo fixes every one of these automatically.</p>
+</section>
+
+<!-- Top Outcomes -->
+<section class="outcomes" id="outcomes">
+    <h2 class="section-title">The 5 biggest ways Dynmo makes you more money</h2>
+    <p class="subtitle">These are the services that hit revenue fastest, save the most time, and pay for themselves first.</p>
+    <div class="outcomes-grid">
+        <div class="outcome-card">
+            <div class="outcome-icon">⚡</div>
+            <h3>24/7 Instant Replies</h3>
+            <p>Slow replies lose customers. Dynmo replies in seconds and catches bookings you'd normally miss.</p>
+        </div>
+        <div class="outcome-card">
+            <div class="outcome-icon">📅</div>
+            <h3>Automatic Booking</h3>
+            <p>Less friction, more bookings. Dynmo gets people booked before they change their mind.</p>
+        </div>
+        <div class="outcome-card">
+            <div class="outcome-icon">💰</div>
+            <h3>Built-In Upselling</h3>
+            <p>Every booking becomes a bigger sale. Dynmo adds extra revenue automatically.</p>
+        </div>
+        <div class="outcome-card">
+            <div class="outcome-icon">💳</div>
+            <h3>Take Payment At Booking</h3>
+            <p>No-shows stop being your problem. Dynmo gets the money before the appointment happens.</p>
+        </div>
+        <div class="outcome-card">
+            <div class="outcome-icon">📋</div>
+            <h3>Lead Capture</h3>
+            <p>Every message becomes a future sale. Dynmo builds a customer list you actually own.</p>
+        </div>
+    </div>
+    <p class="outcomes-close">And that's before the reminders, review requests, follow-ups, referrals, and everything else running in the background.</p>
 </section>
 
 <!-- Stats -->
