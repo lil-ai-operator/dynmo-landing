@@ -699,6 +699,67 @@
             font-size: 15px;
         }
 
+        /* ============ PAIN SECTION ============ */
+        .pain {
+            padding: 80px 24px 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .pain .section-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #ff4444;
+            margin-bottom: 12px;
+        }
+        .pain .subtitle {
+            color: var(--gray-light);
+            font-size: 15px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        .pain-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .pain-card {
+            background: rgba(255, 68, 68, 0.06);
+            border: 1px solid rgba(255, 68, 68, 0.15);
+            border-radius: 12px;
+            padding: 28px 24px;
+            text-align: left;
+        }
+        .pain-icon {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .pain-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #ff6666;
+            margin-bottom: 6px;
+        }
+        .pain-card p {
+            font-size: 14px;
+            color: var(--gray-light);
+            line-height: 1.5;
+        }
+        .pain-close {
+            margin-top: 32px;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        @media (max-width: 600px) {
+            .pain-grid {
+                grid-template-columns: 1fr;
+            }
+            .pain .section-title {
+                font-size: 22px;
+            }
+        }
+
         /* ============ FOOTER ============ */
         footer {
             padding: 32px 24px;
@@ -918,6 +979,35 @@
         <a href="#how" class="btn-s">See How It Works</a>
     </div>
     <p class="hero-proof">No credit card. No commitment. See it working in 24 hours.</p>
+</section>
+
+<!-- Pain Section -->
+<section class="pain" id="pain">
+    <h2 class="section-title">How much money are you losing right now?</h2>
+    <p class="subtitle">Most small businesses lose bookings every day through slow replies, missed calls, no-shows, and no follow-up. Dynmo stops the leaks.</p>
+    <div class="pain-grid">
+        <div class="pain-card">
+            <div class="pain-icon">⏰</div>
+            <h3>Slow replies lose bookings</h3>
+            <p>A customer who waits hours for a reply is already messaging your competitor.</p>
+        </div>
+        <div class="pain-card">
+            <div class="pain-icon">📞</div>
+            <h3>Missed calls lose revenue</h3>
+            <p>Most missed calls never come back. If you miss the call, you often lose the customer.</p>
+        </div>
+        <div class="pain-card">
+            <div class="pain-icon">🕳️</div>
+            <h3>No-shows kill profit</h3>
+            <p>Empty slots don't pay the bills. If they book without paying, you carry all the risk.</p>
+        </div>
+        <div class="pain-card">
+            <div class="pain-icon">👋</div>
+            <h3>No follow-up kills repeat business</h3>
+            <p>Most customers don't come back because nobody reminded them to.</p>
+        </div>
+    </div>
+    <p class="pain-close">Dynmo fixes every one of these automatically.</p>
 </section>
 
 <!-- Stats -->
