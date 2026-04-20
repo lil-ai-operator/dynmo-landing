@@ -1014,6 +1014,76 @@
             font-weight: 600;
         }
 
+        @keyframes chatBob {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+        @keyframes typingPulse {
+            0%, 80%, 100% { transform: scale(0.72); opacity: 0.4; }
+            40% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes messagePop {
+            0% { opacity: 0; transform: translateY(16px) scale(0.96); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        @keyframes glowSweep {
+            0% { transform: translateX(-120%) skewX(-18deg); }
+            100% { transform: translateX(220%) skewX(-18deg); }
+        }
+        .proof-grid {
+            perspective: 1400px;
+        }
+        .proof-card {
+            animation: chatBob 7s ease-in-out infinite;
+        }
+        .proof-card:nth-child(2) { animation-delay: 0.8s; }
+        .proof-card:nth-child(3) { animation-delay: 1.6s; }
+        .proof-card::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 38%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+            animation: glowSweep 5.8s ease-in-out infinite;
+            pointer-events: none;
+        }
+        .chat-thread .msg {
+            opacity: 0;
+            animation: messagePop 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .proof-card .msg:nth-child(1) { animation-delay: 0.25s; }
+        .proof-card .msg:nth-child(2) { animation-delay: 0.6s; }
+        .proof-card .msg:nth-child(3) { animation-delay: 0.95s; }
+        .proof-card .msg:nth-child(4) { animation-delay: 1.3s; }
+        .proof-card .msg:nth-child(5) { animation-delay: 1.65s; }
+        .proof-card .msg:nth-child(6) { animation-delay: 2s; }
+        .proof-card .msg:nth-child(7) { animation-delay: 2.35s; }
+        .typing-dots {
+            display: inline-flex;
+            gap: 6px;
+            align-items: center;
+        }
+        .typing-dots i {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            display: block;
+            background: rgba(255,255,255,0.75);
+            animation: typingPulse 1s ease-in-out infinite;
+        }
+        .typing-dots i:nth-child(2) { animation-delay: 0.18s; }
+        .typing-dots i:nth-child(3) { animation-delay: 0.36s; }
+        .proof-card .msg.typing {
+            align-self: flex-end;
+            max-width: fit-content;
+            background: rgba(33,124,255,0.16);
+            border: 1px solid rgba(84,154,255,0.16);
+        }
+        .proof-card .msg.bot.confirm {
+            box-shadow: 0 0 0 rgba(95,162,255,0.18), 0 12px 30px rgba(33,124,255,0.12);
+        }
         /* ============ OUTCOMES SECTION ============ */
         .outcomes {
             position: relative;
@@ -1630,9 +1700,10 @@
                 <div class="msg user"><span>Customer</span><p>Hi, how much is a skin fade?</p></div>
                 <div class="msg bot"><span>Dynmo</span><p>Skin fade is £22. Want me to book you in?</p></div>
                 <div class="msg user"><span>Customer</span><p>Yes please</p></div>
+                <div class="msg typing"><div class="typing-dots"><i></i><i></i><i></i></div></div>
                 <div class="msg bot"><span>Dynmo</span><p>I’ve got 2pm or 4pm tomorrow. Which works?</p></div>
                 <div class="msg user"><span>Customer</span><p>4pm</p></div>
-                <div class="msg bot"><span>Dynmo</span><p>Perfect. You’re booked in for 4pm tomorrow 💈</p></div>
+                <div class="msg bot confirm"><span>Dynmo</span><p>Perfect. You’re booked in for 4pm tomorrow 💈</p></div>
             </div>
         </div>
         <div class="proof-card">
@@ -1641,7 +1712,8 @@
                 <div class="msg user"><span>Customer</span><p>Book me in for a haircut tomorrow</p></div>
                 <div class="msg bot"><span>Dynmo</span><p>Done. I’ve got 3pm available. Want to add a beard trim for £10 while you’re in?</p></div>
                 <div class="msg user"><span>Customer</span><p>Yeah go on</p></div>
-                <div class="msg bot"><span>Dynmo</span><p>Nice. You’re booked for a haircut + beard trim at 3pm tomorrow ✅</p></div>
+                <div class="msg typing"><div class="typing-dots"><i></i><i></i><i></i></div></div>
+                <div class="msg bot confirm"><span>Dynmo</span><p>Nice. You’re booked for a haircut + beard trim at 3pm tomorrow ✅</p></div>
             </div>
         </div>
         <div class="proof-card full">
@@ -1652,6 +1724,7 @@
                 <div class="msg user"><span>Customer</span><p>Just wanted to ask if you’ve got anything free today</p></div>
                 <div class="msg bot"><span>Dynmo</span><p>Yes, I’ve got 5:30pm available today. Want me to book it for you?</p></div>
                 <div class="msg user"><span>Customer</span><p>Yes please</p></div>
+                <div class="msg typing"><div class="typing-dots"><i></i><i></i><i></i></div></div>
                 <div class="msg bot"><span>Dynmo</span><p>Done. What’s the best name for the booking?</p></div>
             </div>
         </div>
