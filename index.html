@@ -863,6 +863,153 @@
             letter-spacing: 0.01em;
         }
 
+        /* ============ PROOF SECTION ============ */
+        .proof {
+            position: relative;
+            padding: 110px 24px 76px;
+            max-width: 1240px;
+            margin: 0 auto;
+            text-align: center;
+            overflow: hidden;
+        }
+        .proof::before {
+            content: "";
+            position: absolute;
+            inset: 18px 24px 0;
+            border-radius: 34px;
+            background:
+                radial-gradient(circle at 100% 0%, rgba(33,124,255,0.18), rgba(33,124,255,0) 36%),
+                radial-gradient(circle at 0% 100%, rgba(95,162,255,0.12), rgba(95,162,255,0) 32%),
+                linear-gradient(180deg, rgba(9,15,28,0.96) 0%, rgba(6,9,16,0.98) 100%);
+            border: 1px solid rgba(79,147,255,0.14);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 30px 80px rgba(0,0,0,0.34);
+            pointer-events: none;
+        }
+        .proof .section-title,
+        .proof .subtitle,
+        .proof-grid,
+        .proof-close {
+            position: relative;
+            z-index: 1;
+        }
+        .proof .section-title {
+            font-size: clamp(34px, 5vw, 54px);
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            margin-bottom: 14px;
+        }
+        .proof .subtitle {
+            max-width: 760px;
+            margin: 0 auto 46px;
+            color: #c7d4ea;
+            font-size: 17px;
+            line-height: 1.65;
+        }
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+        .proof-card {
+            position: relative;
+            padding: 22px;
+            border-radius: 28px;
+            background: linear-gradient(180deg, rgba(18,26,44,0.84) 0%, rgba(7,10,18,0.96) 100%);
+            border: 1px solid rgba(84,154,255,0.18);
+            text-align: left;
+            box-shadow: 0 22px 60px rgba(0,0,0,0.28);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .proof-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(62,145,255,0.16) 0%, rgba(62,145,255,0.03) 34%, rgba(255,255,255,0) 65%);
+            pointer-events: none;
+        }
+        .proof-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 28px 70px rgba(33,124,255,0.18);
+            border-color: rgba(122,182,255,0.34);
+        }
+        .proof-card.full {
+            grid-column: 1 / -1;
+        }
+        .proof-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(33,124,255,0.14);
+            border: 1px solid rgba(84,154,255,0.18);
+            color: #9fc8ff;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+        .chat-thread {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .msg {
+            max-width: 88%;
+            padding: 14px 16px;
+            border-radius: 18px;
+            position: relative;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .msg span {
+            display: block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 7px;
+            opacity: 0.72;
+        }
+        .msg p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #fff;
+        }
+        .msg.user {
+            align-self: flex-start;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        .msg.bot {
+            align-self: flex-end;
+            background: linear-gradient(180deg, rgba(33,124,255,0.24) 0%, rgba(33,124,255,0.12) 100%);
+            border: 1px solid rgba(84,154,255,0.2);
+            box-shadow: 0 12px 30px rgba(33,124,255,0.1);
+        }
+        .msg.event {
+            align-self: center;
+            max-width: fit-content;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #d7d7d7;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .proof-close {
+            margin-top: 34px;
+            color: #9fc8ff;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
         /* ============ OUTCOMES SECTION ============ */
         .outcomes {
             position: relative;
@@ -1138,12 +1285,17 @@
         .cta::before { top: -80px; right: 10%; }
         @media (max-width: 820px) {
             .pain,
+            .proof,
             .outcomes {
                 padding-top: 92px;
             }
             .pain-grid,
+            .proof-grid,
             .outcomes-grid {
                 grid-template-columns: 1fr;
+            }
+            .proof-card.full {
+                grid-column: auto;
             }
         }
         @media (max-width: 600px) {
@@ -1152,6 +1304,7 @@
                 font-size: 31px;
             }
             .pain-card,
+            .proof-card,
             .outcome-card {
                 min-height: auto;
                 border-radius: 22px;
@@ -1162,9 +1315,13 @@
                 font-size: 21px;
                 max-width: none;
             }
+            .proof .subtitle,
             .pain .subtitle,
             .outcomes .subtitle {
                 font-size: 15px;
+            }
+            .msg {
+                max-width: 94%;
             }
         }
 
@@ -1450,6 +1607,46 @@
         </div>
     </div>
     <p class="outcomes-close">And that's before the reminders, review requests, follow-ups, referrals, and everything else running in the background.</p>
+</section>
+
+<!-- Proof Section -->
+<section class="proof" id="proof">
+    <h2 class="section-title">See Dynmo in action</h2>
+    <p class="subtitle">Here’s what it looks like when a customer messages your business and Dynmo handles it instantly.</p>
+    <div class="proof-grid">
+        <div class="proof-card">
+            <div class="proof-label">Booking a customer</div>
+            <div class="chat-thread">
+                <div class="msg user"><span>Customer</span><p>Hi, how much is a skin fade?</p></div>
+                <div class="msg bot"><span>Dynmo</span><p>Skin fade is £22. Want me to book you in?</p></div>
+                <div class="msg user"><span>Customer</span><p>Yes please</p></div>
+                <div class="msg bot"><span>Dynmo</span><p>I’ve got 2pm or 4pm tomorrow. Which works?</p></div>
+                <div class="msg user"><span>Customer</span><p>4pm</p></div>
+                <div class="msg bot"><span>Dynmo</span><p>Perfect. You’re booked in for 4pm tomorrow 💈</p></div>
+            </div>
+        </div>
+        <div class="proof-card">
+            <div class="proof-label">Upselling naturally</div>
+            <div class="chat-thread">
+                <div class="msg user"><span>Customer</span><p>Book me in for a haircut tomorrow</p></div>
+                <div class="msg bot"><span>Dynmo</span><p>Done. I’ve got 3pm available. Want to add a beard trim for £10 while you’re in?</p></div>
+                <div class="msg user"><span>Customer</span><p>Yeah go on</p></div>
+                <div class="msg bot"><span>Dynmo</span><p>Nice. You’re booked for a haircut + beard trim at 3pm tomorrow ✅</p></div>
+            </div>
+        </div>
+        <div class="proof-card full">
+            <div class="proof-label">Saving a missed call</div>
+            <div class="chat-thread">
+                <div class="msg event"><span>Missed call detected</span></div>
+                <div class="msg bot"><span>Dynmo</span><p>Hey, sorry we missed your call. How can we help?</p></div>
+                <div class="msg user"><span>Customer</span><p>Just wanted to ask if you’ve got anything free today</p></div>
+                <div class="msg bot"><span>Dynmo</span><p>Yes, I’ve got 5:30pm available today. Want me to book it for you?</p></div>
+                <div class="msg user"><span>Customer</span><p>Yes please</p></div>
+                <div class="msg bot"><span>Dynmo</span><p>Done. What’s the best name for the booking?</p></div>
+            </div>
+        </div>
+    </div>
+    <p class="proof-close">While you’re busy, Dynmo is handling conversations like this all day.</p>
 </section>
 
 <!-- Stats -->
@@ -1771,7 +1968,7 @@
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeMenu();
     });
-    const animatedEls = document.querySelectorAll('.hero-badge, .hero h1, .hero > p, .hero-btns, .hero-proof, .pain .section-title, .pain .subtitle, .pain-card, .pain-close, .outcomes .section-title, .outcomes .subtitle, .outcome-card, .outcomes-close, .stats .section-title, .stat, .features .section-title, .features .subtitle, .feat, .how .section-title, .step, .pricing .section-title, .pricing .subtitle, .pc, .addons h3, .addon, .guarantee h3, .guarantee p, .cta h2, .cta p, .cta .btn-p');
+    const animatedEls = document.querySelectorAll('.hero-badge, .hero h1, .hero > p, .hero-btns, .hero-proof, .pain .section-title, .pain .subtitle, .pain-card, .pain-close, .proof .section-title, .proof .subtitle, .proof-card, .proof-close, .outcomes .section-title, .outcomes .subtitle, .outcome-card, .outcomes-close, .stats .section-title, .stat, .features .section-title, .features .subtitle, .feat, .how .section-title, .step, .pricing .section-title, .pricing .subtitle, .pc, .addons h3, .addon, .guarantee h3, .guarantee p, .cta h2, .cta p, .cta .btn-p');
     animatedEls.forEach(el => el.classList.add('reveal-prep'));
 
     const revealObserver = new IntersectionObserver((entries) => {
