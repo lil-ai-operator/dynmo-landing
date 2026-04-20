@@ -1715,7 +1715,7 @@
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeMenu();
     });
-    const animatedEls = document.querySelectorAll('.pain-card, .outcome-card, .feat, .pc, .step, .stat, .addon, .guarantee, .cta');
+    const animatedEls = document.querySelectorAll('.hero-badge, .hero h1, .hero > p, .hero-btns, .hero-proof, .pain .section-title, .pain .subtitle, .pain-card, .pain-close, .outcomes .section-title, .outcomes .subtitle, .outcome-card, .outcomes-close, .stat, .feat, .pc, .step, .addon, .guarantee, .cta');
     animatedEls.forEach(el => el.classList.add('reveal-prep'));
 
     const revealObserver = new IntersectionObserver((entries) => {
