@@ -1000,16 +1000,45 @@
         .reveal-prep {
             opacity: 0;
             transform: translateY(28px) scale(0.985);
+            will-change: transform, opacity;
         }
         .reveal-in {
             animation: cardRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
             animation-delay: var(--reveal-delay, 0ms);
         }
+        .hero-badge.reveal-in { animation-duration: 0.65s; }
+        .hero h1.reveal-in { animation-duration: 0.9s; }
+        .hero-btns.reveal-in,
+        .hero-proof.reveal-in { animation-duration: 0.75s; }
         .btn-p,
         .btn-s,
         .nav-cta,
         .mobile-menu .mobile-cta {
             transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+        }
+        .btn-p,
+        .nav-cta,
+        .mobile-menu .mobile-cta {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-p::after,
+        .nav-cta::after,
+        .mobile-menu .mobile-cta::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -120%;
+            width: 70%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.26), transparent);
+            transform: skewX(-22deg);
+            transition: left 0.7s ease;
+        }
+        .btn-p:hover::after,
+        .nav-cta:hover::after,
+        .mobile-menu .mobile-cta:hover::after {
+            left: 140%;
         }
         .btn-p:hover,
         .nav-cta:hover,
@@ -1031,6 +1060,22 @@
         .hero-badge {
             animation: softPulse 4.5s ease-in-out infinite;
         }
+        .hero h1,
+        .hero p,
+        .hero-btns,
+        .hero-proof,
+        .features .section-title,
+        .features .subtitle,
+        .how .section-title,
+        .pricing .section-title,
+        .pricing .subtitle,
+        .addons h3,
+        .guarantee h3,
+        .guarantee p,
+        .cta h2,
+        .cta p {
+            transition: transform 0.35s ease, opacity 0.35s ease;
+        }
         .stat,
         .feat,
         .step,
@@ -1046,9 +1091,20 @@
         .step:hover {
             transform: translateY(-6px);
         }
+        .feat,
+        .pc,
+        .addon,
+        .pain-card,
+        .outcome-card {
+            transform-style: preserve-3d;
+        }
         .stats {
             position: relative;
             overflow: hidden;
+        }
+        .stat .n.counting {
+            color: #9fc8ff;
+            transition: color 0.35s ease;
         }
         .stats::before {
             content: "";
@@ -1715,21 +1771,60 @@
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeMenu();
     });
-    const animatedEls = document.querySelectorAll('.hero-badge, .hero h1, .hero > p, .hero-btns, .hero-proof, .pain .section-title, .pain .subtitle, .pain-card, .pain-close, .outcomes .section-title, .outcomes .subtitle, .outcome-card, .outcomes-close, .stat, .feat, .pc, .step, .addon, .guarantee, .cta');
+    const animatedEls = document.querySelectorAll('.hero-badge, .hero h1, .hero > p, .hero-btns, .hero-proof, .pain .section-title, .pain .subtitle, .pain-card, .pain-close, .outcomes .section-title, .outcomes .subtitle, .outcome-card, .outcomes-close, .stats .section-title, .stat, .features .section-title, .features .subtitle, .feat, .how .section-title, .step, .pricing .section-title, .pricing .subtitle, .pc, .addons h3, .addon, .guarantee h3, .guarantee p, .cta h2, .cta p, .cta .btn-p');
     animatedEls.forEach(el => el.classList.add('reveal-prep'));
 
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('reveal-in');
+                if (entry.target.classList.contains('stat')) {
+                    const num = entry.target.querySelector('.n');
+                    if (num && !num.dataset.animated) {
+                        const target = parseInt((num.textContent || '').replace(/[^0-9]/g, ''), 10);
+                        if (!Number.isNaN(target)) {
+                            num.dataset.animated = 'true';
+                            num.classList.add('counting');
+                            const suffix = (num.textContent || '').replace(/[0-9]/g, '');
+                            const duration = 1100;
+                            const startTime = performance.now();
+                            const tick = (now) => {
+                                const progress = Math.min((now - startTime) / duration, 1);
+                                const eased = 1 - Math.pow(1 - progress, 3);
+                                num.textContent = Math.round(target * eased) + suffix;
+                                if (progress < 1) requestAnimationFrame(tick);
+                                else num.classList.remove('counting');
+                            };
+                            requestAnimationFrame(tick);
+                        }
+                    }
+                }
                 revealObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
 
     animatedEls.forEach((el, index) => {
-        el.style.setProperty('--reveal-delay', `${Math.min(index % 6, 5) * 70}ms`);
+        let delayBucket = index % 6;
+        if (el.closest('.hero')) delayBucket = Array.from(el.parentNode.children).indexOf(el) >= 0 ? Array.from(el.parentNode.children).indexOf(el) : delayBucket;
+        el.style.setProperty('--reveal-delay', `${Math.min(delayBucket, 5) * 90}ms`);
         revealObserver.observe(el);
+    });
+
+    const tiltCards = document.querySelectorAll('.pain-card, .outcome-card, .feat, .pc');
+    tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            if (window.innerWidth < 900) return;
+            const rect = card.getBoundingClientRect();
+            const px = (e.clientX - rect.left) / rect.width;
+            const py = (e.clientY - rect.top) / rect.height;
+            const rotateY = (px - 0.5) * 7;
+            const rotateX = (0.5 - py) * 7;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
     });
 </script>
 
