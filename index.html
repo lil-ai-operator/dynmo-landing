@@ -2145,6 +2145,7 @@
         });
     });
 
+    
     // --- Elite Chat Animations ---
     const demoScripts = [
         {
@@ -2229,14 +2230,13 @@
         const obs = new IntersectionObserver(entries => {
             if (entries[0].isIntersecting && !isRunning) {
                 isRunning = true;
-                setTimeout(step, 500); // slight delay when entering view
+                setTimeout(step, 500);
             }
         }, { threshold: 0.2 });
         obs.observe(demo.container);
     }
 
     demoScripts.forEach(runDemo);
-
 </script>
 
 </body>
