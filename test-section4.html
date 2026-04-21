@@ -84,11 +84,13 @@
         }
 
         .chat-area {
-            height: 420px;
-            overflow: hidden;
+            height: 380px;
+            overflow-y: auto;
             position: relative;
             padding: 12px 4px;
+            scrollbar-width: none;
         }
+        .chat-area::-webkit-scrollbar { display: none; }
 
         .chat-scroll {
             display: flex;
@@ -109,10 +111,10 @@
 
         .msg {
             max-width: 82%;
-            padding: 12px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            line-height: 1.5;
+            padding: 10px 14px;
+            border-radius: 18px;
+            font-size: 13px;
+            line-height: 1.45;
             opacity: 0;
             transform: translateY(16px) scale(0.97);
             animation: popIn 0.45s ease forwards;
@@ -220,6 +222,20 @@
     <script>
         var demos = [
             {
+                label: 'Trades • Quotes & Bookings',
+                steps: [
+                    { type: 'user', text: 'Hi, do you do emergency plumbing? Got a burst pipe' },
+                    { type: 'typing', delay: 700 },
+                    { type: 'bot', text: 'Yes we do emergency callouts. We can be there by 2pm today. Want me to book you in?' },
+                    { type: 'user', text: 'Yes please, how much is the callout?' },
+                    { type: 'typing', delay: 600 },
+                    { type: 'bot', text: 'Callout is \u00a349, hourly rate \u00a365 after. Shall I take payment now to secure the slot?' },
+                    { type: 'user', text: 'Yes go on then' },
+                    { type: 'typing', delay: 500 },
+                    { type: 'confirm', text: 'Done. You\u2019re booked for 2pm today. Our plumber will call before arriving. \uD83D\uDEE0' }
+                ]
+            },
+            {
                 label: 'Barbers • Booking',
                 steps: [
                     { type: 'user', text: 'Hi, how much is a skin fade?' },
@@ -257,20 +273,6 @@
                     { type: 'confirm', text: 'Done. You\u2019re booked in. See you at 6pm \uD83E\uDD4A' }
                 ]
             },
-            {
-                label: 'Trades • Quotes & Bookings',
-                steps: [
-                    { type: 'user', text: 'Hi, do you do emergency plumbing? Got a burst pipe' },
-                    { type: 'typing', delay: 700 },
-                    { type: 'bot', text: 'Yes we do emergency callouts. We can be there by 2pm today. Want me to book you in?' },
-                    { type: 'user', text: 'Yes please, how much is the callout?' },
-                    { type: 'typing', delay: 600 },
-                    { type: 'bot', text: 'Callout is \u00a349, hourly rate \u00a365 after. Shall I take payment now to secure the slot?' },
-                    { type: 'user', text: 'Yes go on then' },
-                    { type: 'typing', delay: 500 },
-                    { type: 'confirm', text: 'Done. You\u2019re booked for 2pm today. Our plumber will call before arriving. \uD83D\uDEE0' }
-                ]
-            }
         ];
 
         var chatScroll = document.getElementById('chatScroll');
