@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Dynmo — AI energy for unstoppable businesses.</title>
-    <meta name="description" content="Get your own AI assistant that answers customers, books appointments, and closes deals — 24/7. Free demo. No commitment.">
+    <title>Dynmo - AI energy for unstoppable businesses.</title>
+    <meta name="description" content="Get your own AI assistant that answers customers, books appointments, and closes deals - 24/7. Free demo. No commitment.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -870,278 +870,138 @@
         /* ============ PROOF SECTION ============ */
         .proof {
             position: relative;
-            padding: 110px 24px 76px;
+            padding: 110px 24px 80px;
             max-width: 1240px;
             margin: 0 auto;
             text-align: center;
             overflow: hidden;
         }
-        .proof::before {
-            content: "";
-            position: absolute;
-            inset: 18px 24px 0;
-            border-radius: 34px;
-            background:
-                radial-gradient(circle at 100% 0%, rgba(33,124,255,0.18), rgba(33,124,255,0) 36%),
-                radial-gradient(circle at 0% 100%, rgba(95,162,255,0.12), rgba(95,162,255,0) 32%),
-                linear-gradient(180deg, rgba(9,15,28,0.96) 0%, rgba(6,9,16,0.98) 100%);
-            border: 1px solid rgba(79,147,255,0.14);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 30px 80px rgba(0,0,0,0.34);
-            pointer-events: none;
-        }
-        .proof .section-title,
-        .proof .subtitle,
-        .proof-grid,
-        .proof-close {
-            position: relative;
-            z-index: 1;
-        }
         .proof .section-title {
             font-size: clamp(34px, 5vw, 54px);
-            line-height: 1;
             font-weight: 900;
-            letter-spacing: -0.04em;
             margin-bottom: 14px;
         }
         .proof .subtitle {
             max-width: 760px;
             margin: 0 auto 46px;
-            color: #c7d4ea;
+            color: #94a3b8;
             font-size: 17px;
             line-height: 1.65;
         }
         .proof-grid {
             display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
+        .proof-card.full { grid-column: 1 / -1; }
         .proof-card {
-            position: relative;
-            padding: 22px;
+            background: linear-gradient(180deg, rgba(20,30,50,0.9) 0%, rgba(10,15,30,0.95) 100%);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 28px;
-            background: linear-gradient(180deg, rgba(18,26,44,0.84) 0%, rgba(7,10,18,0.96) 100%);
-            border: 1px solid rgba(84,154,255,0.18);
-            text-align: left;
-            box-shadow: 0 22px 60px rgba(0,0,0,0.28);
+            padding: 28px;
+            position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-        }
-        .proof-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(62,145,255,0.16) 0%, rgba(62,145,255,0.03) 34%, rgba(255,255,255,0) 65%);
-            pointer-events: none;
-        }
-        .proof-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 28px 70px rgba(33,124,255,0.18);
-            border-color: rgba(122,182,255,0.34);
-        }
-        .proof-card.full {
-            grid-column: 1 / -1;
         }
         .proof-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 14px;
-            border-radius: 999px;
-            background: rgba(33,124,255,0.14);
-            border: 1px solid rgba(84,154,255,0.18);
-            color: #9fc8ff;
+            display: inline-block;
+            background: rgba(33,124,255,0.15);
+            color: #60a5fa;
+            padding: 8px 16px;
+            border-radius: 20px;
             font-size: 12px;
             font-weight: 700;
-            letter-spacing: 0.04em;
             text-transform: uppercase;
-            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+        @keyframes popIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes typeBounce {
+            0%, 80%, 100% { transform: scale(0); opacity: 0.4; }
+            40% { transform: scale(1); opacity: 1; }
         }
         .chat-thread {
             display: flex;
             flex-direction: column;
             gap: 12px;
+            min-height: 320px;
         }
-        .msg {
-            max-width: 88%;
-            padding: 14px 16px;
-            border-radius: 18px;
-            position: relative;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+        .chat-thread .msg {
+            max-width: 85%;
+            padding: 14px 18px;
+            border-radius: 20px;
+            font-size: 15px;
+            line-height: 1.5;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: popIn 0.5s ease forwards;
         }
-        .msg span {
+        .chat-thread .msg span {
             display: block;
             font-size: 11px;
             font-weight: 700;
-            letter-spacing: 0.05em;
             text-transform: uppercase;
-            margin-bottom: 7px;
-            opacity: 0.72;
+            letter-spacing: 0.5px;
+            opacity: 0.7;
+            margin-bottom: 4px;
         }
-        .msg p {
-            font-size: 15px;
-            line-height: 1.6;
-            color: #fff;
+        .chat-thread .msg.user {
+            align-self: flex-end;
+            background: rgba(255,255,255,0.1);
+            border-bottom-right-radius: 6px;
         }
-        .msg.user {
+        .chat-thread .msg.bot {
             align-self: flex-start;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.08);
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+            border-bottom-left-radius: 6px;
         }
-        .msg.bot {
-            align-self: flex-end;
-            background: linear-gradient(180deg, rgba(33,124,255,0.24) 0%, rgba(33,124,255,0.12) 100%);
-            border: 1px solid rgba(84,154,255,0.2);
-            box-shadow: 0 12px 30px rgba(33,124,255,0.1);
-        }
-        .msg.event {
-            align-self: center;
-            max-width: fit-content;
-            padding: 10px 14px;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.08);
-            color: #d7d7d7;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-        }
-        .proof-close {
-            margin-top: 34px;
-            color: #9fc8ff;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        @keyframes chatBob {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
-        }
-        @keyframes typingPulse {
-            0%, 80%, 100% { transform: scale(0.72); opacity: 0.4; }
-            40% { transform: scale(1); opacity: 1; }
-        }
-        @keyframes messagePop {
-            0% { opacity: 0; transform: translateY(16px) scale(0.96); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        @keyframes glowSweep {
-            0% { transform: translateX(-120%) skewX(-18deg); }
-            100% { transform: translateX(220%) skewX(-18deg); }
-        }
-        .proof-grid {
-            perspective: 1400px;
-        }
-        .proof-card {
-            animation: chatBob 7s ease-in-out infinite;
-        }
-        .proof-card:nth-child(2) { animation-delay: 0.8s; }
-        .proof-card:nth-child(3) { animation-delay: 1.6s; }
-        .proof-card::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -120%;
-            width: 38%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-            animation: glowSweep 5.8s ease-in-out infinite;
-            pointer-events: none;
-        }
-        .chat-thread .msg {
-            opacity: 0;
-            animation: messagePop 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-        .proof-card .msg:nth-child(1) { animation-delay: 0.25s; }
-        .proof-card .msg:nth-child(2) { animation-delay: 0.6s; }
-        .proof-card .msg:nth-child(3) { animation-delay: 0.95s; }
-        .proof-card .msg:nth-child(4) { animation-delay: 1.3s; }
-        .proof-card .msg:nth-child(5) { animation-delay: 1.65s; }
-        .proof-card .msg:nth-child(6) { animation-delay: 2s; }
-        .proof-card .msg:nth-child(7) { animation-delay: 2.35s; }
-        .typing-dots {
-            display: inline-flex;
-            gap: 6px;
-            align-items: center;
-        }
-        .typing-dots i {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            display: block;
-            background: rgba(255,255,255,0.75);
-            animation: typingPulse 1s ease-in-out infinite;
-        }
-        .typing-dots i:nth-child(2) { animation-delay: 0.18s; }
-        .typing-dots i:nth-child(3) { animation-delay: 0.36s; }
-        .proof-card .msg.typing {
-            align-self: flex-end;
-            max-width: fit-content;
-            background: rgba(33,124,255,0.16);
-            border: 1px solid rgba(84,154,255,0.16);
-        }
-        .proof-card .msg.bot.confirm {
-            box-shadow: 0 0 0 rgba(95,162,255,0.18), 0 12px 30px rgba(33,124,255,0.12);
-        }
-        
-        @keyframes popIn { to { opacity: 1; transform: translateY(0); } }
-        @keyframes typeBounce { 0%, 80%, 100% { transform: scale(0); opacity: 0.4; } 40% { transform: scale(1); opacity: 1; } }
-
-        .proof-card.elite-card {
-            background: linear-gradient(180deg, rgba(20,30,50,0.8) 0%, rgba(10,15,30,0.95) 100%);
-            box-shadow: 0 40px 80px rgba(0,0,0,0.5), inset 0 2px 10px rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            animation: none;
-        }
-        
-        .chat-thread {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            min-height: 280px;
-        }
-
-        .chat-thread .msg {
-            max-width: 85%; padding: 14px 18px; border-radius: 22px; font-size: 15px; line-height: 1.5;
-            opacity: 0; transform: translateY(20px); animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            backdrop-filter: none; -webkit-backdrop-filter: none;
-        }
-
-        .chat-thread .msg span {
-            display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 5px; opacity: 0.72;
-        }
-
-        .chat-thread .msg.user { 
-            align-self: flex-end; background: rgba(255,255,255,0.1); border-bottom-right-radius: 6px; 
-            border: none;
-        }
-        
-        .chat-thread .msg.bot { 
-            align-self: flex-start; background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%); border-bottom-left-radius: 6px;
-            box-shadow: 0 10px 25px rgba(37,99,235,0.3); border: none;
-        }
-
         .chat-thread .msg.confirm {
+            align-self: flex-start;
             background: linear-gradient(135deg, #059669 0%, #10b981 100%);
-            box-shadow: 0 10px 25px rgba(16,185,129,0.3); border: none; align-self: flex-start; border-bottom-left-radius: 6px;
+            border-bottom-left-radius: 6px;
         }
-
-        .chat-thread .msg.typing { 
-            display: flex; gap: 4px; padding: 16px 20px; align-self: flex-start; background: rgba(255,255,255,0.05); 
-            border-radius: 20px; border-bottom-left-radius: 6px; width: fit-content; opacity: 0; transform: translateY(20px); 
-            border: none;
+        .chat-thread .msg.typing {
+            display: flex;
+            gap: 4px;
+            padding: 16px 20px;
+            align-self: flex-start;
+            background: rgba(255,255,255,0.08);
+            border-radius: 20px;
+            border-bottom-left-radius: 6px;
+            width: fit-content;
+            opacity: 1;
+            transform: none;
         }
-        
-        .chat-thread .msg.typing span { 
-            width: 8px; height: 8px; background: #fff; border-radius: 50%; opacity: 0.4; animation: typeBounce 1.4s infinite ease-in-out both; 
+        .chat-thread .msg.typing span {
+            width: 8px;
+            height: 8px;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: typeBounce 1.4s infinite ease-in-out both;
             margin: 0;
         }
         .chat-thread .msg.typing span:nth-child(1) { animation-delay: -0.32s; }
         .chat-thread .msg.typing span:nth-child(2) { animation-delay: -0.16s; }
-
         .chat-thread .msg.event {
-            align-self: center; background: rgba(255,255,255,0.08); border-radius: 999px; padding: 8px 14px; margin: 10px 0;
+            align-self: center;
+            background: rgba(255,255,255,0.08);
+            border-radius: 999px;
+            padding: 8px 16px;
+            font-size: 12px;
+            color: #94a3b8;
+        }
+        .proof-close {
+            margin-top: 40px;
+            color: #60a5fa;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        @media (max-width: 768px) {
+            .proof-grid { grid-template-columns: 1fr; }
         }
 
         /* ============ OUTCOMES SECTION ============ */
@@ -1677,7 +1537,7 @@
         Replies. Books. Sells. 24/7.
     </div>
     <h1>Wake up to <span>bookings, replies,</span> and paid customers.</h1>
-    <p>Dynmo is your AI receptionist for WhatsApp, Telegram, and your website — answering customers instantly, booking appointments, taking payments, and following up automatically.</p>
+    <p>Dynmo is your AI receptionist for WhatsApp, Telegram, and your website - answering customers instantly, booking appointments, taking payments, and following up automatically.</p>
     <p style="color:#ff4444;font-weight:600;font-size:15px;margin-bottom:18px;">Stop losing customers after hours.</p>
     <div class="hero-btns">
         <a href="#demo" class="btn-p">Get Your Free Demo</a>
@@ -1752,22 +1612,22 @@
 <!-- Proof Section -->
 <section class="proof" id="proof">
     <h2 class="section-title">See Dynmo in action</h2>
-    <p class="subtitle">Here’s what it looks like when a customer messages your business and Dynmo handles it instantly.</p>
-        <div class="proof-grid">
-        <div class="proof-card elite-card" id="demo-1">
+    <p class="subtitle">Here's what it looks like when a customer messages your business and Dynmo handles it instantly.</p>
+    <div class="proof-grid">
+        <div class="proof-card" id="demo-1">
             <div class="proof-label">Barbers • Booking</div>
             <div class="chat-thread"></div>
         </div>
-        <div class="proof-card elite-card" id="demo-2">
+        <div class="proof-card" id="demo-2">
             <div class="proof-label">Restaurants • Upselling</div>
             <div class="chat-thread"></div>
         </div>
-        <div class="proof-card elite-card full" id="demo-3">
+        <div class="proof-card full" id="demo-3">
             <div class="proof-label">Gyms • Missed Calls</div>
             <div class="chat-thread"></div>
         </div>
     </div>
-    <p class="proof-close">While you’re busy, Dynmo is handling conversations like this all day.</p>
+    <p class="proof-close">While you're busy, Dynmo is handling conversations like this all day.</p>
 </section>
 
 <!-- Stats -->
@@ -1791,7 +1651,7 @@
 <!-- Features -->
 <section class="features" id="features">
     <h2 class="section-title">Everything your AI can do.</h2>
-    <p class="subtitle">24 services. Fuel your business with AI momentum — all built for you.</p>
+    <p class="subtitle">24 services. Fuel your business with AI momentum - all built for you.</p>
     <div class="features-grid">
         <div class="feat">
             <div class="feat-i">💬</div>
@@ -1811,7 +1671,7 @@
         <div class="feat">
             <div class="feat-i">🌍</div>
             <h3><a href="services/multi-language.html">Multi-Language</a></h3>
-            <p>Polish, Spanish, Arabic — speaks any language. Every new language = a new customer base.</p>
+            <p>Polish, Spanish, Arabic - speaks any language. Every new language = a new customer base.</p>
         </div>
         <div class="feat">
             <div class="feat-i">📱</div>
@@ -1866,12 +1726,12 @@
         <div class="feat">
             <div class="feat-i">📍</div>
             <h3><a href="services/location-directions.html">Location & Directions</a></h3>
-            <p>Customer asks "where are you?" — AI sends map pin, hours, and parking info. Zero friction.</p>
+            <p>Customer asks "where are you?" - AI sends map pin, hours, and parking info. Zero friction.</p>
         </div>
         <div class="feat">
             <div class="feat-i">🖼️</div>
             <h3><a href="services/service-catalogue.html">Service Catalogue</a></h3>
-            <p>"What haircuts do you do?" — AI sends photos with prices. They see it, want it, book it.</p>
+            <p>"What haircuts do you do?" - AI sends photos with prices. They see it, want it, book it.</p>
         </div>
         <div class="feat">
             <div class="feat-i">⏰</div>
@@ -1886,7 +1746,7 @@
         <div class="feat">
             <div class="feat-i">❄️</div>
             <h3><a href="services/seasonal-offers.html">Seasonal Offers</a></h3>
-            <p>Christmas, Ramadan, bank holidays — themed promos on autopilot. Every season = a revenue spike.</p>
+            <p>Christmas, Ramadan, bank holidays - themed promos on autopilot. Every season = a revenue spike.</p>
         </div>
         <div class="feat">
             <div class="feat-i">📊</div>
@@ -1901,7 +1761,7 @@
         <div class="feat">
             <div class="feat-i">🎉</div>
             <h3><a href="services/birthday-rewards.html">Birthday Rewards</a></h3>
-            <p>"Happy birthday! 25% off — book today." Personal touches that cost nothing and make money.</p>
+            <p>"Happy birthday! 25% off - book today." Personal touches that cost nothing and make money.</p>
         </div>
         <div class="feat">
             <div class="feat-i">🗣️</div>
@@ -1938,7 +1798,7 @@
             <div class="sn">3</div>
             <div class="sc">
                 <h3>Share it and start earning</h3>
-                <p>Send your AI link to customers. It answers, books, and sells — while you live your life.</p>
+                <p>Send your AI link to customers. It answers, books, and sells - while you live your life.</p>
             </div>
         </div>
     </div>
@@ -1954,7 +1814,7 @@
             <p class="pd">Stop losing customers to silence</p>
             <div class="price">£97</div>
             <p class="pp">one-time setup</p>
-            <p class="pn">then £20/month — cancel anytime</p>
+            <p class="pn">then £20/month - cancel anytime</p>
             <ul>
                 <li>✅ 24/7 Instant Replies</li>
                 <li>✅ Automatic Booking</li>
@@ -1974,7 +1834,7 @@
             <p class="pd">Start selling on every channel, 24/7</p>
             <div class="price">£150</div>
             <p class="pp">one-time setup</p>
-            <p class="pn">then £30/month — cancel anytime</p>
+            <p class="pn">then £30/month - cancel anytime</p>
             <ul>
                 <li>✅ Everything in Starter</li>
                 <li>✅ WhatsApp + Telegram + Website</li>
@@ -1998,7 +1858,7 @@
             <p class="pd">A full sales team that never sleeps</p>
             <div class="price">£297</div>
             <p class="pp">one-time setup</p>
-            <p class="pn">then £50/month — cancel anytime</p>
+            <p class="pn">then £50/month - cancel anytime</p>
             <ul>
                 <li>✅ Everything in Growth</li>
                 <li>✅ Up to 3 AI Assistants</li>
@@ -2065,7 +1925,7 @@
 
 <!-- Footer -->
 <footer>
-    <p>© 2026 Dynmo — AI energy for unstoppable businesses.</p>
+    <p>© 2026 Dynmo - AI energy for unstoppable businesses.</p>
     <p style="margin-top:8px;font-size:11px;color:#555;">Inject AI energy into your business.</p>
 </footer>
 
@@ -2145,46 +2005,52 @@
         });
     });
 
-    
-    // --- Elite Chat Animations ---
+
+
     const demoScripts = [
         {
+            id: 'demo-1',
             container: document.querySelector('#demo-1 .chat-thread'),
             steps: [
                 { type: 'user', text: 'Hi, how much is a skin fade?' },
-                { type: 'typing', delay: 800 },
-                { type: 'bot', text: 'Skin fade is £22. Want me to book you in?', delay: 1500 },
-                { type: 'user', text: 'Yes please', delay: 1000 },
-                { type: 'typing', delay: 800 },
-                { type: 'bot', text: 'I’ve got 2pm or 4pm tomorrow. Which works?' },
-                { type: 'user', text: '4pm', delay: 1200 },
-                { type: 'typing', delay: 900 },
-                { type: 'confirm', text: 'Perfect. You’re booked in for 4pm tomorrow 💈', delay: 4000 }
-            ]
+                { type: 'typing', delay: 600 },
+                { type: 'bot', text: 'Skin fade is £22. Want me to book you in?' },
+                { type: 'user', text: 'Yes please' },
+                { type: 'typing', delay: 600 },
+                { type: 'bot', text: 'I\'ve got 2pm or 4pm tomorrow. Which works?' },
+                { type: 'user', text: '4pm' },
+                { type: 'typing', delay: 600 },
+                { type: 'confirm', text: 'Perfect. You\'re booked in for 4pm tomorrow 💈', final: true }
+            ],
+            startDelay: 500
         },
         {
+            id: 'demo-2',
             container: document.querySelector('#demo-2 .chat-thread'),
             steps: [
                 { type: 'user', text: 'Can I book a table for 2 tonight at 7?' },
-                { type: 'typing', delay: 1200 },
+                { type: 'typing', delay: 800 },
                 { type: 'bot', text: 'Done. I have a table at 7pm. Would you like to pre-order our sharing platter special for £30?' },
-                { type: 'user', text: 'Yes please', delay: 1500 },
-                { type: 'typing', delay: 1000 },
-                { type: 'confirm', text: 'Perfect. Table for 2 at 7pm + sharing platter confirmed 🍷', delay: 4000 }
-            ]
+                { type: 'user', text: 'Yes please' },
+                { type: 'typing', delay: 800 },
+                { type: 'confirm', text: 'Perfect. Table for 2 at 7pm + sharing platter confirmed 🍷', final: true }
+            ],
+            startDelay: 3500
         },
         {
+            id: 'demo-3',
             container: document.querySelector('#demo-3 .chat-thread'),
             steps: [
-                { type: 'event', text: 'Missed call detected', delay: 800 },
-                { type: 'bot', text: 'Hey, sorry we missed your call! How can we help?', delay: 1500 },
-                { type: 'user', text: 'Do you have space in the 6pm HIIT class?', delay: 1500 },
-                { type: 'typing', delay: 1000 },
+                { type: 'event', text: 'Missed call detected' },
+                { type: 'bot', text: 'Hey, sorry we missed your call! How can we help?' },
+                { type: 'user', text: 'Do you have space in the 6pm HIIT class?' },
+                { type: 'typing', delay: 700 },
                 { type: 'bot', text: 'Yes, 2 spots left for 6pm. Want me to grab one for you?' },
-                { type: 'user', text: 'Yes please', delay: 1000 },
-                { type: 'typing', delay: 800 },
-                { type: 'confirm', text: 'Done. You\'re booked in. See you at 6pm 🥊', delay: 4000 }
-            ]
+                { type: 'user', text: 'Yes please' },
+                { type: 'typing', delay: 600 },
+                { type: 'confirm', text: 'Done. You\'re booked in. See you at 6pm 🥊', final: true }
+            ],
+            startDelay: 6000
         }
     ];
 
@@ -2192,51 +2058,56 @@
         if (!demo.container) return;
         let i = 0;
         let typingNode = null;
-        let isRunning = false;
 
         function step() {
             if (i >= demo.steps.length) {
-                setTimeout(() => { demo.container.innerHTML = ""; i=0; step(); }, 2000);
+                setTimeout(function() {
+                    demo.container.innerHTML = '';
+                    i = 0;
+                    step();
+                }, 3000);
                 return;
             }
-            const s = demo.steps[i];
-            if (typingNode) { typingNode.remove(); typingNode = null; }
-            
-            if (s.type === "typing") {
-                typingNode = document.createElement("div");
-                typingNode.className = "msg typing";
-                typingNode.innerHTML = "<span></span><span></span><span></span>";
+
+            var s = demo.steps[i];
+
+            if (typingNode) {
+                typingNode.remove();
+                typingNode = null;
+            }
+
+            if (s.type === 'typing') {
+                typingNode = document.createElement('div');
+                typingNode.className = 'msg typing';
+                typingNode.innerHTML = '<span></span><span></span><span></span>';
                 demo.container.appendChild(typingNode);
                 i++;
-                setTimeout(step, s.delay || 1000);
-            } else if (s.type === "event") {
-                const msg = document.createElement("div");
-                msg.className = "msg event";
-                msg.innerHTML = "<span>" + s.text + "</span>";
-                demo.container.appendChild(msg);
-                i++;
                 setTimeout(step, s.delay || 800);
-            } else {
-                const msg = document.createElement("div");
-                msg.className = "msg " + s.type;
-                const sender = s.type === "user" ? "Customer" : "Dynmo";
-                msg.innerHTML = "<span>" + sender + "</span><p>" + s.text + "</p>";
+            } else if (s.type === 'event') {
+                var msg = document.createElement('div');
+                msg.className = 'msg event';
+                msg.innerHTML = '<span>' + s.text + '</span>';
                 demo.container.appendChild(msg);
                 i++;
-                setTimeout(step, s.delay || 1200);
+                setTimeout(step, s.final ? 1000 : 800);
+            } else {
+                var msg = document.createElement('div');
+                msg.className = 'msg ' + s.type;
+                var sender = s.type === 'user' ? 'Customer' : 'Dynmo';
+                msg.innerHTML = '<span>' + sender + '</span><p>' + s.text + '</p>';
+                demo.container.appendChild(msg);
+                i++;
+                setTimeout(step, s.final ? 2000 : 1000);
             }
         }
-        
-        const obs = new IntersectionObserver(entries => {
-            if (entries[0].isIntersecting && !isRunning) {
-                isRunning = true;
-                setTimeout(step, 500);
-            }
-        }, { threshold: 0.1 });
-        obs.observe(demo.container);
+
+        setTimeout(function() {
+            step();
+        }, demo.startDelay);
     }
 
     demoScripts.forEach(runDemo);
+
 
 </script>
 
