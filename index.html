@@ -444,49 +444,144 @@
 
         /* ============ HOW ============ */
         .how {
-            padding: 80px 24px;
-            background: rgba(255, 255, 255, 0.015);
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 120px 24px;
+            position: relative;
+            overflow: hidden;
         }
-
+        .how::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+        }
+        .how::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+        }
+        .how .section-title {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .how .subtitle {
+            text-align: center;
+            color: #64748b;
+            max-width: 520px;
+            margin: 0 auto 70px;
+            font-size: 17px;
+            line-height: 1.65;
+        }
         .steps {
-            max-width: 700px;
+            max-width: 720px;
             margin: 0 auto;
             display: flex;
             flex-direction: column;
-            gap: 36px;
+            gap: 0;
+            position: relative;
         }
-
+        .steps::before {
+            content: '';
+            position: absolute;
+            left: 38px;
+            top: 48px;
+            bottom: 48px;
+            width: 2px;
+            background: linear-gradient(180deg, rgba(59,130,246,0.5) 0%, rgba(59,130,246,0.1) 100%);
+            border-radius: 2px;
+        }
         .step {
             display: flex;
-            gap: 20px;
+            gap: 32px;
             align-items: flex-start;
+            padding: 0 0 60px 0;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
         }
-
-        .sn {
-            width: 44px;
-            height: 44px;
-            min-width: 44px;
-            background: var(--blue);
-            border-radius: 12px;
+        .step.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .step:last-child { padding-bottom: 0; }
+        .step-number {
+            position: relative;
+            z-index: 1;
+            width: 76px;
+            height: 76px;
+            min-width: 76px;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 60%, #60a5fa 100%);
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
+            font-size: 28px;
+            font-weight: 900;
+            color: #fff;
+            box-shadow: 0 8px 32px rgba(59,130,246,0.35), 0 0 0 1px rgba(59,130,246,0.2) inset;
+            transform: scale(0.8);
+            transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+        }
+        .step.revealed .step-number {
+            transform: scale(1);
+        }
+        .step-number:hover {
+            box-shadow: 0 12px 40px rgba(59,130,246,0.5), 0 0 0 1px rgba(59,130,246,0.3) inset;
+            transform: scale(1.08) rotate(-3deg);
+        }
+        .step-content {
+            padding-top: 14px;
+            flex: 1;
+        }
+        .step-content h3 {
+            font-size: clamp(20px, 3vw, 24px);
             font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -0.02em;
+            transition: color 0.3s ease;
         }
-
-        .sc h3 {
+        .step:hover .step-content h3 { color: #60a5fa; }
+        .step-content p {
             font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 4px;
+            color: #64748b;
+            line-height: 1.75;
+            max-width: 540px;
         }
-
-        .sc p {
-            font-size: 13px;
-            color: var(--gray-light);
-            line-height: 1.65;
+        .step-icon {
+            font-size: 20px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .how-close {
+            text-align: center;
+            max-width: 440px;
+            margin: 64px auto 0;
+            padding: 24px 32px;
+            background: rgba(59,130,246,0.08);
+            border: 1px solid rgba(59,130,246,0.15);
+            border-radius: 16px;
+            font-size: 17px;
+            font-weight: 600;
+            color: #93c5fd;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s, background 0.3s ease, border-color 0.3s ease;
+        }
+        .how-close.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .how-close:hover {
+            background: rgba(59,130,246,0.12);
+            border-color: rgba(59,130,246,0.25);
+        }
+        @media (max-width: 600px) {
+            .steps::before { left: 28px; }
+            .step { gap: 20px; }
+            .step-number { width: 60px; height: 60px; min-width: 60px; font-size: 22px; border-radius: 18px; }
+            .how { padding: 80px 20px; }
         }
 
         /* ============ PRICING ============ */
@@ -1821,30 +1916,35 @@
 
 <!-- How it works -->
 <section class="how" id="how">
-    <h2 class="section-title">Get live in 3 simple steps.</h2>
+    <h2 class="section-title">Get live in 3 simple steps</h2>
+    <p class="subtitle">No tech headaches. No complicated setup. We build it for you and get you live fast.</p>
     <div class="steps">
-        <div class="step">
-            <div class="sn">1</div>
-            <div class="sc">
-                <h3>Tell us about your business</h3>
-                <p>Your services, prices, hours, and how you talk to customers. 10 minutes of your time.</p>
+        <div class="step" style="transition-delay: 0ms">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <span class="step-icon">💬</span>
+                <h3>Tell us what you sell</h3>
+                <p>Send us your services, prices, opening hours, and the questions customers usually ask.</p>
             </div>
         </div>
-        <div class="step">
-            <div class="sn">2</div>
-            <div class="sc">
-                <h3>We build your AI assistant</h3>
-                <p>Ready within 24 hours. You test it on your phone. See it handle real questions.</p>
+        <div class="step" style="transition-delay: 120ms">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <span class="step-icon">🧠</span>
+                <h3>We build your AI for you</h3>
+                <p>We train it on your business, set it up on WhatsApp, Telegram, or your website, and make sure it replies, books, and sells properly.</p>
             </div>
         </div>
-        <div class="step">
-            <div class="sn">3</div>
-            <div class="sc">
-                <h3>Share it and start earning</h3>
-                <p>Send your AI link to customers. It answers, books, and sells - while you live your life.</p>
+        <div class="step" style="transition-delay: 240ms">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <span class="step-icon">🚀</span>
+                <h3>Start waking up to bookings</h3>
+                <p>Once it's live, Dynmo starts answering customers, booking appointments, taking payments, and following up automatically.</p>
             </div>
         </div>
     </div>
+    <div class="how-close">You don't need to touch a single technical thing.</div>
 </section>
 
 <!-- Pricing -->
@@ -1992,7 +2092,7 @@
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeMenu();
     });
-    const animatedEls = document.querySelectorAll('.hero-badge, .hero h1, .hero > p, .hero-btns, .hero-proof, .pain .section-title, .pain .subtitle, .pain-card, .pain-close, .proof .section-title, .proof .subtitle, .proof-card, .proof-close, .outcomes .section-title, .outcomes .subtitle, .outcome-card, .outcomes-close, .stats .section-title, .stat, .features .section-title, .features .subtitle, .feat, .how .section-title, .step, .pricing .section-title, .pricing .subtitle, .pc, .addons h3, .addon, .guarantee h3, .guarantee p, .cta h2, .cta p, .cta .btn-p');
+    const animatedEls = document.querySelectorAll('.hero-badge, .hero h1, .hero > p, .hero-btns, .hero-proof, .pain .section-title, .pain .subtitle, .pain-card, .pain-close, .proof .section-title, .proof .subtitle, .proof-card, .proof-close, .outcomes .section-title, .outcomes .subtitle, .outcome-card, .outcomes-close, .stats .section-title, .stat, .features .section-title, .features .subtitle, .feat, .how .section-title, .how .subtitle, .how-close, .pricing .section-title, .pricing .subtitle, .pc, .addons h3, .addon, .guarantee h3, .guarantee p, .cta h2, .cta p, .cta .btn-p');
     animatedEls.forEach(el => el.classList.add('reveal-prep'));
 
     const revealObserver = new IntersectionObserver((entries) => {
@@ -2178,6 +2278,21 @@
     }
 
     runDemo(0);
+
+    // Section 5 scroll reveal
+    var stepEls = document.querySelectorAll('.step');
+    var howClose = document.querySelector('.how-close');
+    var howObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                stepEls.forEach(function(step) { step.classList.add('revealed'); });
+                if (howClose) setTimeout(function() { howClose.classList.add('revealed'); }, 400);
+                howObserver.disconnect();
+            }
+        });
+    }, { threshold: 0.2 });
+    var howSection = document.querySelector('.how');
+    if (howSection) howObserver.observe(howSection);
 </script>
 
 </body>
