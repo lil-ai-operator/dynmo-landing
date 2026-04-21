@@ -211,7 +211,7 @@
                 <span class="demo-label" id="demoLabel">Barbers • Booking</span>
                 <span class="status">Online now</span>
             </div>
-            <div class="chat-area">
+            <div class="chat-area" id="chatArea">
                 <div class="chat-scroll" id="chatScroll"></div>
             </div>
         </div>
@@ -222,7 +222,7 @@
     <script>
         var demos = [
             {
-                label: 'Trades • Quotes & Bookings',
+                label: 'Trades \u2022 Quotes & Bookings',
                 steps: [
                     { type: 'user', text: 'Hi, do you do emergency plumbing? Got a burst pipe' },
                     { type: 'typing', delay: 700 },
@@ -236,7 +236,7 @@
                 ]
             },
             {
-                label: 'Barbers • Booking',
+                label: 'Barbers \u2022 Booking',
                 steps: [
                     { type: 'user', text: 'Hi, how much is a skin fade?' },
                     { type: 'typing', delay: 600 },
@@ -250,7 +250,7 @@
                 ]
             },
             {
-                label: 'Restaurants • Upselling',
+                label: 'Restaurants \u2022 Upselling',
                 steps: [
                     { type: 'user', text: 'Can I book a table for 2 tonight at 7?' },
                     { type: 'typing', delay: 700 },
@@ -261,7 +261,7 @@
                 ]
             },
             {
-                label: 'Gyms • Missed Calls',
+                label: 'Gyms \u2022 Missed Calls',
                 steps: [
                     { type: 'event', text: 'Missed call detected' },
                     { type: 'bot', text: 'Hey, sorry we missed your call! How can we help?' },
@@ -272,70 +272,78 @@
                     { type: 'typing', delay: 500 },
                     { type: 'confirm', text: 'Done. You\u2019re booked in. See you at 6pm \uD83E\uDD4A' }
                 ]
-            },
+            }
         ];
 
-        var chatArea = document.getElementById('chatArea');
-        var chatScroll = document.getElementById('chatScroll');
-        var demoLabel = document.getElementById('demoLabel');
-        var currentDemo = 0;
-        var typingEl = null;
+        function scrollToBottom() {
+            var chatArea = document.getElementById('chatArea');
+            chatArea.scrollTop = chatArea.scrollHeight;
+        }
 
         function runDemo(index) {
             var demo = demos[index];
-            demoLabel.textContent = demo.label;
+            document.getElementById('demoLabel').textContent = demo.label;
+            var chatScroll = document.getElementById('chatScroll');
             chatScroll.innerHTML = '';
-            typingEl = null;
-            
-            var i = 0;
-            
-            function step() {
-                if (i >= demo.steps.length) {
+            var stepIndex = 0;
+            var typingNode = null;
+
+            function addTyping() {
+                typingNode = document.createElement('div');
+                typingNode.className = 'msg typing';
+                typingNode.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+                chatScroll.appendChild(typingNode);
+                scrollToBottom();
+            }
+
+            function addMessage(type, text) {
+                var el = document.createElement('div');
+                el.className = 'msg ' + type;
+                if (type !== 'event') {
+                    var sender = type === 'user' ? 'Customer' : 'Dynmo';
+                    el.innerHTML = '<span class="sender">' + sender + '</span>' + text;
+                } else {
+                    el.textContent = text;
+                }
+                chatScroll.appendChild(el);
+                scrollToBottom();
+            }
+
+            function nextStep() {
+                if (stepIndex >= demo.steps.length) {
+                    // Done - pause then next demo
                     setTimeout(function() {
                         chatScroll.classList.add('fading');
                         setTimeout(function() {
-                            currentDemo = (currentDemo + 1) % demos.length;
                             chatScroll.classList.remove('fading');
-                            runDemo(currentDemo);
+                            runDemo((index + 1) % demos.length);
                         }, 600);
                     }, 2500);
                     return;
                 }
-                
-                var s = demo.steps[i];
-                
-                if (typingEl) {
-                    typingEl.remove();
-                    typingEl = null;
+
+                var s = demo.steps[stepIndex];
+                stepIndex++;
+
+                if (typingNode) {
+                    typingNode.remove();
+                    typingNode = null;
                 }
-                
+
                 if (s.type === 'typing') {
-                    typingEl = document.createElement('div');
-                    typingEl.className = 'msg typing';
-                    typingEl.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
-                    chatScroll.appendChild(typingEl);
-                    i++;
-                    setTimeout(step, s.delay || 700);
+                    addTyping();
+                    setTimeout(nextStep, s.delay || 700);
                 } else if (s.type === 'event') {
-                    var el = document.createElement('div');
-                    el.className = 'msg event';
-                    el.textContent = s.text;
-                    chatScroll.appendChild(el);
-                    i++;
-                    setTimeout(step, 1000);
+                    addMessage('event', s.text);
+                    setTimeout(nextStep, 800);
                 } else {
-                    var el = document.createElement('div');
-                    el.className = 'msg ' + s.type;
-                    var sender = s.type === 'user' ? 'Customer' : 'Dynmo';
-                    el.innerHTML = '<span class="sender">' + sender + '</span>' + s.text;
-                    chatScroll.appendChild(el);
-                    chatArea.scrollTop = chatArea.scrollHeight;
-                    i++;
-                    setTimeout(step, s.type === 'confirm' ? 1800 : 1000);
+                    addMessage(s.type, s.text);
+                    var wait = s.type === 'confirm' ? 1800 : 1000;
+                    setTimeout(nextStep, wait);
                 }
             }
-            
-            setTimeout(step, 800);
+
+            setTimeout(nextStep, 600);
         }
 
         runDemo(0);
