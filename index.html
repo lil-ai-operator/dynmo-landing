@@ -2212,15 +2212,15 @@
             } else if (s.type === 'event') {
                 const msg = document.createElement('div');
                 msg.className = 'msg event';
-                msg.innerHTML = `<span>${s.text}</span>`;
+                msg.innerHTML = "<span>" + s.text + "</span>";
                 demo.container.appendChild(msg);
                 i++;
                 setTimeout(step, s.delay || 800);
             } else {
                 const msg = document.createElement('div');
-                msg.className = `msg ${s.type}`;
+                msg.className = "msg " + s.type;
                 const sender = s.type === 'user' ? 'Customer' : 'Dynmo';
-                msg.innerHTML = `<span>${sender}</span><p>${s.text}</p>`;
+                msg.innerHTML = "<span>" + sender + "</span><p>" + s.text + "</p>";
                 demo.container.appendChild(msg);
                 i++;
                 setTimeout(step, s.delay || 1200);
