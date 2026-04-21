@@ -256,6 +256,20 @@
                     { type: 'typing', delay: 500 },
                     { type: 'confirm', text: 'Done. You\u2019re booked in. See you at 6pm \uD83E\uDD4A' }
                 ]
+            },
+            {
+                label: 'Trades • Quotes & Bookings',
+                steps: [
+                    { type: 'user', text: 'Hi, do you do emergency plumbing? Got a burst pipe' },
+                    { type: 'typing', delay: 700 },
+                    { type: 'bot', text: 'Yes we do emergency callouts. We can be there by 2pm today. Want me to book you in?' },
+                    { type: 'user', text: 'Yes please, how much is the callout?' },
+                    { type: 'typing', delay: 600 },
+                    { type: 'bot', text: 'Callout is \u00a349, hourly rate \u00a365 after. Shall I take payment now to secure the slot?' },
+                    { type: 'user', text: 'Yes go on then' },
+                    { type: 'typing', delay: 500 },
+                    { type: 'confirm', text: 'Done. You\u2019re booked for 2pm today. Our plumber will call before arriving. \uD83D\uDEE0' }
+                ]
             }
         ];
 
