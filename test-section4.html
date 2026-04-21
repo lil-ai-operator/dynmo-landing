@@ -275,6 +275,7 @@
             },
         ];
 
+        var chatArea = document.getElementById('chatArea');
         var chatScroll = document.getElementById('chatScroll');
         var demoLabel = document.getElementById('demoLabel');
         var currentDemo = 0;
@@ -328,6 +329,7 @@
                     var sender = s.type === 'user' ? 'Customer' : 'Dynmo';
                     el.innerHTML = '<span class="sender">' + sender + '</span>' + s.text;
                     chatScroll.appendChild(el);
+                    chatArea.scrollTop = chatArea.scrollHeight;
                     i++;
                     setTimeout(step, s.type === 'confirm' ? 1800 : 1000);
                 }
