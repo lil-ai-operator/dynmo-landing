@@ -3,82 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Section 4 Test</title>
+    <title>Section 4 Test - Single Phone</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-        body { background: #030712; color: #fff; min-height: 100vh; padding: 40px 20px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: #030712; color: #fff; font-family: 'Inter', sans-serif; min-height: 100vh; display: flex; flex-direction: column; align-items: center; padding: 60px 20px; }
         
-        .section-title { font-size: 40px; font-weight: 800; text-align: center; margin-bottom: 20px; }
-        .subtitle { text-align: center; color: #94a3b8; max-width: 700px; margin: 0 auto 50px; font-size: 18px; line-height: 1.6; }
+        .section-title { font-size: clamp(28px, 5vw, 44px); font-weight: 800; text-align: center; margin-bottom: 16px; letter-spacing: -1px; }
+        .subtitle { text-align: center; color: #94a3b8; max-width: 600px; margin: 0 auto 50px; font-size: 17px; line-height: 1.6; }
         
-        .proof-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        .proof-card.full { grid-column: 1 / -1; }
-        
-        .proof-card {
-            background: linear-gradient(180deg, rgba(20,30,50,0.9) 0%, rgba(10,15,30,0.95) 100%);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 28px;
-            padding: 28px;
+        .phone-wrapper {
             position: relative;
+            width: 380px;
+            max-width: 100%;
+        }
+
+        .phone-frame {
+            position: relative;
+            background: linear-gradient(180deg, rgba(20,30,50,0.9) 0%, rgba(10,15,30,0.98) 100%);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 48px;
+            padding: 20px 16px 16px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 80px rgba(33,124,255,0.08);
             overflow: hidden;
         }
-        
-        .proof-label {
+
+        /* Notch */
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 28px;
+            background: #030712;
+            border-radius: 0 0 18px 18px;
+            z-index: 10;
+        }
+
+        .phone-header {
+            text-align: center;
+            padding: 24px 0 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            margin-bottom: 4px;
+        }
+        .phone-header .demo-label {
             display: inline-block;
             background: rgba(33,124,255,0.15);
             color: #60a5fa;
-            padding: 8px 16px;
-            border-radius: 20px;
+            padding: 6px 14px;
+            border-radius: 16px;
             font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 20px;
+            transition: all 0.4s ease;
         }
-        
+        .phone-header .status {
+            display: block;
+            color: #4ade80;
+            font-size: 11px;
+            margin-top: 8px;
+            font-weight: 500;
+        }
+        .phone-header .status::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: #4ade80;
+            border-radius: 50%;
+            margin-right: 4px;
+            animation: statusPulse 2s ease infinite;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .chat-area {
+            height: 420px;
+            overflow: hidden;
+            position: relative;
+            padding: 12px 4px;
+        }
+
+        .chat-scroll {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: opacity 0.4s ease;
+        }
+        .chat-scroll.fading { opacity: 0; }
+
         @keyframes popIn {
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(16px) scale(0.97); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
         @keyframes typeBounce {
             0%, 80%, 100% { transform: scale(0); opacity: 0.4; }
             40% { transform: scale(1); opacity: 1; }
         }
-        
-        .chat-thread {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            min-height: 320px;
-        }
-        
+
         .msg {
-            max-width: 85%;
-            padding: 14px 18px;
+            max-width: 82%;
+            padding: 12px 16px;
             border-radius: 20px;
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1.5;
             opacity: 0;
-            transform: translateY(20px);
-            animation: popIn 0.5s ease forwards;
+            transform: translateY(16px) scale(0.97);
+            animation: popIn 0.45s ease forwards;
         }
-        .msg span {
+        .msg .sender {
             display: block;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            opacity: 0.7;
-            margin-bottom: 4px;
+            opacity: 0.6;
+            margin-bottom: 3px;
         }
         .msg.user {
             align-self: flex-end;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.08);
             border-bottom-right-radius: 6px;
         }
         .msg.bot {
@@ -93,175 +143,184 @@
         }
         .msg.typing {
             display: flex;
-            gap: 4px;
-            padding: 16px 20px;
+            gap: 5px;
+            padding: 14px 20px;
             align-self: flex-start;
-            background: rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.06);
             border-radius: 20px;
             border-bottom-left-radius: 6px;
             width: fit-content;
             opacity: 1;
             transform: none;
+            animation: none;
         }
-        .msg.typing span {
-            width: 8px;
-            height: 8px;
+        .msg.typing .dot {
+            width: 7px;
+            height: 7px;
             background: #fff;
             border-radius: 50%;
             opacity: 0.4;
             animation: typeBounce 1.4s infinite ease-in-out both;
-            margin: 0;
         }
-        .msg.typing span:nth-child(1) { animation-delay: -0.32s; }
-        .msg.typing span:nth-child(2) { animation-delay: -0.16s; }
+        .msg.typing .dot:nth-child(1) { animation-delay: -0.32s; }
+        .msg.typing .dot:nth-child(2) { animation-delay: -0.16s; }
         .msg.event {
             align-self: center;
-            background: rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.06);
             border-radius: 999px;
-            padding: 8px 16px;
-            font-size: 12px;
+            padding: 6px 14px;
+            font-size: 11px;
             color: #94a3b8;
         }
-        
+
         .proof-close {
             text-align: center;
             margin-top: 40px;
             color: #60a5fa;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 500;
+            max-width: 500px;
         }
-        
-        @media (max-width: 768px) {
-            .proof-grid { grid-template-columns: 1fr; }
+
+        /* Background glow */
+        .bg-glow {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(33,124,255,0.1) 0%, transparent 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            filter: blur(40px);
         }
     </style>
 </head>
 <body>
+    <div class="bg-glow"></div>
+    
     <h2 class="section-title">See Dynmo in action</h2>
     <p class="subtitle">Here's what it looks like when a customer messages your business and Dynmo handles it instantly.</p>
     
-    <div class="proof-grid">
-        <div class="proof-card" id="demo-1">
-            <div class="proof-label">Barbers • Booking</div>
-            <div class="chat-thread"></div>
-        </div>
-        <div class="proof-card" id="demo-2">
-            <div class="proof-label">Restaurants • Upselling</div>
-            <div class="chat-thread"></div>
-        </div>
-        <div class="proof-card full" id="demo-3">
-            <div class="proof-label">Gyms • Missed Calls</div>
-            <div class="chat-thread"></div>
+    <div class="phone-wrapper">
+        <div class="phone-frame">
+            <div class="phone-header">
+                <span class="demo-label" id="demoLabel">Barbers • Booking</span>
+                <span class="status">Online now</span>
+            </div>
+            <div class="chat-area">
+                <div class="chat-scroll" id="chatScroll"></div>
+            </div>
         </div>
     </div>
     
     <p class="proof-close">While you're busy, Dynmo is handling conversations like this all day.</p>
 
     <script>
-        const demoScripts = [
+        var demos = [
             {
-                id: 'demo-1',
-                container: document.querySelector('#demo-1 .chat-thread'),
+                label: 'Barbers • Booking',
                 steps: [
                     { type: 'user', text: 'Hi, how much is a skin fade?' },
                     { type: 'typing', delay: 600 },
-                    { type: 'bot', text: 'Skin fade is £22. Want me to book you in?' },
+                    { type: 'bot', text: 'Skin fade is \u00a322. Want me to book you in?' },
                     { type: 'user', text: 'Yes please' },
-                    { type: 'typing', delay: 600 },
-                    { type: 'bot', text: 'I\'ve got 2pm or 4pm tomorrow. Which works?' },
+                    { type: 'typing', delay: 500 },
+                    { type: 'bot', text: 'I\u2019ve got 2pm or 4pm tomorrow. Which works?' },
                     { type: 'user', text: '4pm' },
-                    { type: 'typing', delay: 600 },
-                    { type: 'confirm', text: 'Perfect. You\'re booked in for 4pm tomorrow 💈', final: true }
-                ],
-                startDelay: 500
+                    { type: 'typing', delay: 500 },
+                    { type: 'confirm', text: 'Perfect. You\u2019re booked in for 4pm tomorrow \uD83D\uDC88' }
+                ]
             },
             {
-                id: 'demo-2',
-                container: document.querySelector('#demo-2 .chat-thread'),
+                label: 'Restaurants • Upselling',
                 steps: [
                     { type: 'user', text: 'Can I book a table for 2 tonight at 7?' },
-                    { type: 'typing', delay: 800 },
-                    { type: 'bot', text: 'Done. I have a table at 7pm. Would you like to pre-order our sharing platter special for £30?' },
-                    { type: 'user', text: 'Yes please' },
-                    { type: 'typing', delay: 800 },
-                    { type: 'confirm', text: 'Perfect. Table for 2 at 7pm + sharing platter confirmed 🍷', final: true }
-                ],
-                startDelay: 3500
+                    { type: 'typing', delay: 700 },
+                    { type: 'bot', text: 'Done. I have a table at 7pm. Want to pre-order our sharing platter for \u00a330?' },
+                    { type: 'user', text: 'Yeah go on then' },
+                    { type: 'typing', delay: 600 },
+                    { type: 'confirm', text: 'Perfect. Table for 2 at 7pm + sharing platter confirmed \uD83C\uDF77' }
+                ]
             },
             {
-                id: 'demo-3',
-                container: document.querySelector('#demo-3 .chat-thread'),
+                label: 'Gyms • Missed Calls',
                 steps: [
                     { type: 'event', text: 'Missed call detected' },
                     { type: 'bot', text: 'Hey, sorry we missed your call! How can we help?' },
                     { type: 'user', text: 'Do you have space in the 6pm HIIT class?' },
-                    { type: 'typing', delay: 700 },
+                    { type: 'typing', delay: 600 },
                     { type: 'bot', text: 'Yes, 2 spots left for 6pm. Want me to grab one for you?' },
                     { type: 'user', text: 'Yes please' },
-                    { type: 'typing', delay: 600 },
-                    { type: 'confirm', text: 'Done. You\'re booked in. See you at 6pm 🥊', final: true }
-                ],
-                startDelay: 6000
+                    { type: 'typing', delay: 500 },
+                    { type: 'confirm', text: 'Done. You\u2019re booked in. See you at 6pm \uD83E\uDD4A' }
+                ]
             }
         ];
 
-        function runDemo(demo) {
-            if (!demo.container) return;
-            let i = 0;
-            let typingNode = null;
-            let isRunning = false;
+        var chatScroll = document.getElementById('chatScroll');
+        var demoLabel = document.getElementById('demoLabel');
+        var currentDemo = 0;
+        var typingEl = null;
+
+        function runDemo(index) {
+            var demo = demos[index];
+            demoLabel.textContent = demo.label;
+            chatScroll.innerHTML = '';
+            typingEl = null;
+            
+            var i = 0;
             
             function step() {
                 if (i >= demo.steps.length) {
-                    setTimeout(() => { 
-                        demo.container.innerHTML = ''; 
-                        i = 0; 
-                        step(); 
-                    }, 3000);
+                    setTimeout(function() {
+                        chatScroll.classList.add('fading');
+                        setTimeout(function() {
+                            currentDemo = (currentDemo + 1) % demos.length;
+                            chatScroll.classList.remove('fading');
+                            runDemo(currentDemo);
+                        }, 600);
+                    }, 2500);
                     return;
                 }
                 
-                const s = demo.steps[i];
+                var s = demo.steps[i];
                 
-                // Remove typing indicator
-                if (typingNode) { 
-                    typingNode.remove(); 
-                    typingNode = null; 
+                if (typingEl) {
+                    typingEl.remove();
+                    typingEl = null;
                 }
                 
-                // Add message
                 if (s.type === 'typing') {
-                    typingNode = document.createElement('div');
-                    typingNode.className = 'msg typing';
-                    typingNode.innerHTML = '<span></span><span></span><span></span>';
-                    demo.container.appendChild(typingNode);
+                    typingEl = document.createElement('div');
+                    typingEl.className = 'msg typing';
+                    typingEl.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+                    chatScroll.appendChild(typingEl);
                     i++;
-                    setTimeout(step, s.delay || 800);
+                    setTimeout(step, s.delay || 700);
                 } else if (s.type === 'event') {
-                    const msg = document.createElement('div');
-                    msg.className = 'msg event';
-                    msg.innerHTML = '<span>' + s.text + '</span>';
-                    demo.container.appendChild(msg);
+                    var el = document.createElement('div');
+                    el.className = 'msg event';
+                    el.textContent = s.text;
+                    chatScroll.appendChild(el);
                     i++;
-                    setTimeout(step, s.final ? 1000 : 800);
+                    setTimeout(step, 1000);
                 } else {
-                    const msg = document.createElement('div');
-                    msg.className = 'msg ' + s.type;
-                    const sender = s.type === 'user' ? 'Customer' : 'Dynmo';
-                    msg.innerHTML = '<span>' + sender + '</span><p>' + s.text + '</p>';
-                    demo.container.appendChild(msg);
+                    var el = document.createElement('div');
+                    el.className = 'msg ' + s.type;
+                    var sender = s.type === 'user' ? 'Customer' : 'Dynmo';
+                    el.innerHTML = '<span class="sender">' + sender + '</span>' + s.text;
+                    chatScroll.appendChild(el);
                     i++;
-                    setTimeout(step, s.final ? 2000 : 1000);
+                    setTimeout(step, s.type === 'confirm' ? 1800 : 1000);
                 }
             }
             
-            // Start with staggered delay
-            setTimeout(() => {
-                step();
-            }, demo.startDelay);
+            setTimeout(step, 800);
         }
 
-        demoScripts.forEach(runDemo);
+        runDemo(0);
     </script>
 </body>
 </html>
