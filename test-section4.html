@@ -54,6 +54,7 @@
             display: flex;
             flex-direction: column;
             gap: 12px;
+            min-height: 320px;
         }
         
         .msg {
@@ -99,6 +100,8 @@
             border-radius: 20px;
             border-bottom-left-radius: 6px;
             width: fit-content;
+            opacity: 1;
+            transform: none;
         }
         .msg.typing span {
             width: 8px;
@@ -157,42 +160,48 @@
     <script>
         const demoScripts = [
             {
+                id: 'demo-1',
                 container: document.querySelector('#demo-1 .chat-thread'),
                 steps: [
                     { type: 'user', text: 'Hi, how much is a skin fade?' },
-                    { type: 'typing', delay: 800 },
-                    { type: 'bot', text: 'Skin fade is £22. Want me to book you in?', delay: 1500 },
-                    { type: 'user', text: 'Yes please', delay: 1000 },
-                    { type: 'typing', delay: 800 },
+                    { type: 'typing', delay: 600 },
+                    { type: 'bot', text: 'Skin fade is £22. Want me to book you in?' },
+                    { type: 'user', text: 'Yes please' },
+                    { type: 'typing', delay: 600 },
                     { type: 'bot', text: 'I\'ve got 2pm or 4pm tomorrow. Which works?' },
-                    { type: 'user', text: '4pm', delay: 1200 },
-                    { type: 'typing', delay: 900 },
-                    { type: 'confirm', text: 'Perfect. You\'re booked in for 4pm tomorrow 💈', delay: 4000 }
-                ]
+                    { type: 'user', text: '4pm' },
+                    { type: 'typing', delay: 600 },
+                    { type: 'confirm', text: 'Perfect. You\'re booked in for 4pm tomorrow 💈', final: true }
+                ],
+                startDelay: 500
             },
             {
+                id: 'demo-2',
                 container: document.querySelector('#demo-2 .chat-thread'),
                 steps: [
                     { type: 'user', text: 'Can I book a table for 2 tonight at 7?' },
-                    { type: 'typing', delay: 1200 },
+                    { type: 'typing', delay: 800 },
                     { type: 'bot', text: 'Done. I have a table at 7pm. Would you like to pre-order our sharing platter special for £30?' },
-                    { type: 'user', text: 'Yes please', delay: 1500 },
-                    { type: 'typing', delay: 1000 },
-                    { type: 'confirm', text: 'Perfect. Table for 2 at 7pm + sharing platter confirmed 🍷', delay: 4000 }
-                ]
+                    { type: 'user', text: 'Yes please' },
+                    { type: 'typing', delay: 800 },
+                    { type: 'confirm', text: 'Perfect. Table for 2 at 7pm + sharing platter confirmed 🍷', final: true }
+                ],
+                startDelay: 3500
             },
             {
+                id: 'demo-3',
                 container: document.querySelector('#demo-3 .chat-thread'),
                 steps: [
-                    { type: 'event', text: 'Missed call detected', delay: 800 },
-                    { type: 'bot', text: 'Hey, sorry we missed your call! How can we help?', delay: 1500 },
-                    { type: 'user', text: 'Do you have space in the 6pm HIIT class?', delay: 1500 },
-                    { type: 'typing', delay: 1000 },
+                    { type: 'event', text: 'Missed call detected' },
+                    { type: 'bot', text: 'Hey, sorry we missed your call! How can we help?' },
+                    { type: 'user', text: 'Do you have space in the 6pm HIIT class?' },
+                    { type: 'typing', delay: 700 },
                     { type: 'bot', text: 'Yes, 2 spots left for 6pm. Want me to grab one for you?' },
-                    { type: 'user', text: 'Yes please', delay: 1000 },
-                    { type: 'typing', delay: 800 },
-                    { type: 'confirm', text: 'Done. You\'re booked in. See you at 6pm 🥊', delay: 4000 }
-                ]
+                    { type: 'user', text: 'Yes please' },
+                    { type: 'typing', delay: 600 },
+                    { type: 'confirm', text: 'Done. You\'re booked in. See you at 6pm 🥊', final: true }
+                ],
+                startDelay: 6000
             }
         ];
 
@@ -200,29 +209,41 @@
             if (!demo.container) return;
             let i = 0;
             let typingNode = null;
+            let isRunning = false;
             
             function step() {
                 if (i >= demo.steps.length) {
-                    setTimeout(() => { demo.container.innerHTML = ''; i = 0; step(); }, 2000);
+                    setTimeout(() => { 
+                        demo.container.innerHTML = ''; 
+                        i = 0; 
+                        step(); 
+                    }, 3000);
                     return;
                 }
-                const s = demo.steps[i];
-                if (typingNode) { typingNode.remove(); typingNode = null; }
                 
+                const s = demo.steps[i];
+                
+                // Remove typing indicator
+                if (typingNode) { 
+                    typingNode.remove(); 
+                    typingNode = null; 
+                }
+                
+                // Add message
                 if (s.type === 'typing') {
                     typingNode = document.createElement('div');
                     typingNode.className = 'msg typing';
                     typingNode.innerHTML = '<span></span><span></span><span></span>';
                     demo.container.appendChild(typingNode);
                     i++;
-                    setTimeout(step, s.delay || 1000);
+                    setTimeout(step, s.delay || 800);
                 } else if (s.type === 'event') {
                     const msg = document.createElement('div');
                     msg.className = 'msg event';
                     msg.innerHTML = '<span>' + s.text + '</span>';
                     demo.container.appendChild(msg);
                     i++;
-                    setTimeout(step, s.delay || 800);
+                    setTimeout(step, s.final ? 1000 : 800);
                 } else {
                     const msg = document.createElement('div');
                     msg.className = 'msg ' + s.type;
@@ -230,17 +251,14 @@
                     msg.innerHTML = '<span>' + sender + '</span><p>' + s.text + '</p>';
                     demo.container.appendChild(msg);
                     i++;
-                    setTimeout(step, s.delay || 1200);
+                    setTimeout(step, s.final ? 2000 : 1000);
                 }
             }
             
-            const obs = new IntersectionObserver(entries => {
-                if (entries[0].isIntersecting) {
-                    setTimeout(step, 500);
-                    obs.unobserve(demo.container);
-                }
-            }, { threshold: 0.1 });
-            obs.observe(demo.container);
+            // Start with staggered delay
+            setTimeout(() => {
+                step();
+            }, demo.startDelay);
         }
 
         demoScripts.forEach(runDemo);
