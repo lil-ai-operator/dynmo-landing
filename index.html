@@ -2196,30 +2196,30 @@
 
         function step() {
             if (i >= demo.steps.length) {
-                setTimeout(() => { demo.container.innerHTML = ''; i=0; step(); }, 2000);
+                setTimeout(() => { demo.container.innerHTML = ""; i=0; step(); }, 2000);
                 return;
             }
             const s = demo.steps[i];
             if (typingNode) { typingNode.remove(); typingNode = null; }
             
-            if (s.type === 'typing') {
-                typingNode = document.createElement('div');
-                typingNode.className = 'msg typing';
-                typingNode.innerHTML = '<span></span><span></span><span></span>';
+            if (s.type === "typing") {
+                typingNode = document.createElement("div");
+                typingNode.className = "msg typing";
+                typingNode.innerHTML = "<span></span><span></span><span></span>";
                 demo.container.appendChild(typingNode);
                 i++;
                 setTimeout(step, s.delay || 1000);
-            } else if (s.type === 'event') {
-                const msg = document.createElement('div');
-                msg.className = 'msg event';
+            } else if (s.type === "event") {
+                const msg = document.createElement("div");
+                msg.className = "msg event";
                 msg.innerHTML = "<span>" + s.text + "</span>";
                 demo.container.appendChild(msg);
                 i++;
                 setTimeout(step, s.delay || 800);
             } else {
-                const msg = document.createElement('div');
+                const msg = document.createElement("div");
                 msg.className = "msg " + s.type;
-                const sender = s.type === 'user' ? 'Customer' : 'Dynmo';
+                const sender = s.type === "user" ? "Customer" : "Dynmo";
                 msg.innerHTML = "<span>" + sender + "</span><p>" + s.text + "</p>";
                 demo.container.appendChild(msg);
                 i++;
@@ -2232,11 +2232,12 @@
                 isRunning = true;
                 setTimeout(step, 500);
             }
-        }, { threshold: 0.2 });
+        }, { threshold: 0.1 });
         obs.observe(demo.container);
     }
 
     demoScripts.forEach(runDemo);
+
 </script>
 
 </body>
