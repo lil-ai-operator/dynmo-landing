@@ -3,2732 +3,366 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Dynmo - AI energy for unstoppable businesses.</title>
-    <meta name="description" content="Get your own AI assistant that answers customers, books appointments, and closes deals - 24/7. Free demo. No commitment.">
+    <title>Dynmo | AI Energy For Unstoppable Businesses</title>
+    <meta name="description" content="Dynmo builds AI systems that answer faster, capture more bookings, and create more revenue momentum. Take the adaptive AI assessment and get your personalised growth plan.">
+    <meta property="og:title" content="Dynmo | AI Energy For Unstoppable Businesses">
+    <meta property="og:description" content="Adaptive AI-style assessment, personalised growth plan, and conversion packs built for real businesses.">
+    <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html, body {
-            width: 100%;
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-
-        :root {
-            --blue: #217CFF;
-            --blue-dark: #1A63CC;
-            --black: #000000;
-            --white: #FFFFFF;
-            --gray: #888888;
-            --gray-light: #BBBBBB;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--black);
-            color: var(--white);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-        }
-
-        /* ============ NAV ============ */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
-            max-width: 100vw;
-            z-index: 1000;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 0 28px;
-            height: 76px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            text-decoration: none;
-            color: var(--white);
-            z-index: 1001;
-        }
-
-        .nav-left {
-            display: flex;
-            align-items: center;
-            flex-shrink: 1;
-            min-width: 0;
-        }
-
-        .nav-logo img {
-            height: 44px;
-            width: auto;
-            max-width: 100%;
-            display: block;
-        }
-
-        .nav-links {
-            display: none;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 8px;
-            list-style: none;
-            margin-left: auto;
-        }
-
-        .nav-links a {
-            color: var(--gray-light);
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 600;
-            padding: 10px 14px;
-            border-radius: 8px;
-            transition: all 0.2s;
-        }
-
-        .nav-links a:hover {
-            color: var(--white);
-            background: rgba(255, 255, 255, 0.06);
-        }
-
-        .nav-cta {
-            background: var(--blue);
-            color: var(--white) !important;
-            padding: 11px 20px !important;
-            border-radius: 8px;
-            font-weight: 700 !important;
-            font-size: 14px !important;
-            transition: all 0.2s;
-            white-space: nowrap;
-            margin-left: 6px;
-        }
-
-        .nav-cta:hover {
-            background: var(--blue-dark) !important;
-            transform: translateY(-1px);
-        }
-
-        /* Hamburger */
-        .hamburger {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 5px;
-            width: 28px;
-            height: 28px;
-            min-width: 28px;
-            cursor: pointer;
-            z-index: 1001;
-            background: none;
-            border: none;
-            padding: 0;
-            margin-left: 12px;
-            flex-shrink: 0;
-        }
-
-        .hamburger span {
-            display: block;
-            width: 100%;
-            height: 2px;
-            background: var(--white);
-            border-radius: 2px;
-            transition: all 0.3s;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: translateY(7px) rotate(45deg);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: translateY(-7px) rotate(-45deg);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.98);
-            z-index: 999;
-            padding-top: 80px;
-            padding-left: 24px;
-            padding-right: 24px;
-        }
-
-        .mobile-menu.active {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .mobile-menu a {
-            color: var(--white);
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 600;
-            padding: 16px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            display: block;
-        }
-
-        .mobile-menu .mobile-cta {
-            margin-top: 24px;
-            background: var(--blue);
-            border-radius: 12px;
-            text-align: center;
-            border: none;
-        }
-
-        /* ============ ASSESSMENT ============ */
-        .assessment {
-            padding: 80px 24px;
-            background: linear-gradient(180deg, #050505 0%, #0a0f1a 50%, #050505 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        .assessment::before {
-            content: '';
-            position: absolute;
-            top: -200px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(33,124,255,0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        .assessment-container {
-            max-width: 700px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        .assessment .section-title {
-            text-align: center;
-            margin-bottom: 12px;
-        }
-        .assessment .subtitle {
-            text-align: center;
-            color: var(--gray-light);
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-            line-height: 1.6;
-        }
-        .assessment-step {
-            display: none;
-        }
-        .assessment-step.active {
-            display: block;
-            animation: fadeSlideUp 0.4s ease;
-        }
-        @keyframes fadeSlideUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .step-progress {
-            text-align: center;
-            color: var(--blue);
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .step-question {
-            text-align: center;
-            color: var(--white);
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 30px;
-            line-height: 1.4;
-        }
-        .step-options {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        .step-option {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: var(--white);
-            padding: 16px 24px;
-            border-radius: 12px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            text-align: left;
-            font-family: inherit;
-        }
-        .step-option:hover {
-            background: rgba(33,124,255,0.12);
-            border-color: var(--blue);
-            transform: translateY(-1px);
-        }
-        .step-option.selected {
-            background: rgba(33,124,255,0.2);
-            border-color: var(--blue);
-            box-shadow: 0 0 20px rgba(33,124,255,0.15);
-        }
-        .assessment-nav {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin-top: 30px;
-        }
-        .nav-btn {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.15);
-            color: var(--white);
-            padding: 10px 24px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
-            font-family: inherit;
-        }
-        .nav-btn:hover {
-            background: rgba(255,255,255,0.1);
-        }
-        .step-dots {
-            display: flex;
-            gap: 8px;
-        }
-        .step-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.15);
-            transition: all 0.3s ease;
-        }
-        .step-dot.active {
-            background: var(--blue);
-            box-shadow: 0 0 8px rgba(33,124,255,0.4);
-        }
-        .step-dot.completed {
-            background: var(--blue);
-            opacity: 0.5;
-        }
-        /* Results */
-        .results-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(33,124,255,0.2);
-            border-radius: 16px;
-            padding: 40px;
-            text-align: left;
-        }
-        .results-loading {
-            text-align: center;
-            padding: 40px 0;
-        }
-        .loading-spinner {
-            width: 40px;
-            height: 40px;
-            border: 3px solid rgba(255,255,255,0.1);
-            border-top-color: var(--blue);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin: 0 auto 20px;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        .results-loading p {
-            color: var(--gray-light);
-        }
-        .results-content h3 {
-            color: var(--white);
-            font-size: 1.3rem;
-            margin-bottom: 16px;
-        }
-        .results-content p {
-            color: var(--gray-light);
-            line-height: 1.6;
-            margin-bottom: 16px;
-        }
-        .results-content strong {
-            color: var(--white);
-        }
-        .results-content ul {
-            list-style: none;
-            padding: 0;
-            margin-bottom: 24px;
-        }
-        .results-content li {
-            color: var(--gray-light);
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            line-height: 1.5;
-        }
-        .results-content li::before {
-            content: '✦ ';
-            color: var(--blue);
-        }
-        .results-cta {
-            display: inline-block;
-            background: var(--blue);
-            color: white;
-            padding: 16px 40px;
-            border-radius: 12px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            margin-top: 20px;
-            transition: all 0.3s ease;
-        }
-        .results-cta:hover {
-            background: var(--blue-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(33,124,255,0.3);
-        }
-
-        /* ============ SECTIONS ============ */
-        section {
-            padding: 100px 24px;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        /* ============ HERO ============ */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding-top: 80px;
-            padding-bottom: 80px;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(33, 124, 255, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(33, 124, 255, 0.1);
-            border: 1px solid rgba(33, 124, 255, 0.2);
-            padding: 8px 16px;
-            border-radius: 100px;
-            font-size: 13px;
-            color: var(--blue);
-            margin-bottom: 32px;
-            font-weight: 500;
-        }
-
-        .hero-badge-dot {
-            width: 6px;
-            height: 6px;
-            background: var(--blue);
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-
-        .hero h1 {
-            font-size: clamp(36px, 7vw, 68px);
-            font-weight: 800;
-            line-height: 1.05;
-            letter-spacing: -2px;
-            max-width: 800px;
-            margin-bottom: 24px;
-            position: relative;
-        }
-
-        .hero h1 span {
-            color: var(--blue);
-        }
-
-        .hero p {
-            font-size: 17px;
-            color: var(--gray-light);
-            max-width: 520px;
-            line-height: 1.7;
-            margin-bottom: 36px;
-            position: relative;
-        }
-
-        .hero-btns {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            justify-content: center;
-            position: relative;
-        }
-
-        .btn-p {
-            background: var(--blue);
-            color: var(--white);
-            border: none;
-            padding: 16px 32px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.2s;
-            font-family: inherit;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .btn-p:hover {
-            background: var(--blue-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(33, 124, 255, 0.3);
-        }
-
-        .btn-s {
-            background: transparent;
-            color: var(--white);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 16px 32px;
-            border-radius: 12px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.2s;
-            font-family: inherit;
-            display: inline-block;
-            text-align: center;
-        }
-
-        .btn-s:hover {
-            border-color: rgba(255, 255, 255, 0.3);
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .hero-proof {
-            margin-top: 20px;
-            font-size: 13px;
-            color: var(--gray);
-            position: relative;
-        }
-
-        /* ============ STATS ============ */
-        .stats {
-            padding: 60px 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            background: rgba(255, 255, 255, 0.01);
-        }
-
-        .stats-grid {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat .n {
-            font-size: 36px;
-            font-weight: 800;
-            color: var(--white);
-        }
-
-        .stat .l {
-            font-size: 13px;
-            color: var(--gray);
-            margin-top: 4px;
-        }
-
-        /* ============ FEATURES ============ */
-        .features {
-            padding: 80px 24px;
-        }
-
-        .section-title {
-            font-size: clamp(28px, 5vw, 44px);
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 48px;
-            letter-spacing: -1px;
-            line-height: 1.15;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
-
-        .feat {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 16px;
-            padding: 28px;
-            transition: all 0.3s;
-        }
-
-        .feat:hover {
-            border-color: rgba(33, 124, 255, 0.2);
-            background: rgba(33, 124, 255, 0.03);
-        }
-
-        .feat-i {
-            font-size: 28px;
-            margin-bottom: 14px;
-        }
-
-        .feat h3 {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .feat h3 a {
-            color: var(--white);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .feat h3 a:hover {
-            color: var(--blue);
-        }
-
-        .feat p {
-            font-size: 13px;
-            color: var(--gray-light);
-            line-height: 1.65;
-        }
-
-        /* ============ HOW ============ */
-        .how {
-            padding: 120px 24px;
-            position: relative;
-            overflow: hidden;
-        }
-        .how::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-        }
-        .how::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
-        }
-        .how .section-title {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .how .subtitle {
-            text-align: center;
-            color: #64748b;
-            max-width: 520px;
-            margin: 0 auto 70px;
-            font-size: 17px;
-            line-height: 1.65;
-        }
-        .steps {
-            max-width: 720px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            position: relative;
-        }
-        .steps::before {
-            content: '';
-            position: absolute;
-            left: 38px;
-            top: 48px;
-            bottom: 48px;
-            width: 2px;
-            background: linear-gradient(180deg, rgba(59,130,246,0.5) 0%, rgba(59,130,246,0.1) 100%);
-            border-radius: 2px;
-        }
-        .step {
-            display: flex;
-            gap: 32px;
-            align-items: flex-start;
-            padding: 0 0 60px 0;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1);
-        }
-        .step.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .step:last-child { padding-bottom: 0; }
-        .step-number {
-            position: relative;
-            z-index: 1;
-            width: 76px;
-            height: 76px;
-            min-width: 76px;
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 60%, #60a5fa 100%);
-            border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            font-weight: 900;
-            color: #fff;
-            box-shadow: 0 8px 32px rgba(59,130,246,0.35), 0 0 0 1px rgba(59,130,246,0.2) inset;
-            transform: scale(0.8);
-            transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
-        }
-        .step.revealed .step-number {
-            transform: scale(1);
-        }
-        .step-number:hover {
-            box-shadow: 0 12px 40px rgba(59,130,246,0.5), 0 0 0 1px rgba(59,130,246,0.3) inset;
-            transform: scale(1.08) rotate(-3deg);
-        }
-        .step-content {
-            padding-top: 14px;
-            flex: 1;
-        }
-        .step-content h3 {
-            font-size: clamp(20px, 3vw, 24px);
-            font-weight: 800;
-            margin-bottom: 10px;
-            letter-spacing: -0.02em;
-            transition: color 0.3s ease;
-        }
-        .step:hover .step-content h3 { color: #60a5fa; }
-        .step-content p {
-            font-size: 16px;
-            color: #64748b;
-            line-height: 1.75;
-            max-width: 540px;
-        }
-        .step-icon {
-            font-size: 20px;
-            margin-bottom: 8px;
-            display: block;
-        }
-        .how-close {
-            text-align: center;
-            max-width: 440px;
-            margin: 64px auto 0;
-            padding: 24px 32px;
-            background: rgba(59,130,246,0.08);
-            border: 1px solid rgba(59,130,246,0.15);
-            border-radius: 16px;
-            font-size: 17px;
-            font-weight: 600;
-            color: #93c5fd;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.7s ease 0.3s, transform 0.7s ease 0.3s, background 0.3s ease, border-color 0.3s ease;
-        }
-        .how-close.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .how-close:hover {
-            background: rgba(59,130,246,0.12);
-            border-color: rgba(59,130,246,0.25);
-        }
-        @media (max-width: 600px) {
-            .steps::before { left: 28px; }
-            .step { gap: 20px; }
-            .step-number { width: 60px; height: 60px; min-width: 60px; font-size: 22px; border-radius: 18px; }
-            .how { padding: 80px 20px; }
-        }
-
-        /* ============ PRICING ============ */
-        .pricing {
-            padding: 80px 24px;
-        }
-
-        .pricing .subtitle {
-            text-align: center;
-            color: var(--gray-light);
-            margin-bottom: 48px;
-            font-size: 15px;
-            margin-top: -32px;
-        }
-        .pfor {
-            color: #64748b;
-            font-size: 13px;
-            line-height: 1.5;
-            margin-bottom: 16px;
-            font-style: italic;
-        }
-        .pricing-unsure {
-            text-align: center;
-            color: #64748b;
-            font-size: 15px;
-            margin-top: 40px;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-            align-items: stretch;
-        }
-
-        .pc {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 20px;
-            padding: 36px 24px;
-            text-align: center;
-            transition: all 0.3s;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .pc:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-4px);
-        }
-
-        .pc.featured {
-            border-color: rgba(33, 124, 255, 0.4);
-            background: rgba(33, 124, 255, 0.05);
-            box-shadow: 0 0 60px rgba(33, 124, 255, 0.1);
-        }
-
-        .pop {
-            position: absolute;
-            top: -13px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--blue);
-            padding: 4px 16px;
-            border-radius: 100px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            white-space: nowrap;
-        }
-
-        .pc h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .pc .pd {
-            font-size: 13px;
-            color: var(--gray);
-            margin-bottom: 16px;
-        }
-
-        .pc .price {
-            font-size: 48px;
-            font-weight: 800;
-            line-height: 1;
-        }
-
-        .pc .pp {
-            color: var(--gray);
-            font-size: 13px;
-            margin-top: 4px;
-        }
-
-        .pc .pn {
-            color: var(--gray);
-            font-size: 12px;
-            margin-bottom: 24px;
-        }
-
-        .pc ul {
-            list-style: none;
-            text-align: left;
-            margin-bottom: 28px;
-            flex: 1;
-        }
-
-        .pc ul li {
-            padding: 9px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            font-size: 13px;
-            color: var(--gray-light);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .pc ul li::before {
-            content: '✓';
-            color: var(--blue);
-            font-size: 14px;
-            min-width: 14px;
-        }
-
-        .pc .btn-p {
-            width: 100%;
-            display: block;
-            text-align: center;
-            padding: 14px 24px;
-            font-size: 14px;
-        }
-
-        .pc:not(.featured) .btn-p {
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .pc:not(.featured) .btn-p:hover {
-            background: rgba(255, 255, 255, 0.12);
-        }
-
-        /* ============ GUARANTEE ============ */
-        .guarantee {
-            padding: 60px 24px;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .addons {
-            margin-top: 60px;
-            text-align: center;
-        }
-
-        .addons-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 12px;
-            max-width: 800px;
-            margin: 24px auto 0;
-        }
-
-        .addon {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .addon-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--white);
-        }
-
-        .addon-price {
-            font-size: 13px;
-            color: var(--blue);
-            font-weight: 500;
-        }
-
-        .gi {
-            font-size: 40px;
-            margin-bottom: 12px;
-        }
-
-        .guarantee h3 {
-            font-size: 20px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .guarantee p {
-            color: var(--gray-light);
-            max-width: 480px;
-            margin: 0 auto;
-            line-height: 1.65;
-            font-size: 14px;
-        }
-
-        /* ============ CTA ============ */
-        .cta {
-            padding: 80px 24px;
-            text-align: center;
-            background: linear-gradient(180deg, transparent 0%, rgba(33, 124, 255, 0.05) 100%);
-        }
-
-        .cta h2 {
-            font-size: clamp(28px, 5vw, 44px);
-            font-weight: 800;
-            margin-bottom: 12px;
-            letter-spacing: -1px;
-        }
-
-        .cta p {
-            color: var(--gray-light);
-            margin-bottom: 28px;
-            font-size: 15px;
-        }
-        .cta-urgency {
-            color: #60a5fa;
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            letter-spacing: 0.02em;
-        }
-        .cta-proof {
-            color: #475569;
-            font-size: 14px;
-            margin-top: 20px;
-        }
-
-        /* ============ SECTION FX ============ */
-        @keyframes sectionGlowFloat {
-            0% { transform: translateY(0px); opacity: 0.55; }
-            50% { transform: translateY(-18px); opacity: 0.95; }
-            100% { transform: translateY(0px); opacity: 0.55; }
-        }
-        @keyframes cardRise {
-            from { opacity: 0; transform: translateY(28px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        @keyframes pulseBorderBlue {
-            0%, 100% { box-shadow: 0 0 0 rgba(33,124,255,0.12), 0 0 24px rgba(33,124,255,0.08); }
-            50% { box-shadow: 0 0 0 rgba(33,124,255,0.24), 0 0 34px rgba(33,124,255,0.18); }
-        }
-        @keyframes pulseBorderRed {
-            0%, 100% { box-shadow: 0 0 0 rgba(255,82,82,0.10), 0 0 24px rgba(255,82,82,0.08); }
-            50% { box-shadow: 0 0 0 rgba(255,82,82,0.2), 0 0 34px rgba(255,82,82,0.16); }
-        }
-
-        /* ============ PAIN SECTION ============ */
-        .pain {
-            position: relative;
-            padding: 120px 24px 84px;
-            max-width: 1240px;
-            margin: 0 auto;
-            text-align: center;
-            overflow: hidden;
-        }
-        .pain::before {
-            content: "";
-            position: absolute;
-            inset: 18px 24px 0;
-            border-radius: 34px;
-            background:
-                linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0)),
-                radial-gradient(circle at 0% 0%, rgba(255,72,72,0.24), rgba(255,72,72,0) 35%),
-                radial-gradient(circle at 100% 100%, rgba(255,132,132,0.14), rgba(255,132,132,0) 32%),
-                linear-gradient(180deg, rgba(18,10,13,0.97) 0%, rgba(8,8,10,0.99) 100%);
-            border: 1px solid rgba(255,96,96,0.14);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 34px 90px rgba(0,0,0,0.4);
-            pointer-events: none;
-        }
-        .pain::after {
-            content: "";
-            position: absolute;
-            width: 540px;
-            height: 540px;
-            left: 50%;
-            top: -120px;
-            transform: translateX(-50%);
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,72,72,0.14) 0%, rgba(255,72,72,0.05) 32%, rgba(255,72,72,0) 68%);
-            filter: blur(18px);
-            animation: sectionGlowFloat 10s ease-in-out infinite;
-            pointer-events: none;
-        }
-        .pain .section-title,
-        .pain .subtitle,
-        .pain-grid,
-        .pain-close {
-            position: relative;
-            z-index: 1;
-        }
-        .pain .section-title {
-            font-size: clamp(36px, 5.6vw, 58px);
-            line-height: 0.98;
-            font-weight: 950;
-            letter-spacing: -0.045em;
-            color: #ffffff;
-            margin-bottom: 16px;
-            text-wrap: balance;
-            text-shadow: 0 0 30px rgba(255,80,80,0.12);
-        }
-        .pain .subtitle {
-            color: #d2d2d2;
-            font-size: 18px;
-            line-height: 1.7;
-            max-width: 800px;
-            margin: 0 auto 54px;
-            text-wrap: balance;
-        }
-        .pain-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 22px;
-            align-items: stretch;
-        }
-        .pain-card {
-            position: relative;
-            min-height: 250px;
-            background: linear-gradient(180deg, rgba(30,14,18,0.86) 0%, rgba(11,9,11,0.98) 100%);
-            border: 1px solid rgba(255,102,102,0.14);
-            border-radius: 30px;
-            padding: 34px 32px 32px;
-            text-align: left;
-            overflow: hidden;
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            animation: cardRise 0.85s ease both, pulseBorderRed 4.5s ease-in-out infinite;
-            transition: transform 0.32s ease, border-color 0.32s ease, box-shadow 0.32s ease, background 0.32s ease;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 24px 60px rgba(0,0,0,0.34);
-        }
-        .pain-card:nth-child(2) { animation-delay: 0.08s, 0s; }
-        .pain-card:nth-child(3) { animation-delay: 0.16s, 0s; }
-        .pain-card:nth-child(4) { animation-delay: 0.24s, 0s; }
-        .pain-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(255,102,102,0.18) 0%, rgba(255,102,102,0.04) 34%, rgba(255,255,255,0) 66%);
-            pointer-events: none;
-        }
-        .pain-card::after {
-            content: "";
-            position: absolute;
-            inset: auto -40px -40px auto;
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,110,110,0.12) 0%, rgba(255,110,110,0) 72%);
-            filter: blur(8px);
-            pointer-events: none;
-        }
-        .pain-card:hover {
-            transform: translateY(-10px) scale(1.012);
-            border-color: rgba(255,138,138,0.36);
-            box-shadow: 0 32px 80px rgba(255,82,82,0.16), 0 18px 48px rgba(0,0,0,0.34);
-            background: linear-gradient(180deg, rgba(36,18,22,0.94) 0%, rgba(12,10,12,0.99) 100%);
-        }
-        .pain-icon {
-            width: 64px;
-            height: 64px;
-            display: grid;
-            place-items: center;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            font-size: 28px;
-            background: linear-gradient(180deg, rgba(255,96,96,0.24) 0%, rgba(255,96,96,0.08) 100%);
-            border: 1px solid rgba(255,112,112,0.22);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 28px rgba(255,82,82,0.14);
-        }
-        .pain-card h3 {
-            font-size: 24px;
-            line-height: 1.08;
-            font-weight: 850;
-            color: #ffffff;
-            margin-bottom: 12px;
-            letter-spacing: -0.025em;
-            max-width: 12ch;
-        }
-        .pain-card p {
-            font-size: 15px;
-            color: #cfcfcf;
-            line-height: 1.72;
-            max-width: 37ch;
-        }
-        .pain-close {
-            margin-top: 38px;
-            font-size: 17px;
-            font-weight: 700;
-            color: #ffc0c0;
-            letter-spacing: 0.01em;
-            max-width: 780px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-
-        /* ============ PROOF SECTION ============ */
-        .proof {
-            position: relative;
-            padding: 110px 24px 80px;
-            max-width: 1240px;
-            margin: 0 auto;
-            text-align: center;
-            overflow: hidden;
-        }
-        .proof .section-title {
-            font-size: clamp(34px, 5vw, 54px);
-            font-weight: 900;
-            margin-bottom: 14px;
-        }
-        .proof .subtitle {
-            max-width: 760px;
-            margin: 0 auto 46px;
-            color: #94a3b8;
-            font-size: 17px;
-            line-height: 1.65;
-        }
-        .proof-close {
-            margin-top: 40px;
-            color: #60a5fa;
-            font-size: 16px;
-            font-weight: 500;
-        }
-        .phone-wrapper {
-            display: flex;
-            justify-content: center;
-            margin: 0 auto;
-            max-width: 1240px;
-        }
-        .phone-frame {
-            position: relative;
-            background: linear-gradient(180deg, rgba(20,30,50,0.9) 0%, rgba(10,15,30,0.98) 100%);
-            border: 1px solid rgba(255,255,255,0.12);
-            border-radius: 48px;
-            padding: 20px 16px 16px;
-            box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 80px rgba(33,124,255,0.08);
-            overflow: hidden;
-            width: 380px;
-            max-width: 100%;
-        }
-        .phone-frame::before {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 28px;
-            background: #030712;
-            border-radius: 0 0 18px 18px;
-            z-index: 10;
-        }
-        .phone-header {
-            text-align: center;
-            padding: 24px 0 16px;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            margin-bottom: 4px;
-        }
-        .phone-header .demo-label {
-            display: inline-block;
-            background: rgba(33,124,255,0.15);
-            color: #60a5fa;
-            padding: 6px 14px;
-            border-radius: 16px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .phone-header .status {
-            display: block;
-            color: #4ade80;
-            font-size: 11px;
-            margin-top: 8px;
-            font-weight: 500;
-        }
-        .phone-header .status::before {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            background: #4ade80;
-            border-radius: 50%;
-            margin-right: 4px;
-            animation: statusPulse 2s ease infinite;
-        }
-        @keyframes statusPulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-        .chat-area {
-            height: 380px;
-            overflow-y: auto;
-            position: relative;
-            padding: 12px 4px;
-            scrollbar-width: none;
-        }
-        .chat-area::-webkit-scrollbar { display: none; }
-        .chat-scroll {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            transition: opacity 0.4s ease;
-        }
-        .chat-scroll.fading { opacity: 0; }
-        @keyframes popIn {
-            from { opacity: 0; transform: translateY(16px) scale(0.97); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-        @keyframes typeBounce {
-            0%, 80%, 100% { transform: scale(0); opacity: 0.4; }
-            40% { transform: scale(1); opacity: 1; }
-        }
-        .msg {
-            max-width: 82%;
-            padding: 10px 14px;
-            border-radius: 18px;
-            font-size: 13px;
-            line-height: 1.45;
-            opacity: 0;
-            transform: translateY(16px) scale(0.97);
-            animation: popIn 0.45s ease forwards;
-        }
-        .msg .sender {
-            display: block;
-            font-size: 10px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            opacity: 0.6;
-            margin-bottom: 3px;
-        }
-        .msg.user {
-            align-self: flex-end;
-            background: rgba(255,255,255,0.08);
-            border-bottom-right-radius: 6px;
-        }
-        .msg.bot {
-            align-self: flex-start;
-            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
-            border-bottom-left-radius: 6px;
-        }
-        .msg.confirm {
-            align-self: flex-start;
-            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
-            border-bottom-left-radius: 6px;
-        }
-        .msg.typing {
-            display: flex;
-            gap: 5px;
-            padding: 14px 20px;
-            align-self: flex-start;
-            background: rgba(255,255,255,0.06);
-            border-radius: 20px;
-            border-bottom-left-radius: 6px;
-            width: fit-content;
-            opacity: 1;
-            transform: none;
-            animation: none;
-        }
-        .msg.typing .dot {
-            width: 7px;
-            height: 7px;
-            background: #fff;
-            border-radius: 50%;
-            opacity: 0.4;
-            animation: typeBounce 1.4s infinite ease-in-out both;
-        }
-        .msg.typing .dot:nth-child(1) { animation-delay: -0.32s; }
-        .msg.typing .dot:nth-child(2) { animation-delay: -0.16s; }
-        .msg.event {
-            align-self: center;
-            background: rgba(255,255,255,0.06);
-            border-radius: 999px;
-            padding: 6px 14px;
-            font-size: 11px;
-            color: #94a3b8;
-        }
-
-        /* ============ OUTCOMES SECTION ============ */
-        .outcomes {
-            position: relative;
-            padding: 110px 24px 80px;
-            max-width: 1180px;
-            margin: 0 auto;
-            text-align: center;
-            overflow: hidden;
-        }
-        .outcomes::before {
-            content: "";
-            position: absolute;
-            inset: 18px 24px 0;
-            border-radius: 34px;
-            background:
-                linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
-                radial-gradient(circle at 100% 0%, rgba(33,124,255,0.22), rgba(33,124,255,0) 36%),
-                radial-gradient(circle at 0% 100%, rgba(105,171,255,0.14), rgba(105,171,255,0) 32%),
-                linear-gradient(180deg, rgba(8,16,32,0.97) 0%, rgba(6,9,16,0.99) 100%);
-            border: 1px solid rgba(79,147,255,0.14);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 34px 90px rgba(0,0,0,0.4);
-            pointer-events: none;
-        }
-        .outcomes::after {
-            content: "";
-            position: absolute;
-            width: 520px;
-            height: 520px;
-            left: 50%;
-            top: -140px;
-            transform: translateX(-50%);
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(70,148,255,0.16) 0%, rgba(70,148,255,0.05) 34%, rgba(70,148,255,0) 68%);
-            filter: blur(18px);
-            animation: sectionGlowFloat 12s ease-in-out infinite reverse;
-            pointer-events: none;
-        }
-        .outcomes .section-title,
-        .outcomes .subtitle,
-        .outcomes-grid,
-        .outcomes-close {
-            position: relative;
-            z-index: 1;
-        }
-        .outcomes .section-title {
-            font-size: clamp(32px, 4.8vw, 50px);
-            line-height: 1.03;
-            font-weight: 900;
-            color: #ffffff;
-            margin-bottom: 14px;
-            letter-spacing: -0.03em;
-            text-wrap: balance;
-        }
-        .outcomes .subtitle {
-            color: #c7d4ea;
-            font-size: 17px;
-            line-height: 1.6;
-            max-width: 760px;
-            margin: 0 auto 46px;
-            text-wrap: balance;
-        }
-        .outcomes-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 22px;
-        }
-        .outcome-card {
-            position: relative;
-            min-height: 238px;
-            background: linear-gradient(180deg, rgba(12,22,40,0.88) 0%, rgba(7,10,18,0.98) 100%);
-            border: 1px solid rgba(84,154,255,0.16);
-            border-radius: 30px;
-            padding: 32px 30px;
-            text-align: left;
-            overflow: hidden;
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            animation: cardRise 0.8s ease both, pulseBorderBlue 4.5s ease-in-out infinite;
-            transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 24px 60px rgba(0,0,0,0.34);
-        }
-        .outcome-card:nth-child(2) { animation-delay: 0.08s, 0s; }
-        .outcome-card:nth-child(3) { animation-delay: 0.16s, 0s; }
-        .outcome-card:nth-child(4) { animation-delay: 0.24s, 0s; }
-        .outcome-card:nth-child(5) { animation-delay: 0.32s, 0s; }
-        .outcome-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(58,140,255,0.22) 0%, rgba(58,140,255,0.04) 34%, rgba(255,255,255,0) 65%);
-            pointer-events: none;
-        }
-        .outcome-card:hover {
-            transform: translateY(-10px) scale(1.012);
-            border-color: rgba(122,182,255,0.4);
-            box-shadow: 0 32px 80px rgba(33,124,255,0.18), 0 18px 48px rgba(0,0,0,0.34);
-            background: linear-gradient(180deg, rgba(14,24,46,0.92) 0%, rgba(7,10,18,0.99) 100%);
-        }
-        .outcome-icon {
-            width: 64px;
-            height: 64px;
-            display: grid;
-            place-items: center;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            font-size: 27px;
-            background: linear-gradient(180deg, rgba(52,134,255,0.28) 0%, rgba(52,134,255,0.08) 100%);
-            border: 1px solid rgba(84,154,255,0.24);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 0 28px rgba(33,124,255,0.14);
-        }
-        .outcome-card h3 {
-            font-size: 24px;
-            line-height: 1.08;
-            font-weight: 850;
-            color: #ffffff;
-            margin-bottom: 12px;
-            letter-spacing: -0.025em;
-            max-width: 14ch;
-        }
-        .outcome-card p {
-            font-size: 15px;
-            color: #d4e3fb;
-            line-height: 1.72;
-            max-width: 38ch;
-        }
-        .outcomes-close {
-            margin-top: 38px;
-            font-size: 16px;
-            font-weight: 600;
-            color: #8ec0ff;
-            max-width: 780px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.65;
-        }
-        /* ============ GLOBAL MOTION ============ */
-        @keyframes softPulse {
-            0%, 100% { transform: translateY(0); box-shadow: 0 12px 28px rgba(0,0,0,0.22); }
-            50% { transform: translateY(-2px); box-shadow: 0 18px 36px rgba(33,124,255,0.18); }
-        }
-        .reveal-prep {
-            opacity: 0;
-            transform: translateY(28px) scale(0.985);
-            will-change: transform, opacity;
-        }
-        .reveal-in {
-            animation: cardRise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
-            animation-delay: var(--reveal-delay, 0ms);
-        }
-        .hero-badge.reveal-in { animation-duration: 0.65s; }
-        .hero h1.reveal-in { animation-duration: 0.9s; }
-        .hero-btns.reveal-in,
-        .hero-proof.reveal-in { animation-duration: 0.75s; }
-        .btn-p,
-        .btn-s,
-        .nav-cta,
-        .mobile-menu .mobile-cta {
-            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-        }
-        .btn-p,
-        .nav-cta,
-        .mobile-menu .mobile-cta {
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-p::after,
-        .nav-cta::after,
-        .mobile-menu .mobile-cta::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -120%;
-            width: 70%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.26), transparent);
-            transform: skewX(-22deg);
-            transition: left 0.7s ease;
-        }
-        .btn-p:hover::after,
-        .nav-cta:hover::after,
-        .mobile-menu .mobile-cta:hover::after {
-            left: 140%;
-        }
-        .btn-p:hover,
-        .nav-cta:hover,
-        .mobile-menu .mobile-cta:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 16px 34px rgba(33,124,255,0.28);
-        }
-        .btn-s:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 30px rgba(255,255,255,0.08);
-        }
-        .nav-logo img {
-            transition: transform 0.35s ease, filter 0.35s ease;
-        }
-        .nav-logo:hover img {
-            transform: scale(1.03);
-            filter: drop-shadow(0 0 16px rgba(33,124,255,0.22));
-        }
-        .hero-badge {
-            animation: softPulse 4.5s ease-in-out infinite;
-        }
-        .hero h1,
-        .hero p,
-        .hero-btns,
-        .hero-proof,
-        .features .section-title,
-        .features .subtitle,
-        .how .section-title,
-        .pricing .section-title,
-        .pricing .subtitle,
-        .addons h3,
-        .guarantee h3,
-        .guarantee p,
-        .cta h2,
-        .cta p {
-            transition: transform 0.35s ease, opacity 0.35s ease;
-        }
-        .stat,
-        .feat,
-        .step,
-        .pc,
-        .addon,
-        .guarantee,
-        .cta {
-            transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease, background 0.28s ease;
-        }
-        .feat:hover,
-        .pc:hover,
-        .addon:hover,
-        .step:hover {
-            transform: translateY(-6px);
-        }
-        .feat,
-        .pc,
-        .addon,
-        .pain-card,
-        .outcome-card {
-            transform-style: preserve-3d;
-        }
-        .stats {
-            position: relative;
-            overflow: hidden;
-        }
-        .stat .n.counting {
-            color: #9fc8ff;
-            transition: color 0.35s ease;
-        }
-        .stats::before {
-            content: "";
-            position: absolute;
-            inset: -120px 20% auto 20%;
-            height: 180px;
-            background: radial-gradient(circle, rgba(33,124,255,0.12) 0%, rgba(33,124,255,0) 72%);
-            pointer-events: none;
-        }
-        .how,
-        .pricing,
-        .cta {
-            position: relative;
-            overflow: hidden;
-        }
-        .how::before,
-        .pricing::before,
-        .cta::before {
-            content: "";
-            position: absolute;
-            width: 320px;
-            height: 320px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(33,124,255,0.10) 0%, rgba(33,124,255,0) 70%);
-            filter: blur(10px);
-            animation: sectionGlowFloat 11s ease-in-out infinite;
-            pointer-events: none;
-        }
-        .how::before { top: -120px; right: -80px; }
-        .pricing::before { top: -120px; left: -80px; }
-        .cta::before { top: -80px; right: 10%; }
-        @media (max-width: 820px) {
-            .pain,
-            .proof,
-            .outcomes {
-                padding-top: 92px;
-            }
-            .pain-grid,
-            .proof-grid,
-            .outcomes-grid {
-                grid-template-columns: 1fr;
-            }
-            .proof-card.full {
-                grid-column: auto;
-            }
-        }
-        @media (max-width: 600px) {
-            .pain .section-title,
-            .outcomes .section-title {
-                font-size: 31px;
-            }
-            .pain-card,
-            .proof-card,
-            .outcome-card {
-                min-height: auto;
-                border-radius: 22px;
-                padding: 24px 20px;
-            }
-            .pain-card h3,
-            .outcome-card h3 {
-                font-size: 21px;
-                max-width: none;
-            }
-            .proof .subtitle,
-            .pain .subtitle,
-            .outcomes .subtitle {
-                font-size: 15px;
-            }
-            .msg {
-                max-width: 94%;
-            }
-        }
-
-        /* ============ FOOTER ============ */
-        footer {
-            padding: 32px 24px;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        footer p {
-            color: var(--gray);
-            font-size: 12px;
-        }
-
-        /* ============ RESPONSIVE ============ */
-        .nav {
-            padding: 0 16px;
-            height: 56px;
-            justify-content: space-between;
-            gap: 0;
-        }
-
-        .nav-left {
-            width: 100%;
-            justify-content: space-between;
-            min-width: 0;
-        }
-
-        .nav-logo {
-            flex-shrink: 1;
-            min-width: 0;
-        }
-
-        .nav-logo img {
-            height: 28px;
-            max-width: min(118px, 32vw);
-        }
-
-        section {
-            padding: 72px 20px;
-        }
-
-        .hero {
-            min-height: 100svh;
-            padding-top: 80px;
-            padding-bottom: 60px;
-        }
-
-        @media (min-width: 769px) {
-            .nav {
-                padding: 0 28px;
-                height: 76px;
-                justify-content: space-between;
-            }
-
-            .nav-left {
-                width: auto;
-                justify-content: flex-start;
-                flex-shrink: 0;
-            }
-
-            .nav-logo {
-                flex-shrink: 0;
-            }
-
-            .nav-logo img {
-                height: 44px;
-                max-width: 100%;
-            }
-
-            .nav-links {
-                display: flex;
-                justify-content: flex-end;
-                margin-left: auto;
-            }
-
-            .hamburger {
-                display: none;
-            }
-
-            section {
-                padding: 100px 24px;
-            }
-
-            .hero {
-                padding-top: 80px;
-                padding-bottom: 80px;
-            }
-
-            .hero-btns {
-                flex-direction: row;
-            }
-
-            .btn-p, .btn-s {
-                width: auto;
-                max-width: none;
-            }
-
-            .features-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .pricing-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .addons-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .features-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-
-        @media (min-width: 769px) and (max-width: 900px) {
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .pricing-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .pc:last-child {
-                grid-column: 1 / -1;
-                max-width: 400px;
-                margin: 0 auto;
-            }
-        }
-
-        @media (max-width: 768px) {
-
-            .hero h1 {
-                letter-spacing: -1px;
-            }
-
-            .hero-btns {
-                width: 100%;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn-p, .btn-s {
-                width: 100%;
-                max-width: 320px;
-            }
-
-            .stats-grid {
-                gap: 32px;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .pc:last-child {
-                grid-column: auto;
-                max-width: none;
-            }
-
-            .pc.featured {
-                order: -1;
-            }
-
-            .pricing .subtitle {
-                margin-top: -24px;
-            }
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-
-<!-- Navigation -->
-<nav class="nav">
-    <div class="nav-left">
-        <a href="#" class="nav-logo">
-            <img src="dynmo-logo.svg" alt="Dynmo" style="height:44px;width:auto;">
-        </a>
-        <button class="hamburger" id="hamburger" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+    <div class="site-shell" aria-hidden="true">
+        <div class="ambient ambient-one"></div>
+        <div class="ambient ambient-two"></div>
+        <div class="ambient-grid"></div>
     </div>
-    <ul class="nav-links">
-        <li><a href="#assessment">Free Assessment</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#how">How it works</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#demo" class="nav-cta">Free Demo</a></li>
-    </ul>
-</nav>
 
-<!-- Mobile Menu -->
-<div class="mobile-menu" id="mobile-menu">
-    <a href="#assessment" onclick="closeMenu()">Free Assessment</a>
-    <a href="#features" onclick="closeMenu()">Features</a>
-    <a href="#how" onclick="closeMenu()">How it works</a>
-    <a href="#pricing" onclick="closeMenu()">Pricing</a>
-    <a href="#demo" class="mobile-cta" onclick="closeMenu()">Get Free Demo</a>
-</div>
-
-<!-- Hero -->
-<section class="hero" id="hero">
-    <div class="hero-badge">
-        <span class="hero-badge-dot"></span>
-        AI energy for unstoppable businesses.
-    </div>
-    <h1>Wake up to <span>bookings, replies,</span> and more money.</h1>
-    <p>Dynmo injects AI energy into your business, grabs missed revenue, fills your calendar, and keeps customers moving toward the sale while you get on with your day.</p>
-    <div class="hero-btns">
-        <a href="#proof" class="btn-p">See It In Action</a>
-        <a href="#how" class="btn-s">See How It Works</a>
-    </div>
-    <p class="hero-proof">No credit card. No commitment. Built for you and live in 24 hours.</p>
-</section>
-
-<!-- Assessment Section -->
-<section class="assessment" id="assessment">
-    <div class="assessment-container">
-        <h2 class="section-title">Free AI Business Assessment</h2>
-        <p class="subtitle">Answer 7 quick questions and we'll show you exactly where AI can save you time, recover lost revenue, and grow your business — personalised to you.</p>
-        
-        <div class="assessment-form" id="assessmentForm">
-            <!-- Step 1 -->
-            <div class="assessment-step active" data-step="1">
-                <div class="step-progress">Question 1 of 7</div>
-                <h3 class="step-question">What type of business do you run?</h3>
-                <div class="step-options">
-                    <button class="step-option" data-value="trades">🔨 Trades (plumber, painter, electrician)</button>
-                    <button class="step-option" data-value="barber">💈 Barber / Hair / Beauty</button>
-                    <button class="step-option" data-value="restaurant">🍔 Restaurant / Takeaway / Cafe</button>
-                    <button class="step-option" data-value="gym">💪 Gym / Fitness / Wellness</button>
-                    <button class="step-option" data-value="retail">🛍️ Retail / Shop</button>
-                    <button class="step-option" data-value="other">🏢 Other</button>
-                </div>
+    <header class="nav-wrap">
+        <nav class="nav">
+            <a class="brand" href="#top" aria-label="Dynmo home">
+                <img src="dynmo-logo-nav.png" alt="Dynmo logo">
+                <span>Dynmo</span>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu">
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-menu" id="navMenu">
+                <a href="#assessment">Assessment</a>
+                <a href="#systems">Systems</a>
+                <a href="#packs">Packs</a>
+                <a href="#proof">Demo</a>
+                <a href="#faq">FAQ</a>
+                <a class="nav-cta" href="#assessment">Get Your Plan</a>
             </div>
+        </nav>
+    </header>
 
-            <!-- Step 2 -->
-            <div class="assessment-step" data-step="2">
-                <div class="step-progress">Question 2 of 7</div>
-                <h3 class="step-question">How do most customers find you?</h3>
-                <div class="step-options">
-                    <button class="step-option" data-value="walkins">Walk-ins / passing trade</button>
-                    <button class="step-option" data-value="phone">Phone calls</button>
-                    <button class="step-option" data-value="social">Social media (Instagram, Facebook)</button>
-                    <button class="step-option" data-value="website">My website / Google</button>
-                    <button class="step-option" data-value="wordofmouth">Word of mouth</button>
+    <main id="top">
+        <section class="hero section">
+            <div class="container hero-grid">
+                <div class="hero-copy reveal">
+                    <div class="eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        AI energy for unstoppable businesses
+                    </div>
+                    <h1>Your AI that never stops earning.</h1>
+                    <p class="hero-text">Dynmo builds fast-moving AI systems that catch enquiries, follow up harder, and keep your business alive after you clock off. Start with the adaptive assessment. Leave with a plan that actually fits your stage.</p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="#assessment">Run The AI Assessment</a>
+                        <a class="button button-secondary" href="#packs">See The Packs</a>
+                    </div>
+                    <div class="hero-microproof">
+                        <span>Adaptive funnel</span>
+                        <span>Personalised 7-day plan</span>
+                        <span>No CRM claim, no fake automation</span>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Step 3 -->
-            <div class="assessment-step" data-step="3">
-                <div class="step-progress">Question 3 of 7</div>
-                <h3 class="step-question">What's your biggest daily headache?</h3>
-                <div class="step-options">
-                    <button class="step-option" data-value="missedcalls">📞 Missed calls / enquiries</button>
-                    <button class="step-option" data-value="noshow"> ghost No-shows & late cancellations</button>
-                    <button class="step-option" data-value="slowreplies">💤 Slow replies losing customers</button>
-                    <button class="step-option" data-value="admin">📋 Too much admin / paperwork</button>
-                    <button class="step-option" data-value="followup">🔄 No follow-up after visits</button>
-                    <button class="step-option" data-value="booking">📅 Booking / scheduling chaos</button>
-                </div>
-            </div>
-
-            <!-- Step 4 -->
-            <div class="assessment-step" data-step="4">
-                <div class="step-progress">Question 4 of 7</div>
-                <h3 class="step-question">How many customers do you serve per week?</h3>
-                <div class="step-options">
-                    <button class="step-option" data-value="under20">Under 20</button>
-                    <button class="step-option" data-value="20to50">20 – 50</button>
-                    <button class="step-option" data-value="50to100">50 – 100</button>
-                    <button class="step-option" data-value="over100">Over 100</button>
-                </div>
-            </div>
-
-            <!-- Step 5 -->
-            <div class="assessment-step" data-step="5">
-                <div class="step-progress">Question 5 of 7</div>
-                <h3 class="step-question">Do you take bookings or appointments?</h3>
-                <div class="step-options">
-                    <button class="step-option" data-value="yesregularly">Yes, all the time</button>
-                    <button class="step-option" data-value="yessometimes">Yes, sometimes</button>
-                    <button class="step-option" data-value="no">No, mostly walk-ins</button>
-                    <button class="step-option" data-value="wantto">Not yet but I want to</button>
-                </div>
-            </div>
-
-            <!-- Step 6 -->
-            <div class="assessment-step" data-step="6">
-                <div class="step-progress">Question 6 of 7</div>
-                <h3 class="step-question">What's your current setup?</h3>
-                <div class="step-options">
-                    <button class="step-option" data-value="paper">📝 Pen & paper / diary</button>
-                    <button class="step-option" data-value="basic">🌐 Basic website or Facebook page</button>
-                    <button class="step-option" data-value="booking">📱 Online booking system</button>
-                    <button class="step-option" data-value="nothing">🤷 Nothing really organised</button>
-                </div>
-            </div>
-
-            <!-- Step 7 -->
-            <div class="assessment-step" data-step="7">
-                <div class="step-progress">Question 7 of 7</div>
-                <h3 class="step-question">What would save you the most time right now?</h3>
-                <div class="step-options">
-                    <button class="step-option" data-value="answering">Having someone answer every enquiry instantly</button>
-                    <button class="step-option" data-value="bookingauto">Bookings happening automatically</button>
-                    <button class="step-option" data-value="reminders">Sending reminders so people actually show up</button>
-                    <button class="step-option" data-value="followups">Following up with past customers automatically</button>
-                    <button class="step-option" data-value="all">All of the above!</button>
-                </div>
-            </div>
-
-            <!-- Results -->
-            <div class="assessment-step" data-step="results" id="assessmentResults">
-                <div class="step-progress">✨ Your AI Business Assessment</div>
-                <div class="results-card" id="resultsCard">
-                    <div class="results-loading">
-                        <div class="loading-spinner"></div>
-                        <p>Analysing your business...</p>
+                <div class="hero-visual reveal" data-delay="120">
+                    <div class="hero-orbit">
+                        <div class="hero-card pulse-card">
+                            <div class="metric-head">Revenue energy map</div>
+                            <div class="metric-big">24/7</div>
+                            <p>Dynmo answers, nudges, and follows up while you work, sleep, or serve customers.</p>
+                        </div>
+                        <div class="hero-card hero-card-secondary tilt-card">
+                            <div class="mini-stack">
+                                <span>Lead captured</span>
+                                <span>Booking recovered</span>
+                                <span>Follow-up sent</span>
+                            </div>
+                            <div class="signal-bars" aria-hidden="true">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="hero-phone">
+                            <div class="phone-glow"></div>
+                            <div class="phone-top">Dynmo live flow</div>
+                            <div class="chat-stack" id="heroChat" aria-label="Dynmo demo conversation"></div>
+                            <div class="phone-action">
+                                <span>AI reply delivered</span>
+                                <strong>Lead still hot</strong>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="assessment-nav">
-            <button class="nav-btn back-btn" id="backBtn" style="display:none">← Back</button>
-            <div class="step-dots" id="stepDots"></div>
-        </div>
-    </div>
-</section>
-
-<!-- Pain Section -->
-<section class="pain" id="pain">
-    <h2 class="section-title">Every quiet hour is a chance for your competitors to eat</h2>
-    <p class="subtitle">Slow replies, missed calls, dead slots, no-shows, no follow-up. While you're busy working, revenue is leaking out the back door. Dynmo shuts that down and turns attention into action.</p>
-    <div class="pain-grid">
-        <div class="pain-card">
-            <div class="pain-icon">⏰</div>
-            <h3>Slow replies kill hot leads</h3>
-            <p>If they have to wait, they keep scrolling. The business that replies first usually gets paid.</p>
-        </div>
-        <div class="pain-card">
-            <div class="pain-icon">📞</div>
-            <h3>Missed calls burn cash</h3>
-            <p>Most people do not call twice. If you miss that moment, you often lose the job completely.</p>
-        </div>
-        <div class="pain-card">
-            <div class="pain-icon">🕳️</div>
-            <h3>No-shows wreck the day</h3>
-            <p>Empty slots feel small until they stack up. One weak booking system can quietly drain thousands.</p>
-        </div>
-        <div class="pain-card">
-            <div class="pain-icon">👋</div>
-            <h3>No follow-up means one-and-done customers</h3>
-            <p>Most customers are happy to come back, they just need a nudge. Most businesses never send it.</p>
-        </div>
-    </div>
-    <p class="pain-close">Dynmo catches the lead, drives the conversation, and keeps the money moving, instantly, automatically, 24/7.</p>
-</section>
-
-<!-- Top Outcomes -->
-<section class="outcomes" id="outcomes">
-    <h2 class="section-title">5 ways Dynmo turns attention into revenue</h2>
-    <p class="subtitle">These are the money-makers. The fast wins. The pieces that make the business feel sharper, faster, and harder to ignore.</p>
-    <div class="outcomes-grid">
-        <div class="outcome-card">
-            <div class="outcome-icon">⚡</div>
-            <h3>24/7 Instant Replies</h3>
-            <p>Dynmo answers in seconds, catches the lead while it's hot, and stops late-night enquiries from going cold.</p>
-        </div>
-        <div class="outcome-card">
-            <div class="outcome-icon">📅</div>
-            <h3>Automatic Booking</h3>
-            <p>Less back-and-forth, less hesitation, more paid appointments. Dynmo gets them booked before doubt kicks in.</p>
-        </div>
-        <div class="outcome-card">
-            <div class="outcome-icon">💰</div>
-            <h3>Built-In Upselling</h3>
-            <p>Every conversation becomes a chance to raise the order value. Dynmo sells the extra without feeling pushy.</p>
-        </div>
-        <div class="outcome-card">
-            <div class="outcome-icon">💳</div>
-            <h3>Take Payment At Booking</h3>
-            <p>Deposits in, tyre-kickers out. Dynmo locks the slot with payment so your diary stays serious.</p>
-        </div>
-        <div class="outcome-card">
-            <div class="outcome-icon">📋</div>
-            <h3>Lead Capture</h3>
-            <p>Every enquiry becomes an asset. Dynmo saves the details, grows your list, and gives you more chances to sell later.</p>
-        </div>
-    </div>
-    <p class="outcomes-close">And that is before the reminders, reactivation pushes, review requests, referrals, and all the other quiet money moves running in the background on autopilot.</p>
-</section>
-
-<!-- Proof Section -->
-<section class="proof" id="proof">
-    <h2 class="section-title">See the revenue engine in motion</h2>
-    <p class="subtitle">This is what it looks like when a customer messages your business and Dynmo steps in instantly, confidently, and like it was built just for you.</p>
-    <div class="phone-wrapper">
-        <div class="phone-frame">
-            <div class="phone-header">
-                <span class="demo-label" id="demoLabel">Trades • Quotes & Bookings</span>
-                <span class="status">Online now</span>
+        <section class="signal-strip">
+            <div class="container signal-grid">
+                <div class="signal-item reveal">
+                    <strong>Catch hot demand</strong>
+                    <span>Miss fewer enquiries, calls, DMs, and booking moments.</span>
+                </div>
+                <div class="signal-item reveal" data-delay="80">
+                    <strong>Recover revenue leaks</strong>
+                    <span>Follow up faster, re-activate old customers, and keep momentum moving.</span>
+                </div>
+                <div class="signal-item reveal" data-delay="160">
+                    <strong>Scale the machine</strong>
+                    <span>Layer smarter workflows once the basics are working and earning.</span>
+                </div>
             </div>
-            <div class="chat-area" id="chatArea">
-                <div class="chat-scroll" id="chatScroll"></div>
+        </section>
+
+        <section class="section assessment-section" id="assessment">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <span class="section-kicker">Core funnel</span>
+                    <h2>The adaptive AI assessment</h2>
+                    <p>Pick your stage, answer the next questions, and Dynmo shifts the plan around you. The logic is deterministic for reliability. The output feels personal because it is built from what you actually said.</p>
+                </div>
+
+                <div class="assessment-layout">
+                    <aside class="assessment-aside reveal" data-delay="80">
+                        <div class="aside-card">
+                            <span class="aside-label">What you get</span>
+                            <ul>
+                                <li>Fast diagnosis of your current stage</li>
+                                <li>Teaser insight before the full plan</li>
+                                <li>Recommended Dynmo system and pack</li>
+                                <li>A practical 7-day action plan</li>
+                            </ul>
+                        </div>
+                        <div class="aside-card aside-card-glow">
+                            <span class="aside-label">Who this works for</span>
+                            <p>Existing business, side hustle, business idea not started, or no idea yet. No dead-end branch.</p>
+                        </div>
+                    </aside>
+
+                    <div class="assessment-shell reveal" data-delay="140">
+                        <div class="assessment-topline">
+                            <div>
+                                <span class="live-badge">Adaptive mode active</span>
+                                <h3 id="assessmentModeTitle">Stage detection</h3>
+                            </div>
+                            <div class="progress-wrap">
+                                <div class="progress-text" id="progressText">Question 1</div>
+                                <div class="progress-bar"><span id="progressBar"></span></div>
+                            </div>
+                        </div>
+
+                        <div id="assessmentStage" class="assessment-stage"></div>
+
+                        <div class="assessment-footer">
+                            <button class="button button-ghost" id="backButton" type="button" hidden>Back</button>
+                            <button class="button button-primary" id="nextButton" type="button" disabled>Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section systems-section" id="systems">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <span class="section-kicker">Built for momentum</span>
+                    <h2>Three system lanes. One goal: more movement.</h2>
+                    <p>Dynmo meets businesses where the leak is happening now. Booking friction, revenue drag, or a bigger automation engine. The assessment points people into the right lane naturally.</p>
+                </div>
+
+                <div class="systems-grid">
+                    <article class="system-card reveal tilt-card">
+                        <span class="system-tag">Booking Pack</span>
+                        <h3>Stop missed enquiries from dying in the dark.</h3>
+                        <p>Best for appointment businesses, inbound capture, instant replies, simple scheduling, and lead rescue.</p>
+                        <ul>
+                            <li>Missed-call text back or DM recovery</li>
+                            <li>FAQ handling and booking prompts</li>
+                            <li>Simple appointment flow with human handoff</li>
+                        </ul>
+                    </article>
+                    <article class="system-card reveal tilt-card" data-delay="80">
+                        <span class="system-tag">Revenue Pack</span>
+                        <h3>Turn customer follow-up into a real growth loop.</h3>
+                        <p>Best for repeat bookings, reviews, nurture, upsells, and squeezing more value from every customer relationship.</p>
+                        <ul>
+                            <li>Smart follow-up sequences</li>
+                            <li>Review and reactivation prompts</li>
+                            <li>Upsell and retention flows</li>
+                        </ul>
+                    </article>
+                    <article class="system-card reveal tilt-card" data-delay="160">
+                        <span class="system-tag">Machine Pack</span>
+                        <h3>Build the serious machine once your growth engine is ready.</h3>
+                        <p>Best for multi-channel businesses, advanced automations, agency-style operations, and teams ready to scale.</p>
+                        <ul>
+                            <li>Cross-channel workflow design</li>
+                            <li>Deeper automations and routing logic</li>
+                            <li>Operational AI support around the clock</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section proof-section" id="proof">
+            <div class="container proof-grid">
+                <div class="proof-copy reveal">
+                    <span class="section-kicker">Proof in motion</span>
+                    <h2>What the customer sees feels smooth. What you feel is pressure disappearing.</h2>
+                    <p>Fast reply. Clear next step. Strong handoff. That is the energy. The site now behaves like a complete conversion engine, not a static brochure pretending to sell.</p>
+                    <div class="proof-points">
+                        <div>
+                            <strong>Scroll reveals</strong>
+                            <span>Every major section wakes up as the user moves.</span>
+                        </div>
+                        <div>
+                            <strong>Adaptive transitions</strong>
+                            <span>The assessment shifts question flow based on answers already given.</span>
+                        </div>
+                        <div>
+                            <strong>Reduced-motion safe</strong>
+                            <span>Users who prefer less motion still get the full experience without the noise.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="proof-visual reveal" data-delay="120">
+                    <div class="demo-shell">
+                        <div class="demo-screen">
+                            <div class="demo-header">
+                                <span>Dynmo live demo</span>
+                                <small>Conversion sequence</small>
+                            </div>
+                            <div class="demo-track" id="demoTrack"></div>
+                        </div>
+                        <div class="demo-caption">
+                            <strong>From incoming question to next action</strong>
+                            <span>Customer asks. Dynmo responds. Momentum stays alive.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section process-section">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <span class="section-kicker">How it works</span>
+                    <h2>Fast setup. Clear lane. No fake complexity.</h2>
+                </div>
+
+                <div class="process-grid">
+                    <article class="process-card reveal">
+                        <span>01</span>
+                        <h3>Diagnose the stage</h3>
+                        <p>Use the adaptive assessment to find the business stage, friction point, and fastest AI move.</p>
+                    </article>
+                    <article class="process-card reveal" data-delay="80">
+                        <span>02</span>
+                        <h3>Pick the right system</h3>
+                        <p>Booking, Revenue, or Machine. If the user has no business yet, they get a starter path first.</p>
+                    </article>
+                    <article class="process-card reveal" data-delay="160">
+                        <span>03</span>
+                        <h3>Build the lane</h3>
+                        <p>Dynmo turns the plan into a concrete assistant system with the right handoffs and growth logic.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section packs-section" id="packs">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <span class="section-kicker">Offer stack</span>
+                    <h2>Choose the pack that matches the leak.</h2>
+                    <p>The assessment recommends a lane automatically, but the structure is transparent. No mystery box.</p>
+                </div>
+
+                <div class="pack-grid">
+                    <article class="pack-card reveal">
+                        <span class="pack-pill">Starter lane</span>
+                        <h3>Idea ignition guidance</h3>
+                        <p>For people with an idea forming or no idea yet. Focus on niche, offer, channel, and first proof of demand before heavier automation.</p>
+                        <div class="pack-price">Start here before packs</div>
+                        <a class="button button-ghost" href="#assessment">Get my starter path</a>
+                    </article>
+                    <article class="pack-card pack-card-featured reveal" data-delay="80">
+                        <span class="pack-pill">Booking Pack</span>
+                        <h3>Inbound capture and appointment flow</h3>
+                        <p>For missed bookings, hot enquiries, service businesses, and quick inbound wins.</p>
+                        <div class="pack-price">Best first system for appointment businesses</div>
+                        <a class="button button-primary" href="#assessment">See if it fits</a>
+                    </article>
+                    <article class="pack-card reveal" data-delay="160">
+                        <span class="pack-pill">Revenue Pack</span>
+                        <h3>Follow-up, reviews, reactivation, growth</h3>
+                        <p>For businesses already getting customers but leaking repeat revenue and referrals.</p>
+                        <div class="pack-price">Best for customer growth loops</div>
+                        <a class="button button-ghost" href="#assessment">Find my growth lane</a>
+                    </article>
+                    <article class="pack-card reveal" data-delay="240">
+                        <span class="pack-pill">Machine Pack</span>
+                        <h3>Advanced automation for serious operators</h3>
+                        <p>For scale-minded teams who need a stronger cross-channel system and operational AI help.</p>
+                        <div class="pack-price">Best for multi-step automation builds</div>
+                        <a class="button button-ghost" href="#assessment">Map the machine</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section faq-section" id="faq">
+            <div class="container faq-grid">
+                <div class="section-heading reveal">
+                    <span class="section-kicker">FAQ</span>
+                    <h2>Questions smart buyers ask.</h2>
+                </div>
+
+                <div class="faq-list">
+                    <details class="faq-item reveal">
+                        <summary>Is this a real AI assessment or a fake quiz?</summary>
+                        <p>It is a deterministic adaptive funnel. The branches change based on your answers, then the final plan is generated client-side from structured signals. That keeps it fast, reliable, and honest.</p>
+                    </details>
+                    <details class="faq-item reveal" data-delay="60">
+                        <summary>Does Dynmo save my data anywhere yet?</summary>
+                        <p>No backend is wired here yet. Your lead details and plan stay in browser state and local storage on this device. You can copy the plan or use the mail link to send it.</p>
+                    </details>
+                    <details class="faq-item reveal" data-delay="120">
+                        <summary>Can you guarantee bookings or revenue?</summary>
+                        <p>No. Dynmo helps remove friction, improve response speed, and create stronger systems. Results depend on your offer, traffic, follow-through, and market.</p>
+                    </details>
+                    <details class="faq-item reveal" data-delay="180">
+                        <summary>What if I do not even have a business yet?</summary>
+                        <p>The funnel still works. You get a starter path first, then a likely first Dynmo pack once you have an idea and channel worth pushing.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="section final-cta">
+            <div class="container final-cta-box reveal">
+                <span class="section-kicker">Next move</span>
+                <h2>Run the assessment. Find the leak. Build the right AI lane.</h2>
+                <p>Dynmo is strongest when the system matches the stage. That is exactly what this site now pushes people toward.</p>
+                <a class="button button-primary" href="#assessment">Start The Adaptive Assessment</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div>
+                <strong>Dynmo</strong>
+                <p>AI energy for unstoppable businesses.</p>
+            </div>
+            <div>
+                <span>Static site note</span>
+                <p>This page does not claim CRM saving or backend delivery. The current lead and plan stay on-device until a real backend exists.</p>
             </div>
         </div>
-    </div>
-    <p class="proof-close">While you're serving customers, driving jobs, cutting hair, or running the floor, Dynmo is still working the lead.</p>
-</section>
+    </footer>
 
-<!-- Stats -->
-<div class="stats">
-    <div class="stats-grid">
-        <div class="stat">
-            <div class="n">24/7</div>
-            <div class="l">Always online</div>
-        </div>
-        <div class="stat">
-            <div class="n">3s</div>
-            <div class="l">Response time</div>
-        </div>
-        <div class="stat">
-            <div class="n">0</div>
-            <div class="l">Tech knowledge needed</div>
-        </div>
-    </div>
-</div>
-
-<!-- Features -->
-<section class="features" id="features">
-    <h2 class="section-title">Everything Dynmo can do to make you harder to ignore</h2>
-    <p class="subtitle">24 built-for-you revenue moves, all designed to win attention faster, convert more of it, and keep customers coming back.</p>
-    <div class="features-grid">
-        <div class="feat">
-            <div class="feat-i">💬</div>
-            <h3><a href="services/instant-replies.html">24/7 Instant Replies</a></h3>
-            <p>Customer messages at midnight? AI replies in 3 seconds and books them before your rival's even woken up.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">📅</div>
-            <h3><a href="services/automatic-booking.html">Automatic Booking</a></h3>
-            <p>No back-and-forth. One message. Booked. Zero friction = money.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">💰</div>
-            <h3><a href="services/upselling.html">Built-In Upselling</a></h3>
-            <p>"Add a beard trim? £10." Every booking. Every time. Never forgets. Thousands extra per month.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">🌍</div>
-            <h3><a href="services/multi-language.html">Multi-Language</a></h3>
-            <p>Polish, Spanish, Arabic - speaks any language. Every new language = a new customer base.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">📱</div>
-            <h3><a href="services/whatsapp-telegram.html">WhatsApp & Telegram</a></h3>
-            <p>2 billion users. Zero download. Message, book, done. Meet customers where they already are.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">🌐</div>
-            <h3><a href="services/website-live-chat.html">Website Live Chat</a></h3>
-            <p>Your website just went from expensive brochure to 24/7 sales rep that books while you sleep.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">🧠</div>
-            <h3><a href="services/trained-on-your-business.html">Trained On Your Business</a></h3>
-            <p>Every price, service, and offer on day one. Never sick. Never wrong. Costs £30/month.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">🎯</div>
-            <h3><a href="services/lead-capture.html">Lead Capture</a></h3>
-            <p>Every chat = name, number, email saved. Build a customer list you OWN. A real business asset.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">📢</div>
-            <h3><a href="services/promotion-blasts.html">Promotion Blasts</a></h3>
-            <p>Empty Tuesday? One blast: "20% off today." By noon you're rammed. Summon customers on demand.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">🔄</div>
-            <h3><a href="services/repeat-booking-reminders.html">Repeat Booking Reminders</a></h3>
-            <p>"Time for a trim?" 5 weeks later. One-time customers become lifetime customers.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">⭐</div>
-            <h3><a href="services/review-collection.html">Automatic Review Collection</a></h3>
-            <p>AI asks for a Google review after every visit. 12 → 120 reviews in 3 months. Ranking explodes.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">💳</div>
-            <h3><a href="services/payment-at-booking.html">Take Payment At Booking</a></h3>
-            <p>They pay upfront. No-shows vanish. Revenue guaranteed before they walk through the door.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">📞</div>
-            <h3><a href="services/missed-call-textback.html">Missed Call Text-Back</a></h3>
-            <p>They call, nobody answers, AI texts instantly. 67% of missed calls never call back. This saves them.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">🎁</div>
-            <h3><a href="services/loyalty-rewards.html">Loyalty Rewards</a></h3>
-            <p>"Your 5th visit is free!" Auto-tracks visits and rewards regulars. Keeps them coming back.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">📍</div>
-            <h3><a href="services/location-directions.html">Location & Directions</a></h3>
-            <p>Customer asks "where are you?" - AI sends map pin, hours, and parking info. Zero friction.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">🖼️</div>
-            <h3><a href="services/service-catalogue.html">Service Catalogue</a></h3>
-            <p>"What haircuts do you do?" - AI sends photos with prices. They see it, want it, book it.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">⏰</div>
-            <h3><a href="services/smart-scheduling.html">Smart Scheduling</a></h3>
-            <p>AI knows your quiet hours and pushes off-peak bookings with discounts. Fills dead time.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">🤝</div>
-            <h3><a href="services/referral-machine.html">Referral Machine</a></h3>
-            <p>"Refer a mate, you both get 20% off." Every happy customer becomes a salesperson.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">❄️</div>
-            <h3><a href="services/seasonal-offers.html">Seasonal Offers</a></h3>
-            <p>Christmas, Ramadan, bank holidays - themed promos on autopilot. Every season = a revenue spike.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">📊</div>
-            <h3><a href="services/competitor-intel.html">Competitor Intel</a></h3>
-            <p>AI logs what customers say about rivals. Weekly insights on how to beat the competition.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">🔴</div>
-            <h3><a href="services/complaint-catcher.html">Complaint Catcher</a></h3>
-            <p>Angry customer? AI responds instantly, fixes it, flags it. Bad review → saved relationship.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">🎉</div>
-            <h3><a href="services/birthday-rewards.html">Birthday Rewards</a></h3>
-            <p>"Happy birthday! 25% off - book today." Personal touches that cost nothing and make money.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">🗣️</div>
-            <h3><a href="services/custom-voice.html">Custom Voice & Personality</a></h3>
-            <p>AI sounds like YOUR brand. Cool for barbers. Warm for restaurants. Energetic for gyms.</p>
-        </div>
-        <div class="feat">
-            <div class="feat-i">🛡️</div>
-            <h3><a href="services/money-back-guarantee.html">30-Day Money-Back</a></h3>
-            <p>Doesn't pay for itself? Full refund. No questions. Zero risk.</p>
-        </div>
-    </div>
-</section>
-
-<!-- How it works -->
-<section class="how" id="how">
-    <h2 class="section-title">Get live in 3 simple steps</h2>
-    <p class="subtitle">No tech headache, no setup mess, no learning curve. You send the basics, we build the machine, and you get the upside.</p>
-    <div class="steps">
-        <div class="step" style="transition-delay: 0ms">
-            <div class="step-number">1</div>
-            <div class="step-content">
-                <span class="step-icon">💬</span>
-                <h3>Tell us what you sell</h3>
-                <p>Send us your services, prices, opening hours, and the questions customers usually ask.</p>
-            </div>
-        </div>
-        <div class="step" style="transition-delay: 120ms">
-            <div class="step-number">2</div>
-            <div class="step-content">
-                <span class="step-icon">🧠</span>
-                <h3>We build your AI for you</h3>
-                <p>We train it on your business, set it up on WhatsApp, Telegram, or your website, and make sure it replies, books, and sells properly.</p>
-            </div>
-        </div>
-        <div class="step" style="transition-delay: 240ms">
-            <div class="step-number">3</div>
-            <div class="step-content">
-                <span class="step-icon">🚀</span>
-                <h3>Start waking up to bookings</h3>
-                <p>Once it's live, Dynmo starts answering customers, booking appointments, taking payments, and following up automatically.</p>
-            </div>
-        </div>
-    </div>
-    <div class="how-close">You do not need to touch a single technical thing.</div>
-</section>
-
-<!-- Pricing -->
-<section class="pricing" id="pricing">
-    <h2 class="section-title">Choose the pack that fits your business</h2>
-    <p class="subtitle">Every pack is built for you, comes with a free demo, and is backed by our 30-day money-back guarantee.</p>
-    <div class="pricing-grid">
-        <div class="pc">
-            <h3>The Booking Pack</h3>
-            <p class="pd">Stop losing customers after hours</p>
-            <div class="price">£97</div>
-            <p class="pp">one-time setup</p>
-            <p class="pn">then £20/month — cancel anytime</p>
-            <p class="pfor">Perfect if enquiries go unanswered after 5pm</p>
-            <ul>
-                <li>✅ 24/7 Instant Replies</li>
-                <li>✅ Automatic Booking</li>
-                <li>✅ Trained On Your Business</li>
-                <li>✅ WhatsApp or Telegram</li>
-                <li>✅ Missed Call Text-Back</li>
-                <li>✅ Full Setup Included</li>
-                <li>✅ 30-Day Money-Back</li>
-            </ul>
-            <a href="#demo" class="btn-p">Get Started</a>
-        </div>
-        <div class="pc featured">
-            <div class="pop">Most Popular</div>
-            <h3>The Revenue Pack</h3>
-            <p class="pd">Missed calls. Slow replies. No-shows. Sorted.</p>
-            <div class="price">£150</div>
-            <p class="pp">one-time setup</p>
-            <p class="pn">then £30/month — cancel anytime</p>
-            <p class="pfor">Best if you're losing money through gaps in your booking system</p>
-            <ul>
-                <li>✅ Everything in The Booking Pack</li>
-                <li>✅ Website Chat + More Channels</li>
-                <li>✅ Built-In Upselling</li>
-                <li>✅ Payment At Booking</li>
-                <li>✅ Lead Capture</li>
-                <li>✅ Repeat Booking Reminders</li>
-                <li>✅ Automatic Review Collection</li>
-            </ul>
-            <a href="#demo" class="btn-p">Get Free Demo</a>
-        </div>
-        <div class="pc">
-            <h3>The Machine Pack</h3>
-            <p class="pd">Build a 24/7 revenue machine that never switches off</p>
-            <div class="price">£297</div>
-            <p class="pp">one-time setup</p>
-            <p class="pn">then £50/month — cancel anytime</p>
-            <p class="pfor">Best if you want maximum automation and a serious unfair advantage</p>
-            <ul>
-                <li>✅ Everything in The Revenue Pack</li>
-                <li>✅ Up to 3 AI Assistants</li>
-                <li>✅ Promotion Blasts</li>
-                <li>✅ Referral Flows</li>
-                <li>✅ Loyalty & Reward Offers</li>
-                <li>✅ Custom Voice & Personality</li>
-                <li>✅ Priority Support</li>
-            </ul>
-            <a href="#demo" class="btn-p">Get Started</a>
-        </div>
-    </div>
-    <p class="pricing-unsure">Not sure which pack fits? Start with a free demo and we'll recommend the right one.</p>
-</section>
-
-<!-- Guarantee -->
-<div class="guarantee">
-    <div class="gi">🛡️</div>
-    <h3>30-day money-back guarantee</h3>
-    <p>If Dynmo doesn't pay for itself in 30 days, we'll refund every penny. No questions. No hassle. No risk.</p>
-</div>
-
-<!-- CTA -->
-<section class="cta" id="demo">
-    <p class="cta-urgency">Most businesses can be live by tomorrow.</p>
-    <h2>Stop losing customers after hours.<br>Start waking up to replies, bookings, and paid customers.</h2>
-    <a href="#" class="btn-p">Get Your Free Demo</a>
-    <p class="cta-proof">See your AI working in 24 hours. No credit card. No commitment.</p>
-</section>
-
-<!-- Footer -->
-<footer>
-    <p>© 2026 Dynmo - AI energy for unstoppable businesses.</p>
-    <p style="margin-top:8px;font-size:11px;color:#555;">Fuel your business with AI momentum.</p>
-</footer>
-
-<script>
-// ============ ASSESSMENT ============
-const assessmentState = {
-    currentStep: 1,
-    totalSteps: 7,
-    answers: {}
-};
-
-function initAssessment() {
-    const dots = document.getElementById('stepDots');
-    for (let i = 1; i <= 7; i++) {
-        const dot = document.createElement('div');
-        dot.className = 'step-dot' + (i === 1 ? ' active' : '');
-        dot.dataset.step = i;
-        dots.appendChild(dot);
-    }
-
-    document.querySelectorAll('.step-option').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const step = this.closest('.assessment-step').dataset.step;
-            document.querySelectorAll(`[data-step="${step}"] .step-option`).forEach(b => b.classList.remove('selected'));
-            this.classList.add('selected');
-            assessmentState.answers[step] = this.dataset.value;
-            setTimeout(() => nextStep(), 300);
-        });
-    });
-
-    document.getElementById('backBtn').addEventListener('click', prevStep);
-}
-
-function nextStep() {
-    const current = assessmentState.currentStep;
-    if (current < 7) {
-        assessmentState.currentStep++;
-        showStep(assessmentState.currentStep);
-    } else {
-        showResults();
-    }
-}
-
-function prevStep() {
-    if (assessmentState.currentStep > 1) {
-        assessmentState.currentStep--;
-        showStep(assessmentState.currentStep);
-    }
-}
-
-function showStep(step) {
-    document.querySelectorAll('.assessment-step').forEach(s => s.classList.remove('active'));
-    document.querySelector(`[data-step="${step}"]`).classList.add('active');
-    document.querySelectorAll('.step-dot').forEach(d => {
-        d.classList.remove('active','completed');
-        if (parseInt(d.dataset.step) === step) d.classList.add('active');
-        if (parseInt(d.dataset.step) < step) d.classList.add('completed');
-    });
-    document.getElementById('backBtn').style.display = step > 1 ? 'inline-block' : 'none';
-}
-
-function showResults() {
-    document.querySelectorAll('.assessment-step').forEach(s => s.classList.remove('active'));
-    document.querySelector('[data-step="results"]').classList.add('active');
-    document.getElementById('backBtn').style.display = 'none';
-    document.querySelectorAll('.step-dot').forEach(d => { d.classList.add('completed'); d.classList.remove('active'); });
-
-    const a = assessmentState.answers;
-    const results = generateResults(a);
-    
-    setTimeout(() => {
-        document.getElementById('resultsCard').innerHTML = results;
-    }, 1500);
-}
-
-function generateResults(a) {
-    // Business type label
-    const types = {trades:'Trades',barber:'Barber/Beauty',restaurant:'Restaurant/Food',gym:'Fitness/Wellness',retail:'Retail',other:'Business'};
-    const typeLabel = types[a['1']] || 'Business';
-
-    // Score key pain points
-    const pains = [];
-    if (['missedcalls','slowreplies'].includes(a['3'])) pains.push('Losing customers to slow or missed responses');
-    if (['noshow','booking'].includes(a['3'])) pains.push('Booking chaos and no-shows are eating your revenue');
-    if (a['3']==='admin') pains.push('Admin overload is stealing time from actual work');
-    if (a['3']==='followup') pains.push('No follow-up means repeat customers slip away');
-    if (!pains.length) pains.push('Customer communication could be faster and more consistent');
-
-    // Recommend agents
-    const agents = [];
-    if (['answering','all','slowreplies','missedcalls'].includes(a['7']) || ['missedcalls','slowreplies'].includes(a['3'])) {
-        agents.push('📱 <strong>24/7 Enquiry Agent</strong> — answers every call, message, and DM instantly, even at 2am');
-    }
-    if (['bookingauto','all'].includes(a['7']) || ['noshow','booking'].includes(a['3']) || ['yesregularly','wantto'].includes(a['5'])) {
-        agents.push('📅 <strong>Booking Agent</strong> — schedules, confirms, and reminds customers automatically');
-    }
-    if (['followups','all'].includes(a['7']) || a['3']==='followup') {
-        agents.push('🔄 <strong>Follow-Up Agent</strong> — re-engages past customers so they come back');
-    }
-    if (['reminders','all'].includes(a['7']) || a['3']==='noshow') {
-        agents.push('⏰ <strong>Reminder Agent</strong> — slashes no-shows with automatic reminders');
-    }
-    if (!agents.length) agents.push('📱 <strong>24/7 Enquiry Agent</strong> — answers every call and message instantly');
-
-    // Recommend pack
-    let pack = 'The Booking Pack';
-    let price = '£97';
-    if (agents.length >= 3) { pack = 'The Machine Pack'; price = '£497'; }
-    else if (agents.length >= 2) { pack = 'The Revenue Pack'; price = '£197'; }
-
-    return `
-        <div class="results-content">
-            <h3>🔮 Your ${typeLabel} AI Blueprint</h3>
-            <p>Based on your answers, here's where AI can make the biggest impact for your business:</p>
-            
-            <p><strong>Top pain points identified:</strong></p>
-            <ul>${pains.map(p => `<li>${p}</li>`).join('')}</ul>
-            
-            <p><strong>Recommended AI agents for your business:</strong></p>
-            <ul>${agents.map(a => `<li>${a}</li>`).join('')}</ul>
-            
-            <p><strong>Best fit:</strong> ${pack} (one-time setup ${price} + monthly)</p>
-            
-            <p style="color:var(--white);font-size:1.1rem;margin-top:24px;">Ready to see it in action? Get your personalised demo — no obligation.</p>
-            <a href="#demo" class="results-cta" onclick="document.getElementById('demo').scrollIntoView({behavior:'smooth'})">Get My Free Demo →</a>
-        </div>
-    `;
-}
-
-initAssessment();
-</script>
-<script>
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-    });
-
-    function closeMenu() {
-        hamburger.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    // Close menu on escape
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeMenu();
-    });
-    const animatedEls = document.querySelectorAll('.hero-badge, .hero h1, .hero > p, .hero-btns, .hero-proof, .pain .section-title, .pain .subtitle, .pain-card, .pain-close, .proof .section-title, .proof .subtitle, .proof-card, .proof-close, .outcomes .section-title, .outcomes .subtitle, .outcome-card, .outcomes-close, .stats .section-title, .stat, .features .section-title, .features .subtitle, .feat, .how .section-title, .how .subtitle, .how-close, .pricing .section-title, .pricing .subtitle, .pc, .addons h3, .addon, .guarantee h3, .guarantee p, .cta h2, .cta p, .cta .btn-p');
-    animatedEls.forEach(el => el.classList.add('reveal-prep'));
-
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('reveal-in');
-                if (entry.target.classList.contains('stat')) {
-                    const num = entry.target.querySelector('.n');
-                    if (num && !num.dataset.animated) {
-                        const target = parseInt((num.textContent || '').replace(/[^0-9]/g, ''), 10);
-                        if (!Number.isNaN(target)) {
-                            num.dataset.animated = 'true';
-                            num.classList.add('counting');
-                            const suffix = (num.textContent || '').replace(/[0-9]/g, '');
-                            const duration = 1100;
-                            const startTime = performance.now();
-                            const tick = (now) => {
-                                const progress = Math.min((now - startTime) / duration, 1);
-                                const eased = 1 - Math.pow(1 - progress, 3);
-                                num.textContent = Math.round(target * eased) + suffix;
-                                if (progress < 1) requestAnimationFrame(tick);
-                                else num.classList.remove('counting');
-                            };
-                            requestAnimationFrame(tick);
-                        }
-                    }
-                }
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
-
-    animatedEls.forEach((el, index) => {
-        let delayBucket = index % 6;
-        if (el.closest('.hero')) delayBucket = Array.from(el.parentNode.children).indexOf(el) >= 0 ? Array.from(el.parentNode.children).indexOf(el) : delayBucket;
-        el.style.setProperty('--reveal-delay', `${Math.min(delayBucket, 5) * 90}ms`);
-        revealObserver.observe(el);
-    });
-
-    const tiltCards = document.querySelectorAll('.pain-card, .outcome-card, .feat, .pc');
-    tiltCards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            if (window.innerWidth < 900) return;
-            const rect = card.getBoundingClientRect();
-            const px = (e.clientX - rect.left) / rect.width;
-            const py = (e.clientY - rect.top) / rect.height;
-            const rotateY = (px - 0.5) * 7;
-            const rotateX = (0.5 - py) * 7;
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
-        });
-    });
-
-
-
-    var demos = [
-        {
-            label: 'Trades \u2022 Quotes & Bookings',
-            steps: [
-                { type: 'user', text: 'Hi, do you do emergency plumbing? Got a burst pipe' },
-                { type: 'typing', delay: 700 },
-                { type: 'bot', text: 'Yes we do emergency callouts. We can be there by 2pm today. Want me to book you in?' },
-                { type: 'user', text: 'Yes please, how much is the callout?' },
-                { type: 'typing', delay: 600 },
-                { type: 'bot', text: 'Callout is \u00a349, hourly rate \u00a365 after. Shall I take payment now to secure the slot?' },
-                { type: 'user', text: 'Yes go on then' },
-                { type: 'typing', delay: 500 },
-                { type: 'confirm', text: 'Done. You\u2019re booked for 2pm today. Our plumber will call before arriving. \uD83D\uDEE0' }
-            ]
-        },
-        {
-            label: 'Barbers \u2022 Booking',
-            steps: [
-                { type: 'user', text: 'Hi, how much is a skin fade?' },
-                { type: 'typing', delay: 600 },
-                { type: 'bot', text: 'Skin fade is \u00a322. Want me to book you in?' },
-                { type: 'user', text: 'Yes please' },
-                { type: 'typing', delay: 500 },
-                { type: 'bot', text: 'I\u2019ve got 2pm or 4pm tomorrow. Which works?' },
-                { type: 'user', text: '4pm' },
-                { type: 'typing', delay: 500 },
-                { type: 'confirm', text: 'Perfect. You\u2019re booked in for 4pm tomorrow \uD83D\uDC88' }
-            ]
-        },
-        {
-            label: 'Restaurants \u2022 Upselling',
-            steps: [
-                { type: 'user', text: 'Can I book a table for 2 tonight at 7?' },
-                { type: 'typing', delay: 700 },
-                { type: 'bot', text: 'Done. I have a table at 7pm. Want to pre-order our sharing platter for \u00a330?' },
-                { type: 'user', text: 'Yeah go on then' },
-                { type: 'typing', delay: 600 },
-                { type: 'confirm', text: 'Perfect. Table for 2 at 7pm + sharing platter confirmed \uD83C\uDF77' }
-            ]
-        },
-        {
-            label: 'Gyms \u2022 Missed Calls',
-            steps: [
-                { type: 'event', text: 'Missed call detected' },
-                { type: 'bot', text: 'Hey, sorry we missed your call! How can we help?' },
-                { type: 'user', text: 'Do you have space in the 6pm HIIT class?' },
-                { type: 'typing', delay: 600 },
-                { type: 'bot', text: 'Yes, 2 spots left for 6pm. Want me to grab one for you?' },
-                { type: 'user', text: 'Yes please' },
-                { type: 'typing', delay: 500 },
-                { type: 'confirm', text: 'Done. You\u2019re booked in. See you at 6pm \uD83E\uDD4A' }
-            ]
-        }
-    ];
-
-    function scrollToBottom() {
-        var chatArea = document.getElementById('chatArea');
-        if (chatArea) chatArea.scrollTop = chatArea.scrollHeight;
-    }
-
-    function runDemo(index) {
-        var demo = demos[index];
-        var labelEl = document.getElementById('demoLabel');
-        var chatScroll = document.getElementById('chatScroll');
-        if (!labelEl || !chatScroll) return;
-        labelEl.textContent = demo.label;
-        chatScroll.innerHTML = '';
-        var stepIndex = 0;
-        var typingNode = null;
-
-        function addTyping() {
-            typingNode = document.createElement('div');
-            typingNode.className = 'msg typing';
-            typingNode.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
-            chatScroll.appendChild(typingNode);
-            scrollToBottom();
-        }
-
-        function addMessage(type, text) {
-            var el = document.createElement('div');
-            el.className = 'msg ' + type;
-            if (type !== 'event') {
-                var sender = type === 'user' ? 'Customer' : 'Dynmo';
-                el.innerHTML = '<span class="sender">' + sender + '</span>' + text;
-            } else {
-                el.textContent = text;
-            }
-            chatScroll.appendChild(el);
-            scrollToBottom();
-        }
-
-        function nextStep() {
-            if (stepIndex >= demo.steps.length) {
-                setTimeout(function() {
-                    chatScroll.classList.add('fading');
-                    setTimeout(function() {
-                        chatScroll.classList.remove('fading');
-                        runDemo((index + 1) % demos.length);
-                    }, 600);
-                }, 2500);
-                return;
-            }
-
-            var s = demo.steps[stepIndex];
-            stepIndex++;
-
-            if (typingNode) {
-                typingNode.remove();
-                typingNode = null;
-            }
-
-            if (s.type === 'typing') {
-                addTyping();
-                setTimeout(nextStep, s.delay || 700);
-            } else if (s.type === 'event') {
-                addMessage('event', s.text);
-                setTimeout(nextStep, 800);
-            } else {
-                addMessage(s.type, s.text);
-                var wait = s.type === 'confirm' ? 1800 : 1000;
-                setTimeout(nextStep, wait);
-            }
-        }
-
-        setTimeout(nextStep, 600);
-    }
-
-    runDemo(0);
-
-    // Section 5 scroll reveal
-    var stepEls = document.querySelectorAll('.step');
-    var howClose = document.querySelector('.how-close');
-    var howObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                stepEls.forEach(function(step) { step.classList.add('revealed'); });
-                if (howClose) setTimeout(function() { howClose.classList.add('revealed'); }, 400);
-                howObserver.disconnect();
-            }
-        });
-    }, { threshold: 0.2 });
-    var howSection = document.querySelector('.how');
-    if (howSection) howObserver.observe(howSection);
-</script>
-
+    <script src="assets/js/site.js"></script>
 </body>
 </html>
