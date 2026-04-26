@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Dynmo | Custom AI Agents For Real Business Leaks</title>
-    <meta name="description" content="Start with the Dynmo AI Assessment Agent. Get matched to the right custom AI agent for bookings, follow-up, ops, or your first business idea.">
-    <meta property="og:title" content="Dynmo | Custom AI Agents For Real Business Leaks">
-    <meta property="og:description" content="Agent-led assessment, custom AI agent recommendation, and static-site-safe lead capture for GitHub Pages.">
+    <title>Dynmo | Custom AI Agents That Fix Revenue Leaks</title>
+    <meta name="description" content="Talk to the Dynmo Assessment Agent and get matched to the custom AI agent your business actually needs.">
+    <meta property="og:title" content="Dynmo | Custom AI Agents That Fix Revenue Leaks">
+    <meta property="og:description" content="Assessment-first AI agent matching for bookings, follow-up, operations, and starter ideas.">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body>
+<body class="premium-home">
     <div class="site-shell" aria-hidden="true">
         <div class="ambient ambient-one"></div>
         <div class="ambient ambient-two"></div>
@@ -21,308 +21,143 @@
     </div>
 
     <header class="nav-wrap">
-        <nav class="nav">
-            <a class="brand" href="index.html" aria-label="Dynmo home">
-                <img src="dynmo-logo-nav.png" alt="Dynmo logo">
-                <span>Dynmo</span>
+        <nav class="nav premium-nav">
+            <a class="brand premium-brand" href="index.html" aria-label="Dynmo home">
+                <img src="dynmo-logo.svg" alt="Dynmo">
             </a>
-            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu">
-                <span></span>
-                <span></span>
-            </button>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu"><span></span><span></span></button>
             <div class="nav-menu" id="navMenu">
                 <a href="assessment.html">Assessment</a>
-                <a href="index.html#agents">Agents</a>
-                <a href="index.html#packs">Build Lanes</a>
-                <a href="index.html#proof">Demo</a>
-                <a class="nav-cta" href="assessment.html">Start Assessment</a>
+                <a href="#agents">Agents</a>
+                <a href="#how">How it works</a>
+                <a href="#proof">Demo</a>
+                <a class="nav-cta" href="assessment.html">Find My Agent</a>
             </div>
         </nav>
     </header>
 
     <main id="top">
-        <section class="hero section">
-            <div class="container hero-grid">
+        <section class="hero section premium-hero">
+            <div class="container hero-grid premium-hero-grid">
                 <div class="hero-copy reveal">
-                    <div class="eyebrow">
-                        <span class="eyebrow-dot"></span>
-                        AI assessment-first funnel
-                    </div>
-                    <h1>Find the exact AI agent your business needs.</h1>
-                    <p class="hero-text">Start with the AI Assessment Agent. Dynmo diagnoses the leak, then points you to the right custom agent to fix it.</p>
+                    <div class="eyebrow"><span class="eyebrow-dot"></span>Stop buying generic automation</div>
+                    <h1>Your business needs the right AI agent. Not another boring chatbot.</h1>
+                    <p class="hero-text">Dynmo starts with an Assessment Agent, finds the leak, then maps a custom AI agent built for the exact problem costing you momentum.</p>
                     <div class="hero-actions">
-                        <a class="button button-primary" href="assessment.html">Talk To The Assessment Agent</a>
-                        <a class="button button-secondary" href="#agents">See Agent Types</a>
+                        <a class="button button-primary" href="assessment.html">Find My AI Agent</a>
+                        <a class="button button-secondary" href="#agents">See The Agents</a>
                     </div>
-                    <div class="hero-microproof">
-                        <span>Static-site safe</span>
-                        <span>Lead capture intact</span>
-                        <span>No fake backend claims</span>
+                    <div class="hero-microproof premium-proofline">
+                        <span>Booking leaks</span><span>Dead follow-up</span><span>Messy ops</span><span>No idea yet</span>
                     </div>
                 </div>
 
                 <div class="hero-visual reveal" data-delay="120">
-                    <div class="hero-orbit">
-                        <div class="hero-card pulse-card">
-                            <div class="metric-head">Assessment Agent</div>
-                            <div class="metric-big">4</div>
-                            <p>Booking. Follow-Up. Ops. Starter. One diagnosis first.</p>
+                    <div class="agent-console">
+                        <div class="console-top">
+                            <span class="console-dot"></span>
+                            <strong>Dynmo Assessment Agent</strong>
+                            <em>live match</em>
                         </div>
-                        <div class="hero-card hero-card-secondary tilt-card">
-                            <div class="mini-stack">
-                                <span>Leak detected</span>
-                                <span>Agent matched</span>
-                                <span>Plan delivered</span>
-                            </div>
-                            <div class="signal-bars" aria-hidden="true">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                        <div class="hero-phone">
-                            <div class="phone-glow"></div>
-                            <div class="phone-top">Dynmo assessment flow</div>
-                            <div class="chat-stack" id="heroChat" aria-label="Dynmo demo conversation"></div>
-                            <div class="phone-action">
-                                <span>Assessment complete</span>
-                                <strong>Best-fit agent ready</strong>
-                            </div>
+                        <div class="chat-stack" id="heroChat" aria-label="Dynmo assessment preview"></div>
+                        <div class="agent-match-card">
+                            <span>Best-fit agent</span>
+                            <strong>Booking Agent</strong>
+                            <small>Instant replies · lead capture · handoff</small>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="signal-strip">
+        <section class="signal-strip premium-strip">
             <div class="container signal-grid">
-                <div class="signal-item reveal">
-                    <strong>Diagnose first</strong>
-                    <span>No generic bundle guessing.</span>
-                </div>
-                <div class="signal-item reveal" data-delay="80">
-                    <strong>Match one agent</strong>
-                    <span>Built around the real bottleneck.</span>
-                </div>
-                <div class="signal-item reveal" data-delay="160">
-                    <strong>Then choose a lane</strong>
-                    <span>Packs only frame build depth and pricing.</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="section assessment-gateway" id="assessment">
-            <div class="container gateway-grid">
-                <div class="section-heading reveal">
-                    <span class="section-kicker">Start Here</span>
-                    <h2>Meet the AI Assessment Agent.</h2>
-                    <p>A cleaner first step: short questions, adaptive branching, lead capture, and a custom agent recommendation.</p>
-                </div>
-                <div class="gateway-card reveal" data-delay="120">
-                    <div class="gateway-orb" aria-hidden="true"></div>
-                    <span class="live-badge">Agent-led</span>
-                    <h3>2-minute diagnosis</h3>
-                    <ul>
-                        <li>Stage-aware branching</li>
-                        <li>Short chat-style prompts</li>
-                        <li>Custom agent + build lane result</li>
-                        <li>Lead capture before full plan</li>
-                    </ul>
-                    <a class="button button-primary" href="assessment.html">Open Assessment Agent</a>
-                    <p class="helper-text">Static GitHub Pages version uses an honest rules engine. Real model-backed AI needs a secure backend.</p>
-                </div>
+                <div class="signal-item reveal"><strong>1. Diagnose</strong><span>The Assessment Agent finds the real leak.</span></div>
+                <div class="signal-item reveal" data-delay="80"><strong>2. Match</strong><span>You get one clear agent direction.</span></div>
+                <div class="signal-item reveal" data-delay="160"><strong>3. Build</strong><span>Dynmo turns it into a working AI system.</span></div>
             </div>
         </section>
 
         <section class="section systems-section" id="agents">
             <div class="container">
-                <div class="section-heading reveal">
-                    <span class="section-kicker">Custom Agents</span>
-                    <h2>Four dedicated agent directions.</h2>
-                    <p>Assessment first. Custom agent second.</p>
+                <div class="section-heading reveal premium-heading">
+                    <span class="section-kicker">Custom AI Agents</span>
+                    <h2>Four agent paths. One sharp recommendation.</h2>
                 </div>
-
-                <div class="systems-grid">
-                    <article class="system-card reveal tilt-card">
+                <div class="systems-grid agent-card-grid">
+                    <article class="system-card premium-agent-card reveal tilt-card">
                         <span class="system-tag">Booking Agent</span>
-                        <h3>Catch the booking before it cools off.</h3>
-                        <p>For missed calls, DMs, enquiries, and appointment flow.</p>
+                        <h3>Turns hot enquiries into booked action.</h3>
+                        <p>For missed calls, DMs, forms, WhatsApp, and appointment flow.</p>
+                        <a href="assessment.html">Match me →</a>
                     </article>
-                    <article class="system-card reveal tilt-card" data-delay="80">
-                        <span class="system-tag">Follow-Up / Revenue Agent</span>
-                        <h3>Turn old leads and past customers back on.</h3>
-                        <p>For repeat bookings, review asks, reactivation, and upsells.</p>
+                    <article class="system-card premium-agent-card reveal tilt-card" data-delay="80">
+                        <span class="system-tag">Revenue Agent</span>
+                        <h3>Wakes up old leads and past customers.</h3>
+                        <p>For follow-up, reviews, reactivation, referrals, and upsells.</p>
+                        <a href="assessment.html">Match me →</a>
                     </article>
-                    <article class="system-card reveal tilt-card" data-delay="160">
-                        <span class="system-tag">Ops / Machine Agent</span>
-                        <h3>Clean up the messy handoffs.</h3>
-                        <p>For multi-channel routing, team ops, and bigger automation logic.</p>
+                    <article class="system-card premium-agent-card reveal tilt-card" data-delay="160">
+                        <span class="system-tag">Ops Agent</span>
+                        <h3>Cleans the chaos behind the scenes.</h3>
+                        <p>For multi-channel routing, admin, handoffs, and team workflows.</p>
+                        <a href="assessment.html">Match me →</a>
                     </article>
-                    <article class="system-card reveal tilt-card" data-delay="240">
-                        <span class="system-tag">Starter / Idea Agent</span>
-                        <h3>Pick the lane before you build the machine.</h3>
-                        <p>For side hustles, early ideas, and people with no clear offer yet.</p>
+                    <article class="system-card premium-agent-card reveal tilt-card" data-delay="240">
+                        <span class="system-tag">Starter Agent</span>
+                        <h3>Finds the business lane before you build.</h3>
+                        <p>For side hustles, early ideas, and “I know I want something” energy.</p>
+                        <a href="assessment.html">Match me →</a>
                     </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section process-section" id="how">
+            <div class="container">
+                <div class="section-heading reveal premium-heading">
+                    <span class="section-kicker">The Offer</span>
+                    <h2>Not templates. Custom agents.</h2>
+                </div>
+                <div class="process-grid premium-process">
+                    <article class="process-card reveal"><span>01</span><h3>Talk to the Assessment Agent</h3><p>Short, focused, adaptive questions.</p></article>
+                    <article class="process-card reveal" data-delay="80"><span>02</span><h3>Get your agent match</h3><p>Booking, Revenue, Ops, or Starter.</p></article>
+                    <article class="process-card reveal" data-delay="160"><span>03</span><h3>Build the working version</h3><p>Clear scope. Clear handoff. No fake promises.</p></article>
                 </div>
             </div>
         </section>
 
         <section class="section proof-section" id="proof">
-            <div class="container proof-grid">
+            <div class="container proof-grid premium-demo-grid">
                 <div class="proof-copy reveal">
-                    <span class="section-kicker">See It</span>
-                    <h2>Short, fast, agent-led.</h2>
-                    <p>The flow feels like a real assistant guiding the next move.</p>
-                    <div class="proof-points">
-                        <div>
-                            <strong>Assessment-first</strong>
-                            <span>Diagnosis before recommendation.</span>
-                        </div>
-                        <div>
-                            <strong>Adaptive</strong>
-                            <span>Questions change by answer path.</span>
-                        </div>
-                        <div>
-                            <strong>Honest</strong>
-                            <span>No fake AI backend claim.</span>
-                        </div>
+                    <span class="section-kicker">Preview</span>
+                    <h2>Feels like a diagnosis. Ends with a build plan.</h2>
+                    <p>That is the hook: people do not choose from a menu — they get told what agent they need.</p>
+                    <a class="button button-primary" href="assessment.html">Start Assessment</a>
+                </div>
+                <div class="demo-shell reveal" data-delay="120">
+                    <div class="demo-screen">
+                        <div class="demo-header"><span>Agent match demo</span><strong>●</strong></div>
+                        <div class="demo-track" id="demoTrack"></div>
                     </div>
-                </div>
-
-                <div class="proof-visual reveal" data-delay="120">
-                    <div class="demo-shell">
-                        <div class="demo-screen">
-                            <div class="demo-header">
-                                <span>Dynmo live demo</span>
-                                <small>Agent recommendation flow</small>
-                            </div>
-                            <div class="demo-track" id="demoTrack"></div>
-                        </div>
-                        <div class="demo-caption">
-                            <strong>From problem to best-fit agent</strong>
-                            <span>Short path. Clear next step.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section process-section">
-            <div class="container">
-                <div class="section-heading reveal">
-                    <span class="section-kicker">How It Works</span>
-                    <h2>Assess. Match. Build.</h2>
-                </div>
-
-                <div class="process-grid">
-                    <article class="process-card reveal">
-                        <span>01</span>
-                        <h3>Assess</h3>
-                        <p>The Assessment Agent finds the leak.</p>
-                    </article>
-                    <article class="process-card reveal" data-delay="80">
-                        <span>02</span>
-                        <h3>Match</h3>
-                        <p>You get the right dedicated agent.</p>
-                    </article>
-                    <article class="process-card reveal" data-delay="160">
-                        <span>03</span>
-                        <h3>Build</h3>
-                        <p>Choose the build lane that fits scope and budget.</p>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section packs-section" id="packs">
-            <div class="container">
-                <div class="section-heading reveal">
-                    <span class="section-kicker">Build Lanes</span>
-                    <h2>Packs are pricing lanes, not the headline.</h2>
-                    <p>The recommendation is the agent. The lane is how deep we build it.</p>
-                </div>
-
-                <div class="pack-grid">
-                    <article class="pack-card reveal">
-                        <span class="pack-pill">Starter lane</span>
-                        <h3>Starter / Idea Agent</h3>
-                        <p>Pick the offer. Find the first demand lane.</p>
-                        <div class="pack-price">Pre-build path</div>
-                        <a class="button button-ghost" href="assessment.html">Find my start</a>
-                    </article>
-                    <article class="pack-card pack-card-featured reveal" data-delay="80">
-                        <span class="pack-pill">Booking lane</span>
-                        <h3>Booking Agent build</h3>
-                        <p>Lead capture, replies, booking rescue.</p>
-                        <div class="pack-price">Fastest route for hot inbound demand</div>
-                        <a class="button button-primary" href="assessment.html">Check my fit</a>
-                    </article>
-                    <article class="pack-card reveal" data-delay="160">
-                        <span class="pack-pill">Revenue lane</span>
-                        <h3>Follow-Up / Revenue Agent build</h3>
-                        <p>Nurture, reactivation, reviews, upsells.</p>
-                        <div class="pack-price">Best for customer value growth</div>
-                        <a class="button button-ghost" href="assessment.html">Find my growth lane</a>
-                    </article>
-                    <article class="pack-card reveal" data-delay="240">
-                        <span class="pack-pill">Machine lane</span>
-                        <h3>Ops / Machine Agent build</h3>
-                        <p>Routing, handoff logic, and deeper automations.</p>
-                        <div class="pack-price">Best for larger operating systems</div>
-                        <a class="button button-ghost" href="assessment.html">Map the machine</a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section faq-section" id="faq">
-            <div class="container faq-grid">
-                <div class="section-heading reveal">
-                    <span class="section-kicker">FAQ</span>
-                    <h2>Short answers.</h2>
-                </div>
-
-                <div class="faq-list">
-                    <details class="faq-item reveal">
-                        <summary>Is the assessment real AI?</summary>
-                        <p>It is a static adaptive rules engine. Real model-backed AI needs a secure backend.</p>
-                    </details>
-                    <details class="faq-item reveal" data-delay="60">
-                        <summary>Where does my data go?</summary>
-                        <p>Nowhere server-side yet. It stays on this device unless you copy or email it.</p>
-                    </details>
-                    <details class="faq-item reveal" data-delay="120">
-                        <summary>Do you guarantee results?</summary>
-                        <p>No. Dynmo removes friction and improves process. Outcomes still depend on offer, traffic, market, and execution.</p>
-                    </details>
+                    <div class="demo-caption"><strong>Problem → Agent → Plan</strong><span>Simple. Clean. Sellable.</span></div>
                 </div>
             </div>
         </section>
 
         <section class="section final-cta">
-            <div class="container final-cta-box reveal">
+            <div class="container final-cta-box reveal premium-final">
                 <span class="section-kicker">Next Move</span>
-                <h2>Start with the Assessment Agent.</h2>
-                <p>Then build the right custom agent.</p>
-                <a class="button button-primary" href="assessment.html">Start Assessment</a>
+                <h2>Let the Assessment Agent pick the build.</h2>
+                <a class="button button-primary" href="assessment.html">Find My Agent</a>
+                <p>No guaranteed income claims. Static preview uses an honest rules engine; real model-backed AI needs a secure backend.</p>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <div class="container footer-grid">
-            <div>
-                <strong>Dynmo</strong>
-                <p>Custom AI agents for real business leaks.</p>
-            </div>
-            <div>
-                <span>Static site note</span>
-                <p>No fake CRM or backend claim. The current lead and plan stay on-device until a real backend exists.</p>
-            </div>
-        </div>
+        <div class="container footer-grid"><div><strong>Dynmo</strong><p>Custom AI agents for real business leaks.</p></div><div><span>Static preview</span><p>No fake CRM/backend claim. Lead details stay on-device until a real backend exists.</p></div></div>
     </footer>
-
     <script src="assets/js/site.js"></script>
 </body>
 </html>
