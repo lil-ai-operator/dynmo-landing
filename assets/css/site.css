@@ -1421,9 +1421,9 @@ p {
 }
 .premium-brand img,
 .brand.premium-brand img {
-    width: clamp(8.8rem, 14vw, 12.5rem);
+    width: clamp(11rem, 18vw, 15rem);
     height: auto;
-    max-height: 4rem;
+    max-height: 5rem;
     object-fit: contain;
     display: block;
 }
@@ -1478,7 +1478,7 @@ p {
 .premium-final { padding: clamp(2rem, 5vw, 4rem); }
 .premium-final h2 { max-width: 12ch; margin-inline: auto; }
 .premium-final p { max-width: 42rem; margin-inline: auto; font-size: .9rem; }
-.assessment-page .premium-brand img { width: clamp(8.8rem, 14vw, 12.5rem); height: auto; }
+.assessment-page .premium-brand img { width: clamp(11rem, 18vw, 15rem); height: auto; }
 .assessment-page .assessment-hero h1 { max-width: 10ch; }
 .assessment-page .assessment-hero .hero-text { max-width: 34rem; }
 @media (max-width: 1100px) {
@@ -1489,7 +1489,7 @@ p {
     .premium-nav { border-radius: 1.1rem; align-items: center; }
     .premium-brand img,
     .brand.premium-brand img,
-    .assessment-page .premium-brand img { width: 9.4rem; max-height: 3.6rem; }
+    .assessment-page .premium-brand img { width: 11rem; max-height: 4.2rem; }
     .premium-hero-grid, .agent-card-grid { grid-template-columns: 1fr; }
     .premium-hero { padding-top: 3rem; }
     .premium-hero h1 { max-width: 9.5ch; }
