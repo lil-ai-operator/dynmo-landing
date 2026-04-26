@@ -22,7 +22,7 @@
 
     <header class="nav-wrap">
         <nav class="nav">
-            <a class="brand" href="#top" aria-label="Dynmo home">
+            <a class="brand" href="index.html" aria-label="Dynmo home">
                 <img src="dynmo-logo-nav.png" alt="Dynmo logo">
                 <span>Dynmo</span>
             </a>
@@ -31,12 +31,12 @@
                 <span></span>
             </button>
             <div class="nav-menu" id="navMenu">
-                <a href="#assessment">Assessment</a>
-                <a href="#systems">Systems</a>
-                <a href="#packs">Packs</a>
-                <a href="#proof">Demo</a>
-                <a href="#faq">FAQ</a>
-                <a class="nav-cta" href="#assessment">Get Your Plan</a>
+                <a href="assessment.html">Assessment</a>
+                <a href="index.html#systems">Systems</a>
+                <a href="index.html#packs">Packs</a>
+                <a href="index.html#proof">Demo</a>
+                <a href="index.html#faq">FAQ</a>
+                <a class="nav-cta" href="assessment.html">Get Your Plan</a>
             </div>
         </nav>
     </header>
@@ -52,7 +52,7 @@
                     <h1>Your AI that never stops earning.</h1>
                     <p class="hero-text">Dynmo builds fast-moving AI systems that catch enquiries, follow up harder, and keep your business alive after you clock off. Start with the adaptive assessment. Leave with a plan that actually fits your stage.</p>
                     <div class="hero-actions">
-                        <a class="button button-primary" href="#assessment">Run The AI Assessment</a>
+                        <a class="button button-primary" href="assessment.html">Run The AI Assessment</a>
                         <a class="button button-secondary" href="#packs">See The Packs</a>
                     </div>
                     <div class="hero-microproof">
@@ -113,50 +113,25 @@
             </div>
         </section>
 
-        <section class="section assessment-section" id="assessment">
-            <div class="container">
+        <section class="section assessment-gateway" id="assessment">
+            <div class="container gateway-grid">
                 <div class="section-heading reveal">
                     <span class="section-kicker">Core funnel</span>
-                    <h2>The adaptive AI assessment</h2>
-                    <p>Pick your stage, answer the next questions, and Dynmo shifts the plan around you. The logic is deterministic for reliability. The output feels personal because it is built from what you actually said.</p>
+                    <h2>The assessment now lives on its own dedicated page.</h2>
+                    <p>No cramped one-page quiz. Dynmo now sends people into a focused assessment experience that branches by stage, adapts follow-up questions, captures the lead, and returns a practical AI-system plan.</p>
                 </div>
-
-                <div class="assessment-layout">
-                    <aside class="assessment-aside reveal" data-delay="80">
-                        <div class="aside-card">
-                            <span class="aside-label">What you get</span>
-                            <ul>
-                                <li>Fast diagnosis of your current stage</li>
-                                <li>Teaser insight before the full plan</li>
-                                <li>Recommended Dynmo system and pack</li>
-                                <li>A practical 7-day action plan</li>
-                            </ul>
-                        </div>
-                        <div class="aside-card aside-card-glow">
-                            <span class="aside-label">Who this works for</span>
-                            <p>Existing business, side hustle, business idea not started, or no idea yet. No dead-end branch.</p>
-                        </div>
-                    </aside>
-
-                    <div class="assessment-shell reveal" data-delay="140">
-                        <div class="assessment-topline">
-                            <div>
-                                <span class="live-badge">Adaptive mode active</span>
-                                <h3 id="assessmentModeTitle">Stage detection</h3>
-                            </div>
-                            <div class="progress-wrap">
-                                <div class="progress-text" id="progressText">Question 1</div>
-                                <div class="progress-bar"><span id="progressBar"></span></div>
-                            </div>
-                        </div>
-
-                        <div id="assessmentStage" class="assessment-stage"></div>
-
-                        <div class="assessment-footer">
-                            <button class="button button-ghost" id="backButton" type="button" hidden>Back</button>
-                            <button class="button button-primary" id="nextButton" type="button" disabled>Next</button>
-                        </div>
-                    </div>
+                <div class="gateway-card reveal" data-delay="120">
+                    <div class="gateway-orb" aria-hidden="true"></div>
+                    <span class="live-badge">Dedicated funnel</span>
+                    <h3>2-minute adaptive diagnosis</h3>
+                    <ul>
+                        <li>Stage split: business, side hustle, idea, or no idea yet</li>
+                        <li>Conditional follow-up questions based on previous answers</li>
+                        <li>Booking / Revenue / Machine Pack recommendation</li>
+                        <li>Lead capture before the full personalised plan</li>
+                    </ul>
+                    <a class="button button-primary" href="assessment.html">Open The Assessment</a>
+                    <p class="helper-text">Static GitHub Pages version uses a transparent adaptive rules engine. Real model-backed AI requires a secure backend so no API keys leak in the browser.</p>
                 </div>
             </div>
         </section>
@@ -285,28 +260,28 @@
                         <h3>Idea ignition guidance</h3>
                         <p>For people with an idea forming or no idea yet. Focus on niche, offer, channel, and first proof of demand before heavier automation.</p>
                         <div class="pack-price">Start here before packs</div>
-                        <a class="button button-ghost" href="#assessment">Get my starter path</a>
+                        <a class="button button-ghost" href="assessment.html">Get my starter path</a>
                     </article>
                     <article class="pack-card pack-card-featured reveal" data-delay="80">
                         <span class="pack-pill">Booking Pack</span>
                         <h3>Inbound capture and appointment flow</h3>
                         <p>For missed bookings, hot enquiries, service businesses, and quick inbound wins.</p>
                         <div class="pack-price">Best first system for appointment businesses</div>
-                        <a class="button button-primary" href="#assessment">See if it fits</a>
+                        <a class="button button-primary" href="assessment.html">See if it fits</a>
                     </article>
                     <article class="pack-card reveal" data-delay="160">
                         <span class="pack-pill">Revenue Pack</span>
                         <h3>Follow-up, reviews, reactivation, growth</h3>
                         <p>For businesses already getting customers but leaking repeat revenue and referrals.</p>
                         <div class="pack-price">Best for customer growth loops</div>
-                        <a class="button button-ghost" href="#assessment">Find my growth lane</a>
+                        <a class="button button-ghost" href="assessment.html">Find my growth lane</a>
                     </article>
                     <article class="pack-card reveal" data-delay="240">
                         <span class="pack-pill">Machine Pack</span>
                         <h3>Advanced automation for serious operators</h3>
                         <p>For scale-minded teams who need a stronger cross-channel system and operational AI help.</p>
                         <div class="pack-price">Best for multi-step automation builds</div>
-                        <a class="button button-ghost" href="#assessment">Map the machine</a>
+                        <a class="button button-ghost" href="assessment.html">Map the machine</a>
                     </article>
                 </div>
             </div>
@@ -345,7 +320,7 @@
                 <span class="section-kicker">Next move</span>
                 <h2>Run the assessment. Find the leak. Build the right AI lane.</h2>
                 <p>Dynmo is strongest when the system matches the stage. That is exactly what this site now pushes people toward.</p>
-                <a class="button button-primary" href="#assessment">Start The Adaptive Assessment</a>
+                <a class="button button-primary" href="assessment.html">Start The Adaptive Assessment</a>
             </div>
         </section>
     </main>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Dynmo Assessment | Personalised AI System Plan</title>
+    <meta name="description" content="Run the dedicated Dynmo assessment and get a personalised AI system plan, pack recommendation, and 7-day action route.">
+    <meta property="og:title" content="Dynmo Assessment | Personalised AI System Plan">
+    <meta property="og:description" content="Adaptive questions, lead capture, and a personalised Dynmo pack recommendation.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body class="assessment-page">
+    <div class="site-shell" aria-hidden="true">
+        <div class="ambient ambient-one"></div>
+        <div class="ambient ambient-two"></div>
+        <div class="ambient-grid"></div>
+    </div>
+
+    <header class="nav-wrap">
+        <nav class="nav">
+            <a class="brand" href="index.html" aria-label="Dynmo home">
+                <img src="dynmo-logo-nav.png" alt="Dynmo logo">
+                <span>Dynmo</span>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu">
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-menu" id="navMenu">
+                <a href="assessment.html">Assessment</a>
+                <a href="index.html#systems">Systems</a>
+                <a href="index.html#packs">Packs</a>
+                <a href="index.html#proof">Demo</a>
+                <a href="index.html#faq">FAQ</a>
+                <a class="nav-cta" href="assessment.html">Get Your Plan</a>
+            </div>
+        </nav>
+    </header>
+
+    <main id="top">
+        <section class="hero section assessment-hero">
+            <div class="container hero-grid">
+                <div class="hero-copy reveal">
+                    <div class="eyebrow"><span class="eyebrow-dot"></span>Dedicated assessment page</div>
+                    <h1>Find the exact AI system your stage needs.</h1>
+                    <p class="hero-text">No one-size-fits-all quiz. This page branches from your current stage, asks different follow-up questions, captures your lead details, then gives you a pack recommendation and 7-day plan.</p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="#assessment">Start Assessment</a>
+                        <a class="button button-secondary" href="index.html">Back To Site</a>
+                    </div>
+                </div>
+                <div class="hero-visual reveal" data-delay="120">
+                    <div class="assessment-mini-map">
+                        <span>Stage</span><b>→</b><span>Adaptive questions</span><b>→</b><span>Lead capture</span><b>→</b><span>Plan + pack</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section assessment-section" id="assessment" data-dedicated="true">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <span class="section-kicker">Core funnel</span>
+                    <h2>Your dedicated Dynmo AI-system assessment</h2>
+                    <p>Start with your current stage. Dynmo then changes the follow-up questions, lead score, recommended pack, and action plan around what you answer. This public static version uses an adaptive rules engine; model-backed AI needs a secure backend next.</p>
+                </div>
+
+                <div class="assessment-layout">
+                    <aside class="assessment-aside reveal" data-delay="80">
+                        <div class="aside-card">
+                            <span class="aside-label">What you get</span>
+                            <ul>
+                                <li>Fast diagnosis of your current stage</li>
+                                <li>Teaser insight before the full plan</li>
+                                <li>Recommended Dynmo system and pack</li>
+                                <li>A practical 7-day action plan</li>
+                            </ul>
+                        </div>
+                        <div class="aside-card aside-card-glow">
+                            <span class="aside-label">Who this works for</span>
+                            <p>Existing business, side hustle, business idea not started, or no idea yet. No dead-end branch.</p>
+                        </div>
+                    </aside>
+
+                    <div class="assessment-shell reveal" data-delay="140">
+                        <div class="assessment-topline">
+                            <div>
+                                <span class="live-badge">Adaptive mode active</span>
+                                <h3 id="assessmentModeTitle">Stage detection</h3>
+                            </div>
+                            <div class="progress-wrap">
+                                <div class="progress-text" id="progressText">Question 1</div>
+                                <div class="progress-bar"><span id="progressBar"></span></div>
+                            </div>
+                        </div>
+
+                        <div id="assessmentStage" class="assessment-stage"></div>
+
+                        <div class="assessment-footer">
+                            <button class="button button-ghost" id="backButton" type="button" hidden>Back</button>
+                            <button class="button button-primary" id="nextButton" type="button" disabled>Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div><strong>Dynmo</strong><p>AI energy for unstoppable businesses.</p></div>
+            <div><span>Static site note</span><p>This assessment uses an adaptive rules engine on GitHub Pages. Real AI model generation needs a secure backend/API layer.</p></div>
+        </div>
+    </footer>
+    <script src="assets/js/site.js"></script>
+</body>
+</html>

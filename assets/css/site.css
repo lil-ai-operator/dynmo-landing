@@ -1082,3 +1082,249 @@ p {
         transform: none;
     }
 }
+
+/* Corrective pass: dedicated assessment page + mobile hardening */
+.brand img {
+    width: 3.25rem;
+    height: 3.25rem;
+}
+
+.brand span {
+    font-size: 1.08rem;
+}
+
+.assessment-gateway .gateway-grid {
+    display: grid;
+    grid-template-columns: 0.92fr 1.08fr;
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+.gateway-card,
+.assessment-mini-map {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--panel-strong);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+}
+
+.gateway-card h3 {
+    margin-top: 1rem;
+}
+
+.gateway-card ul {
+    margin: 1rem 0 1.25rem;
+    padding-left: 1.1rem;
+    color: var(--muted-strong);
+    line-height: 1.8;
+}
+
+.gateway-orb {
+    position: absolute;
+    right: -3rem;
+    top: -3rem;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(93, 230, 255, 0.28), transparent 68%);
+    pointer-events: none;
+}
+
+.assessment-page .assessment-section {
+    padding-top: 2rem;
+}
+
+.assessment-hero {
+    padding-bottom: 2rem;
+}
+
+.assessment-mini-map {
+    min-height: 20rem;
+    display: grid;
+    align-content: center;
+    gap: 0.85rem;
+    font-family: "Syne", sans-serif;
+    font-size: clamp(1.45rem, 3vw, 2.7rem);
+}
+
+.assessment-mini-map span {
+    display: inline-flex;
+    width: fit-content;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    background: rgba(93, 230, 255, 0.08);
+    color: var(--text);
+}
+
+.assessment-mini-map b {
+    color: var(--cyan);
+    font-size: 1.1rem;
+}
+
+.demo-shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.demo-screen {
+    flex: 1;
+    min-height: 24rem;
+}
+
+.demo-track {
+    min-height: 0;
+    overflow: hidden;
+}
+
+.option-card strong::after {
+    content: "";
+}
+
+.question-card::before,
+.teaser-card::before,
+.lead-card::before,
+.result-card::before {
+    content: "branching path";
+    display: inline-flex;
+    margin-bottom: 0.75rem;
+    padding: 0.28rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(89, 243, 191, 0.08);
+    color: var(--green);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+}
+
+@media (max-width: 1100px) {
+    .assessment-gateway .gateway-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 760px) {
+    .brand img {
+        width: 3.6rem;
+        height: 3.6rem;
+    }
+
+    .brand span {
+        font-size: 1.22rem;
+    }
+
+    .nav {
+        width: min(var(--container), calc(100% - 1rem));
+    }
+
+    .hero-grid {
+        gap: 1.25rem;
+    }
+
+    .hero-visual {
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .hero-orbit {
+        min-height: auto;
+        display: grid;
+        gap: 1rem;
+    }
+
+    .hero-card,
+    .hero-card:first-child,
+    .hero-card-secondary,
+    .hero-phone {
+        position: relative;
+        inset: auto;
+        width: 100%;
+    }
+
+    .hero-card:first-child,
+    .hero-card-secondary {
+        top: auto;
+        right: auto;
+        bottom: auto;
+        left: auto;
+    }
+
+    .hero-phone {
+        min-height: 27rem;
+        border-radius: 1.7rem;
+    }
+
+    .chat-stack,
+    .demo-track {
+        height: auto;
+        min-height: 16rem;
+        padding: 0.9rem;
+    }
+
+    .chat-bubble,
+    .demo-bubble {
+        max-width: 92%;
+        font-size: 0.9rem;
+        padding: 0.72rem 0.85rem;
+    }
+
+    .phone-action {
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        margin: 0 0.9rem 0.9rem;
+    }
+
+    .demo-shell {
+        padding: 0.75rem;
+        min-height: auto;
+        border-radius: 1.55rem;
+    }
+
+    .demo-screen {
+        height: auto;
+        min-height: 22rem;
+        border-radius: 1.2rem;
+    }
+
+    .demo-caption {
+        font-size: 0.92rem;
+    }
+
+    .assessment-shell {
+        padding: 0.9rem;
+        border-radius: 1.35rem;
+    }
+
+    .question-card,
+    .teaser-card,
+    .lead-card,
+    .result-card {
+        padding: 1rem;
+        border-radius: 1.1rem;
+    }
+
+    .options-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .option-card {
+        min-height: auto;
+        padding: 0.95rem;
+    }
+
+    .assessment-mini-map {
+        min-height: auto;
+        font-size: 1.35rem;
+    }
+
+    .gateway-card,
+    .assessment-mini-map {
+        padding: 1rem;
+        border-radius: 1.25rem;
+    }
+}
