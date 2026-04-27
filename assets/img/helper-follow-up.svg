@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="Follow-up helper icon">
+<defs><linearGradient id="g" x1="28" y1="150" x2="150" y2="26"><stop stop-color="#59f3bf"/><stop offset="1" stop-color="#217cff"/></linearGradient></defs>
+<circle cx="90" cy="90" r="62" fill="#f8fbff" stroke="url(#g)" stroke-width="10"/>
+<path d="M54 102c15 20 49 25 72 2 20-21 18-55-4-74" fill="none" stroke="url(#g)" stroke-width="11" stroke-linecap="round"/>
+<path d="M118 31h31v31" fill="none" stroke="url(#g)" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M62 94h52M91 65v58" stroke="#59f3bf" stroke-width="10" stroke-linecap="round"/>
+</svg>

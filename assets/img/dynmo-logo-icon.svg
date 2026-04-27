@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Dynmo icon">
+<defs><linearGradient id="g" x1="12" y1="12" x2="108" y2="108"><stop stop-color="#217cff"/><stop offset=".55" stop-color="#5de6ff"/><stop offset="1" stop-color="#59f3bf"/></linearGradient></defs>
+<circle cx="60" cy="60" r="54" fill="#f8fbff"/>
+<path d="M29 78 76 27h19L49 78h30L43 111H24l34-33H29Z" fill="url(#g)"/>
+</svg>

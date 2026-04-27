@@ -3,36 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Dynmo Demo | Problem To Agent Match</title>
-    <meta name="description" content="Preview the Dynmo Assessment Agent matching business problems to custom AI agents.">
-    <meta property="og:title" content="Dynmo Demo | Problem To Agent Match">
-    <meta property="og:description" content="Preview the Dynmo Assessment Agent matching business problems to custom AI agents.">
+    <title>Demo | Dynmo</title>
+    <meta name="description" content="Watch a tangible Dynmo assessment and helper recommendation preview.">
+    <meta property="og:title" content="Demo | Dynmo">
+    <meta property="og:description" content="See the guided assessment preview and what happens after the match.">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body class="premium-home subpage">
-    <div class="site-shell" aria-hidden="true"><div class="ambient ambient-one"></div><div class="ambient ambient-two"></div><div class="ambient-grid"></div></div>
-    <header class="nav-wrap">
-        <nav class="nav premium-nav">
-            <a class="brand premium-brand" href="index.html" aria-label="Dynmo home"><img src="dynmo-logo.svg" alt="Dynmo"></a>
-            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu"><span></span><span></span></button>
+<body class="page-subpage">
+    <div class="site-bg" aria-hidden="true">
+        <div class="bg-orb bg-orb-one"></div>
+        <div class="bg-orb bg-orb-two"></div>
+        <div class="bg-grid"></div>
+    </div>
+
+    <header class="site-header">
+        <nav class="nav">
+            <a class="brand" href="index.html" aria-label="Dynmo home">
+                <img src="assets/img/dynmo-logo-minimal.svg" alt="Dynmo">
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu">
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-menu" id="navMenu">
                 <a href="assessment.html">Assessment</a>
-                <a href="agents.html">Agents</a>
-                <a href="build-lanes.html">Build Lanes</a>
+                <a href="agents.html">Ways Dynmo Can Help</a>
+                <a href="build-lanes.html">Ways To Build</a>
                 <a href="how-it-works.html">How It Works</a>
                 <a href="demo.html">Demo</a>
-                <a class="nav-cta" href="assessment.html">Find My Agent</a>
+                <a class="button button-nav" href="assessment.html">Try It</a>
             </div>
         </nav>
     </header>
-    <main id="top">
-<section class="hero section premium-hero subpage-hero"><div class="container"><div class="section-heading reveal premium-heading"><span class="section-kicker">Demo</span><h1>Problem → Agent → Plan.</h1><p>A buyer should feel like Dynmo understands their leak before it sells anything.</p></div></div></section>
-<section class="section proof-section"><div class="container proof-grid premium-demo-grid"><div class="proof-copy reveal"><span class="section-kicker">Live-style preview</span><h2>The match is the hook.</h2><p>The demo shows how the Assessment Agent turns vague pain into a clear custom agent direction.</p><a class="button button-primary" href="assessment.html">Try The Assessment</a></div><div class="demo-shell reveal" data-delay="120"><div class="demo-screen"><div class="demo-header"><span>Agent match demo</span><strong>●</strong></div><div class="demo-track" id="demoTrack"></div></div><div class="demo-caption"><strong>Clean buying journey</strong><span>No menu confusion.</span></div></div></div></section><section class="section final-cta"><div class="container final-cta-box reveal premium-final"><span class="section-kicker">Next Move</span><h2>Let the Assessment Agent pick the build.</h2><a class="button button-primary" href="assessment.html">Find My Agent</a></div></section></main>
-    <footer class="footer"><div class="container footer-grid"><div><strong>Dynmo</strong><p>Custom AI agents for real business leaks.</p></div><div><span>Static preview</span><p>No fake CRM/backend claim. Lead details stay on-device until a real backend exists.</p></div></div></footer>
+
+    <main>
+        <section class="section hero hero-subpage">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <span class="section-kicker">Demo</span>
+                    <h1>See the helper match happen in a way people can actually picture.</h1>
+                    <p>The point is not sci-fi. The point is showing a customer how missed demand becomes a clearer next step.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container preview-grid">
+                <div class="preview-device reveal">
+                    <div class="device-screen">
+                        <div class="device-top">
+                            <strong>Dynmo demo loop</strong>
+                            <span>Adaptive preview</span>
+                        </div>
+                        <div class="device-chat" id="demoTrack" aria-label="Animated Dynmo demo"></div>
+                        <div class="device-progress">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="demo-points reveal" data-delay="120">
+                    <span class="section-kicker">What You Are Seeing</span>
+                    <h2>A simple path from problem to plan.</h2>
+                    <p>The demo shows a guided question flow, a best-fit helper recommendation, and a clear route into pricing and build depth.</p>
+                    <div class="compare-list">
+                        <p><strong>Question:</strong> where are you losing people?</p>
+                        <p><strong>Match:</strong> which helper fixes that first?</p>
+                        <p><strong>Next step:</strong> which build tier makes sense?</p>
+                    </div>
+                    <a class="button button-primary button-sweep" href="assessment.html">Try It On Your Business</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div><strong>Dynmo</strong><p>Tangible, simple, and honest.</p></div>
+            <div><strong>Static preview</strong><p>Guided loop now. Secure backend later.</p></div>
+        </div>
+    </footer>
+
     <script src="assets/js/site.js"></script>
 </body>
 </html>

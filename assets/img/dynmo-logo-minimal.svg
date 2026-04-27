@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 180" role="img" aria-labelledby="title">
+<title id="title">Dynmo</title>
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#217cff"/><stop offset="0.55" stop-color="#5de6ff"/><stop offset="1" stop-color="#59f3bf"/></linearGradient>
+</defs>
+<rect width="720" height="180" fill="none"/>
+<path d="M61 34h61c37 0 62 23 62 56s-25 56-62 56H61V34Zm57 84c19 0 31-11 31-28s-12-28-31-28H95v56h23Z" fill="url(#g)"/>
+<path d="M213 65l25 49 24-49h35l-70 126h-34l24-43-43-83h39ZM308 65h31v11c6-8 17-14 31-14 24 0 40 16 40 44v40h-32v-35c0-14-7-21-18-21-13 0-21 8-21 24v32h-31V65ZM428 65h31v10c7-8 17-13 31-13 15 0 27 6 34 17 8-11 21-17 37-17 26 0 43 16 43 45v39h-32v-35c0-14-6-21-17-21-12 0-19 8-19 24v32h-32v-35c0-14-6-21-17-21-12 0-20 8-20 24v32h-31V65ZM663 62c28 0 49 19 49 43s-21 44-49 44-49-19-49-44 21-43 49-43Zm0 27c-11 0-19 7-19 16s8 17 19 17 19-7 19-17-8-16-19-16Z" fill="#0b1630"/>
+<path d="M42 151 164 29h37L79 151H42Z" fill="url(#g)" opacity=".95"/>
+</svg>

@@ -3,117 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Dynmo Assessment Agent | Match The Right AI Agent</title>
-    <meta name="description" content="Talk to the Dynmo Assessment Agent and get matched to the right AI agent, build lane, and 7-day action plan.">
-    <meta property="og:title" content="Dynmo Assessment Agent | Match The Right AI Agent">
-    <meta property="og:description" content="Agent-led adaptive assessment, lead capture, and an honest static rules-engine recommendation flow.">
+    <title>Dynmo Assessment | Find the right AI helper</title>
+    <meta name="description" content="Answer a few simple questions and see which Dynmo AI helper and build tier fit your business best.">
+    <meta property="og:title" content="Dynmo Assessment | Find the right AI helper">
+    <meta property="og:description" content="Guided by your answers. Honest adaptive preview until a secure backend exists.">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body class="assessment-page">
-    <div class="site-shell" aria-hidden="true">
-        <div class="ambient ambient-one"></div>
-        <div class="ambient ambient-two"></div>
-        <div class="ambient-grid"></div>
+<body class="page-assessment">
+    <div class="site-bg" aria-hidden="true">
+        <div class="bg-orb bg-orb-one"></div>
+        <div class="bg-orb bg-orb-two"></div>
+        <div class="bg-grid"></div>
     </div>
 
-    <header class="nav-wrap">
-        <nav class="nav premium-nav">
-            <a class="brand premium-brand" href="index.html" aria-label="Dynmo home"><img src="dynmo-logo.svg" alt="Dynmo"></a>
-            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu"><span></span><span></span></button>
+    <header class="site-header">
+        <nav class="nav">
+            <a class="brand" href="index.html" aria-label="Dynmo home">
+                <img src="assets/img/dynmo-logo-minimal.svg" alt="Dynmo">
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu">
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-menu" id="navMenu">
                 <a href="assessment.html">Assessment</a>
-                <a href="agents.html">Agents</a>
-                <a href="build-lanes.html">Build Lanes</a>
+                <a href="agents.html">Ways Dynmo Can Help</a>
+                <a href="build-lanes.html">Ways To Build</a>
                 <a href="how-it-works.html">How It Works</a>
                 <a href="demo.html">Demo</a>
-                <a class="nav-cta" href="assessment.html">Find My Agent</a>
+                <a class="button button-nav" href="build-lanes.html">See Pricing</a>
             </div>
         </nav>
     </header>
 
-    <main id="top">
-        <section class="hero section assessment-hero">
-            <div class="container hero-grid">
-                <div class="hero-copy reveal">
-                    <div class="eyebrow"><span class="eyebrow-dot"></span>AI Assessment Agent</div>
-                    <h1>Talk to the Assessment Agent.</h1>
-                    <p class="hero-text">Answer a few sharp prompts. Get matched to the custom AI agent your business actually needs.</p>
-                    <div class="hero-actions">
-                        <a class="button button-primary" href="#assessment">Start Agent Match</a>
-                        <a class="button button-secondary" href="index.html">Back To Site</a>
-                    </div>
+    <main>
+        <section class="section hero hero-assessment">
+            <div class="container assessment-hero-grid">
+                <div class="reveal">
+                    <div class="eyebrow">Guided helper conversation</div>
+                    <h1>Tell us what is slowing the business down.</h1>
+                    <p class="hero-lead">This version is guided by your answers and shows an adaptive preview of the real assessment experience. It does not fake a live model, CRM, or backend.</p>
                 </div>
-                <div class="hero-visual reveal" data-delay="120">
-                    <div class="assessment-mini-map assessment-agent-preview">
-                        <div class="agent-preview-line agent-preview-agent">Assessment Agent</div>
-                        <div class="agent-preview-line">"What is breaking first?"</div>
-                        <div class="agent-preview-line">"Where does the customer leak?"</div>
-                        <div class="agent-preview-line agent-preview-result">Best-fit agent ready</div>
+                <div class="assessment-hero-side reveal" data-delay="120">
+                    <div class="mini-helper-card">
+                        <img src="assets/img/helper-idea.svg" alt="Dynmo helper preview">
+                        <div>
+                            <strong>What you get</strong>
+                            <p>Best-fit helper, why it fits, first wins, and the build tier that makes sense next.</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="section assessment-section" id="assessment" data-dedicated="true">
+
+        <section class="section section-tight">
+            <div class="container assessment-shell-wrap">
+                <div class="assessment-top reveal">
+                    <div>
+                        <span class="section-kicker">Adaptive Preview</span>
+                        <h2 id="assessmentModeTitle">Opening check</h2>
+                    </div>
+                    <div class="progress-cluster">
+                        <span id="progressText">Question 1</span>
+                        <div class="progress-bar"><span id="progressBar"></span></div>
+                    </div>
+                </div>
+
+                <div class="assessment-shell reveal" data-delay="120">
+                    <div id="assessmentStage" class="assessment-stage" aria-live="polite"></div>
+                    <div class="assessment-actions">
+                        <button class="button button-secondary" id="backButton" type="button" hidden>Back</button>
+                        <button class="button button-primary button-sweep" id="nextButton" type="button" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="assessmentPricing">
             <div class="container">
                 <div class="section-heading reveal">
-                    <span class="section-kicker">Assessment Flow</span>
-                    <h2>No menus. No guessing. Just the right agent path.</h2>
-                    <p>This public preview uses an honest adaptive rules engine. Real model-backed replies come next with a secure backend.</p>
+                    <span class="section-kicker">Build Tiers</span>
+                    <h2>When your result is ready, these are the paths you can take.</h2>
+                    <p>Pricing sits after the recommendation, not before it.</p>
                 </div>
-
-                <div class="assessment-layout">
-                    <aside class="assessment-aside reveal" data-delay="80">
-                        <div class="aside-card">
-                            <span class="aside-label">What you get</span>
-                            <ul>
-                                <li>Best-fit agent</li>
-                                <li>Build lane recommendation</li>
-                                <li>Lead capture before full plan</li>
-                                <li>7-day action plan</li>
-                            </ul>
-                        </div>
-                        <div class="aside-card aside-card-glow">
-                            <span class="aside-label">Static note</span>
-                            <p>No fake backend. No hidden CRM save. Real model-backed AI comes later with secure infrastructure.</p>
-                        </div>
-                    </aside>
-
-                    <div class="assessment-shell reveal" data-delay="140">
-                        <div class="assessment-topline">
-                            <div>
-                                <span class="live-badge">Assessment Agent online</span>
-                                <h3 id="assessmentModeTitle">Opening scan</h3>
-                            </div>
-                            <div class="progress-wrap">
-                                <div class="progress-text" id="progressText">Opening prompt</div>
-                                <div class="progress-bar"><span id="progressBar"></span></div>
-                            </div>
-                        </div>
-
-                        <div id="assessmentStage" class="assessment-stage"></div>
-
-                        <div class="assessment-footer">
-                            <button class="button button-ghost" id="backButton" type="button" hidden>Back</button>
-                            <button class="button button-primary" id="nextButton" type="button" disabled>Next</button>
-                        </div>
-                    </div>
+                <div class="pricing-grid">
+                    <article class="pricing-card reveal">
+                        <span class="pricing-tag">Starter</span>
+                        <h3>£97 setup + £20/mo</h3>
+                        <p>For one simple helper flow and a focused first win.</p>
+                    </article>
+                    <article class="pricing-card pricing-card-featured reveal" data-delay="100">
+                        <span class="pricing-tag">Growth</span>
+                        <h3>£150 setup + £30/mo</h3>
+                        <p>For a stronger booking and follow-up setup.</p>
+                    </article>
+                    <article class="pricing-card reveal" data-delay="200">
+                        <span class="pricing-tag">Agency</span>
+                        <h3>£297 setup + £50/mo</h3>
+                        <p>For broader routing, admin support, and team handoff.</p>
+                    </article>
                 </div>
             </div>
         </section>
-
-
     </main>
 
-    <footer class="footer">
+    <footer class="site-footer">
         <div class="container footer-grid">
-            <div><strong>Dynmo</strong><p>Custom AI agents for real business leaks.</p></div>
-            <div><span>Static site note</span><p>This assessment runs as an adaptive rules engine on GitHub Pages. Real AI model generation still needs a secure backend/API layer.</p></div>
+            <div>
+                <strong>Dynmo</strong>
+                <p>Custom AI helpers for everyday businesses.</p>
+            </div>
+            <div>
+                <strong>Honest preview</strong>
+                <p>Your answers and plan stay on this device unless you copy or email them. Secure backend work still comes later.</p>
+            </div>
         </div>
     </footer>
+
     <script src="assets/js/site.js"></script>
 </body>
 </html>

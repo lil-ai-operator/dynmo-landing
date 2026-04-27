@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="Booking helper icon">
+<defs><linearGradient id="g" x1="28" y1="24" x2="150" y2="154"><stop stop-color="#217cff"/><stop offset="1" stop-color="#5de6ff"/></linearGradient></defs>
+<rect x="30" y="42" width="120" height="104" rx="28" fill="#f8fbff" stroke="url(#g)" stroke-width="10"/>
+<path d="M57 32v28M123 32v28M53 78h74" stroke="url(#g)" stroke-width="10" stroke-linecap="round"/>
+<path d="m70 111 16 16 32-39" fill="none" stroke="#59f3bf" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

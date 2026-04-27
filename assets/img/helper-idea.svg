@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="Idea helper icon">
+<defs><linearGradient id="g" x1="34" y1="28" x2="146" y2="152"><stop stop-color="#ffd700"/><stop offset=".58" stop-color="#5de6ff"/><stop offset="1" stop-color="#217cff"/></linearGradient></defs>
+<rect x="34" y="34" width="112" height="112" rx="34" fill="#f8fbff" stroke="url(#g)" stroke-width="10"/>
+<path d="M90 48c-21 0-37 16-37 36 0 13 7 24 18 31v13h38v-13c11-7 18-18 18-31 0-20-16-36-37-36Z" fill="none" stroke="url(#g)" stroke-width="10" stroke-linejoin="round"/>
+<path d="M76 132h28M80 151h20M90 70v28M76 84h28" stroke="#ffd700" stroke-width="9" stroke-linecap="round"/>
+</svg>

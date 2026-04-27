@@ -1,435 +1,167 @@
-const STORAGE_KEY = "dynmo-assessment-v2";
+const STORAGE_KEY = "dynmo-assessment-v3";
 
-const branchQuestions = {
+const branches = {
     existing_business: [
-        {
-            id: "businessType",
-            modeTitle: "Business scan",
-            title: "What kind of business are you running right now?",
-            detail: "This helps Dynmo judge where bookings, sales, or customer momentum usually leak first.",
-            options: [
-                { value: "appointment", label: "Appointment business", hint: "Barber, clinic, beauty, coaching, fitness, consulting." },
-                { value: "service", label: "Service business", hint: "Trades, field service, home service, local specialists." },
-                { value: "retail", label: "Retail or hospitality", hint: "Shop, takeaway, food, venue, footfall-led business." },
-                { value: "agency", label: "Agency or team-led service", hint: "Lead handling, sales follow-up, multiple moving parts." }
-            ]
-        },
-        {
-            id: "mainLeak",
-            modeTitle: "Leak detection",
-            title: "Where are you losing the most energy right now?",
-            detail: "Pick the leak that hurts the most today, not the one that sounds clever.",
-            options: [
-                { value: "missed-enquiries", label: "Missed enquiries or booking requests", hint: "Hot leads cool off before anyone replies." },
-                { value: "follow-up", label: "Weak follow-up after the first conversation", hint: "Leads fade, quotes stall, customers vanish." },
-                { value: "repeat-revenue", label: "Low repeat bookings, upsells, or reviews", hint: "Customers buy once, then disappear." },
-                { value: "complex-ops", label: "Too many channels and manual steps", hint: "The business is growing but the system is messy." }
-            ]
-        },
-        {
-            id: "leadVolume",
-            modeTitle: "Signal strength",
-            title: "How much demand is already touching the business each week?",
-            detail: "This tells Dynmo whether the first move is capture, nurture, or scale support.",
-            options: [
-                { value: "low", label: "Light flow", hint: "A few enquiries or bookings per week." },
-                { value: "steady", label: "Steady flow", hint: "Consistent enquiries, but not fully controlled." },
-                { value: "busy", label: "Busy already", hint: "Plenty coming in, but the handling is messy." },
-                { value: "heavy", label: "Heavy demand", hint: "High volume across multiple channels or team members." }
-            ]
-        },
-        {
-            id: "channels",
-            modeTitle: "Channel read",
-            title: "Where do customers usually hit you first?",
-            detail: "Dynmo uses this to frame the fastest deployment angle.",
-            options: [
-                { value: "phone-dm", label: "Phone calls and DMs", hint: "Fast response matters more than long sales process." },
-                { value: "web-google", label: "Website and Google", hint: "Search demand and form replies matter." },
-                { value: "social", label: "Instagram, Facebook, or WhatsApp", hint: "Social replies and message speed drive conversions." },
-                { value: "multi", label: "A mix of everything", hint: "You need stronger routing and operating logic." }
-            ]
-        },
-        {
-            id: "automationReadiness",
-            modeTitle: "Build readiness",
-            title: "How deep are you ready to go with automation?",
-            detail: "Some businesses need a sharp quick win. Others are ready for a full machine.",
-            options: [
-                { value: "quick-win", label: "Start simple and prove it", hint: "One strong flow first." },
-                { value: "growth", label: "Build for revenue growth", hint: "Capture plus follow-up and retention." },
-                { value: "scale", label: "Build a serious machine", hint: "Multiple workflows, stronger routing, bigger upside." }
-            ]
-        },
-        {
-            id: "urgency",
-            modeTitle: "Action pace",
-            title: "How fast do you want this moving?",
-            detail: "The final 7-day plan changes depending on urgency and capacity.",
-            options: [
-                { value: "now", label: "This week", hint: "I want something pointed and fast." },
-                { value: "month", label: "This month", hint: "I want the right system, not rushed chaos." },
-                { value: "plan-first", label: "I need the plan first", hint: "I want clarity before committing." }
-            ]
-        }
+        question("businessType", "Business type", "What kind of business is this?", "Pick the closest fit so the recommendation feels real.", [
+            option("appointments", "Appointments and bookings", "Salon, barber, clinic, beauty, coaching, fitness."),
+            option("services", "Service business", "Trades, home services, repair, local specialists."),
+            option("hospitality", "Retail or hospitality", "Restaurant, takeaway, venue, shop, footfall business."),
+            option("team", "Agency or busy team", "Leads, admin, and customer messages across multiple people.")
+        ]),
+        question("mainLeak", "Main bottleneck", "Where are you losing people or time right now?", "Choose the one that hurts most today.", [
+            option("missed-enquiries", "Missed enquiries", "Calls, DMs, or forms are not handled fast enough."),
+            option("slow-follow-up", "Slow follow-up", "Warm leads go cold after the first conversation."),
+            option("repeat-revenue", "Past customers do not come back enough", "Reviews, rebooking, and repeat sales are weak."),
+            option("admin-chaos", "Too much admin and too many moving parts", "Everything feels scattered.")
+        ]),
+        question("demandLevel", "Demand check", "How busy are you right now?", "This helps decide whether the first win is capture, nurture, or calm.", [
+            option("light", "Light flow", "A few enquiries or bookings each week."),
+            option("steady", "Steady flow", "You get regular demand but it is not controlled."),
+            option("busy", "Busy already", "Plenty comes in. The handling is the issue."),
+            option("heavy", "Heavy and messy", "High volume across channels or team members.")
+        ]),
+        question("firstTouch", "First touch", "Where do customers usually contact you first?", "The first contact point often shapes the helper.", [
+            option("phone-dm", "Phone calls and DMs", "Fast replies matter most."),
+            option("website", "Website or Google", "Forms and web enquiries matter most."),
+            option("social", "Instagram, Facebook, or WhatsApp", "Social message speed matters most."),
+            option("mixed", "A mix of everything", "You need calmer routing and handoff.")
+        ]),
+        question("buildReadiness", "Build depth", "How big a first build do you want?", "Some businesses need one sharp fix. Others want a broader setup.", [
+            option("simple", "Start simple", "One strong flow first."),
+            option("growth", "Build for growth", "Booking plus follow-up."),
+            option("system", "Build a broader system", "More channels, more routing, more admin support.")
+        ])
     ],
     side_hustle: [
-        {
-            id: "offerType",
-            modeTitle: "Hustle scan",
-            title: "What are you currently selling or trying to sell?",
-            detail: "Even a small side hustle can get a real system if the offer is clear enough.",
-            options: [
-                { value: "appointments", label: "Appointments or personal services", hint: "Coaching, beauty, training, creative services." },
-                { value: "done-for-you", label: "Done-for-you service", hint: "Marketing, editing, admin help, freelancing, trades." },
-                { value: "product", label: "Product or ecommerce-style offer", hint: "Physical products, digital products, merch." },
-                { value: "not-clear", label: "Offer still feels fuzzy", hint: "I know I want something, but it is not sharp yet." }
-            ]
-        },
-        {
-            id: "traction",
-            modeTitle: "Traction read",
-            title: "What proof do you have already?",
-            detail: "Dynmo needs to know if this is a demand problem, an offer problem, or an operations problem.",
-            options: [
-                { value: "paying", label: "I already have paying customers", hint: "Small but real traction." },
-                { value: "warm-leads", label: "I have warm leads or audience attention", hint: "People are interested, but sales are patchy." },
-                { value: "testing", label: "I am still testing whether people want it", hint: "Early validation mode." },
-                { value: "none", label: "No proof yet", hint: "This still needs its first real signal." }
-            ]
-        },
-        {
-            id: "mainHustleLeak",
-            modeTitle: "Leak detection",
-            title: "What is slowing the hustle down most?",
-            detail: "Pick the bottleneck that is actually choking momentum.",
-            options: [
-                { value: "slow-replies", label: "Slow replies and inconsistent follow-up", hint: "Leads are not getting handled properly." },
-                { value: "no-system", label: "No system around bookings or sales", hint: "Too much winging it." },
-                { value: "not-enough-demand", label: "Not enough demand yet", hint: "Need offer and channel clarity first." },
-                { value: "time-pressure", label: "I do not have enough time", hint: "Need leverage, not more manual effort." }
-            ]
-        },
-        {
-            id: "timeCapacity",
-            modeTitle: "Capacity scan",
-            title: "How much time can you realistically put into this each week?",
-            detail: "The plan should fit your life, not some fantasy version of your week.",
-            options: [
-                { value: "under5", label: "Under 5 hours", hint: "Need ruthless focus and easy wins." },
-                { value: "5to10", label: "5 to 10 hours", hint: "Enough for one clear growth push." },
-                { value: "10plus", label: "10+ hours", hint: "Enough to build real momentum." }
-            ]
-        },
-        {
-            id: "growthChannel",
-            modeTitle: "Channel read",
-            title: "Where do you expect the next customers to come from?",
-            detail: "This shapes the first automation angle and the first message lane.",
-            options: [
-                { value: "social", label: "Social media or DMs", hint: "The hustle lives in fast conversations." },
-                { value: "network", label: "Referrals and personal network", hint: "Warm intros, reactivation, trust." },
-                { value: "search", label: "Search, website, or local listings", hint: "Intent is there if replies are sharp." },
-                { value: "unsure", label: "Not sure yet", hint: "Need a launch path before a full system." }
-            ]
-        },
-        {
-            id: "buildIntent",
-            modeTitle: "Build intent",
-            title: "What do you want Dynmo to help you do first?",
-            detail: "This locks the recommendation into a starter lane, growth lane, or machine lane.",
-            options: [
-                { value: "capture", label: "Capture more leads fast", hint: "Get conversations moving." },
-                { value: "grow", label: "Increase repeat sales and follow-up", hint: "More value from every contact." },
-                { value: "systemise", label: "Systemise the whole thing", hint: "Start building the machine early." }
-            ]
-        }
-    ],
-    idea_not_started: [
-        {
-            id: "ideaType",
-            modeTitle: "Idea scan",
-            title: "What kind of business idea are you leaning toward?",
-            detail: "Dynmo uses this to shape the starter path and likely first system lane.",
-            options: [
-                { value: "service", label: "Service business", hint: "A skill, transformation, or useful hands-on service." },
-                { value: "appointments", label: "Appointment-led business", hint: "Consulting, fitness, beauty, coaching, care, clinics." },
-                { value: "product", label: "Product or ecommerce", hint: "Physical or digital products." },
-                { value: "not-sure", label: "Not fully sure yet", hint: "Direction exists, but still blurry." }
-            ]
-        },
-        {
-            id: "confidence",
-            modeTitle: "Confidence read",
-            title: "How clear is the idea right now?",
-            detail: "This tells Dynmo whether to recommend validation work or system planning.",
-            options: [
-                { value: "clear", label: "Very clear", hint: "I know the offer and roughly who it is for." },
-                { value: "semi-clear", label: "Half clear", hint: "The idea is there, but parts still feel foggy." },
-                { value: "shaky", label: "Still shaky", hint: "I need help shaping the right thing." }
-            ]
-        },
-        {
-            id: "validation",
-            modeTitle: "Validation stage",
-            title: "What proof exists so far?",
-            detail: "Proof matters more than hype. Pick the strongest honest answer.",
-            options: [
-                { value: "people-asked", label: "People have asked for this already", hint: "There is some natural demand signal." },
-                { value: "researched", label: "I have only researched it", hint: "No direct market proof yet." },
-                { value: "none", label: "No proof yet", hint: "This needs first contact with the market." }
-            ]
-        },
-        {
-            id: "launchWindow",
-            modeTitle: "Launch pace",
-            title: "When do you want this idea in motion?",
-            detail: "The 7-day plan changes depending on whether this is urgent or exploratory.",
-            options: [
-                { value: "now", label: "Immediately", hint: "I want to launch and learn fast." },
-                { value: "soon", label: "Within a month", hint: "I want a tighter setup first." },
-                { value: "later", label: "Later this year", hint: "I am still shaping the idea." }
-            ]
-        },
-        {
-            id: "customerType",
-            modeTitle: "Customer mapping",
-            title: "Who do you think the first customer is?",
-            detail: "The more concrete this is, the more useful the plan becomes.",
-            options: [
-                { value: "local", label: "Local consumers", hint: "People nearby who need a fast solution." },
-                { value: "business", label: "Other businesses", hint: "B2B value, leads, efficiency, or outcomes." },
-                { value: "creator", label: "Audience or niche community", hint: "People gathered around a specific interest." },
-                { value: "unsure", label: "Not clear yet", hint: "Need to define the buyer first." }
-            ]
-        },
-        {
-            id: "starterNeed",
-            modeTitle: "Starter lane",
-            title: "What would help you most in the next 7 days?",
-            detail: "This determines whether Dynmo should push idea clarity, first demand, or first automation later.",
-            options: [
-                { value: "clarity", label: "Sharpen the idea", hint: "I need the niche and offer to click." },
-                { value: "demand", label: "Find the first buyers", hint: "I need market proof." },
-                { value: "system", label: "Plan the future system now", hint: "I want the idea shaped around automation from day one." }
-            ]
-        }
+        question("offerState", "Offer check", "What are you trying to sell right now?", "Even a small hustle gets a better plan when the offer is clear.", [
+            option("appointments", "Appointments or sessions", "Coaching, beauty, training, consulting."),
+            option("service", "Done-for-you service", "Freelance, marketing, editing, admin, local help."),
+            option("product", "Product or ecommerce", "Physical or digital products."),
+            option("fuzzy", "Still a bit fuzzy", "You know you want something, but the offer is not sharp.")
+        ]),
+        question("traction", "Traction check", "How much proof do you already have?", "This helps Dynmo avoid recommending too much too early.", [
+            option("paying", "I already have paying customers", "Small but real proof."),
+            option("warm", "I have warm leads or audience interest", "People are interested, but it is patchy."),
+            option("testing", "I am still testing the idea", "Early validation mode."),
+            option("none", "No real proof yet", "The first signal still needs creating.")
+        ]),
+        question("hustleLeak", "Main bottleneck", "What slows the hustle down most?", "Pick the thing that is really choking momentum.", [
+            option("slow-replies", "Slow replies and weak follow-up", "People are not getting handled properly."),
+            option("no-system", "No booking or sales system", "Too much winging it."),
+            option("not-enough-demand", "Not enough demand", "Offer and audience clarity come first."),
+            option("time-pressure", "Not enough time", "You need leverage more than more tasks.")
+        ]),
+        question("timeCapacity", "Capacity check", "How much time can you actually put in each week?", "The plan should fit reality.", [
+            option("under5", "Under 5 hours", "Needs ruthless focus."),
+            option("5to10", "5 to 10 hours", "Enough for one clear push."),
+            option("10plus", "10+ hours", "Enough to build real momentum.")
+        ]),
+        question("channel", "Next customers", "Where do you think the next customers come from?", "That shapes the first helper move.", [
+            option("social", "Social media or DMs", "The conversation lane matters most."),
+            option("referrals", "Referrals or word of mouth", "Follow-up matters most."),
+            option("search", "Search or website", "Booking and response flow matter."),
+            option("unsure", "Not clear yet", "Need sharper direction first.")
+        ])
     ],
     no_idea_yet: [
-        {
-            id: "strengthZone",
-            modeTitle: "Direction scan",
-            title: "What is your strongest starting advantage?",
-            detail: "If there is no idea yet, Dynmo starts from assets, skills, and energy sources.",
-            options: [
-                { value: "people-skills", label: "Talking to people and building trust", hint: "Sales, care, community, service." },
-                { value: "craft-skill", label: "A practical or creative skill", hint: "Making, fixing, designing, coaching, editing." },
-                { value: "ops-brain", label: "Organisation and systems", hint: "Process, admin, operations, efficiency." },
-                { value: "audience", label: "I already know a niche or audience", hint: "You may not have an offer yet, but you know the people." }
-            ]
-        },
-        {
-            id: "interestLane",
-            modeTitle: "Interest lane",
-            title: "Which business style pulls you most?",
-            detail: "This frames your likely starter route before any agent recommendation.",
-            options: [
-                { value: "service", label: "Simple service business", hint: "Sell a clear outcome fast." },
-                { value: "appointments", label: "Appointment-based business", hint: "Consulting, sessions, treatments, training." },
-                { value: "product", label: "Product business", hint: "Physical or digital things people buy." },
-                { value: "ai-support", label: "AI or automation support for businesses", hint: "More system-led, less traditional service." }
-            ]
-        },
-        {
-            id: "customerClarity",
-            modeTitle: "Customer clarity",
-            title: "How clear is the first customer in your head?",
-            detail: "This is the difference between random ideas and something launchable.",
-            options: [
-                { value: "clear", label: "Pretty clear", hint: "I can picture the buyer." },
-                { value: "somewhat", label: "Somewhat clear", hint: "I know the type, not the exact person." },
-                { value: "blank", label: "Still blank", hint: "Need help choosing a profitable lane." }
-            ]
-        },
-        {
-            id: "timeBudget",
-            modeTitle: "Capacity scan",
-            title: "What kind of time do you actually have?",
-            detail: "The plan should respect reality and still create movement.",
-            options: [
-                { value: "little", label: "A few hours per week", hint: "Need a very lean entry path." },
-                { value: "moderate", label: "A consistent side-hustle block", hint: "Enough to validate an idea properly." },
-                { value: "serious", label: "I can go hard", hint: "Enough to test and build quickly." }
-            ]
-        },
-        {
-            id: "incomeAim",
-            modeTitle: "Goal tension",
-            title: "What are you trying to create first?",
-            detail: "Dynmo will not confuse quick cash needs with long-term machine building.",
-            options: [
-                { value: "quick-cash", label: "Quick first income", hint: "Something simple that gets paid soon." },
-                { value: "steady-side", label: "A strong side income", hint: "Build something sustainable and repeatable." },
-                { value: "big-build", label: "A serious future business", hint: "I want to build a machine over time." }
-            ]
-        },
-        {
-            id: "starterPush",
-            modeTitle: "Starter path",
-            title: "What do you want the plan to help with first?",
-            detail: "This decides whether Dynmo pushes idea selection, offer creation, or the first channel.",
-            options: [
-                { value: "pick-idea", label: "Pick the best idea", hint: "I need the right lane, not more noise." },
-                { value: "shape-offer", label: "Shape a sellable first offer", hint: "I need a simple thing people will buy." },
-                { value: "find-channel", label: "Figure out where customers come from", hint: "I need the first growth lane." }
-            ]
-        }
+        question("strengthZone", "Starting point", "What is your strongest starting advantage?", "If there is no idea yet, start from what is already there.", [
+            option("people", "Talking to people and building trust", "Sales, care, service, community."),
+            option("craft", "A practical or creative skill", "Making, fixing, teaching, designing."),
+            option("systems", "Organisation and systems", "Admin, operations, process."),
+            option("audience", "I know a niche or audience", "You know the people before the offer.")
+        ]),
+        question("interestLane", "Business style", "What kind of business style pulls you most?", "This helps Dynmo shape the first route.", [
+            option("service", "Simple service business", "Sell a clear outcome."),
+            option("appointments", "Appointment-based", "Sessions, treatments, consulting."),
+            option("product", "Product business", "Physical or digital."),
+            option("ai-support", "Helping businesses with AI support", "More system-led.")
+        ]),
+        question("customerClarity", "Customer clarity", "How clear is the first customer in your head?", "This changes whether the next step is idea clarity or outreach.", [
+            option("clear", "Pretty clear", "You can picture the buyer."),
+            option("somewhat", "Somewhat clear", "You know the type, not the exact person."),
+            option("blank", "Still blank", "Need help picking a lane.")
+        ]),
+        question("timeBudget", "Time reality", "What kind of time do you really have?", "The plan should suit your life.", [
+            option("little", "A few hours a week", "Need a lean first move."),
+            option("moderate", "A solid side-hustle block", "Enough to validate properly."),
+            option("serious", "I can go hard", "Enough to test and build quickly.")
+        ]),
+        question("firstNeed", "What helps most", "What would help most in the next 7 days?", "This points to the simplest useful next step.", [
+            option("pick-idea", "Pick the best idea", "Narrow the lane."),
+            option("shape-offer", "Shape a sellable offer", "Make the idea clearer."),
+            option("find-channel", "Figure out where customers come from", "Find the first path to demand.")
+        ])
     ]
 };
 
-
-const adaptiveFollowUps = {
+const adaptive = {
     existing_business: [
         {
             after: "mainLeak",
             when: (answers) => answers.mainLeak === "missed-enquiries",
-            question: {
-                id: "missedEnquiryMoment",
-                modeTitle: "Adaptive follow-up",
-                title: "When do those hot enquiries usually get lost?",
-                detail: "This question only appears because you said missed enquiries are the main leak.",
-                options: [
-                    { value: "after-hours", label: "After hours", hint: "People message when nobody is watching." },
-                    { value: "busy-day", label: "During busy periods", hint: "The team is serving customers and replies slip." },
-                    { value: "no-clear-next-step", label: "They get a reply but no clear next step", hint: "The conversation starts but does not convert." }
-                ]
-            }
+            question: question("missedMoment", "Adaptive check", "When do those enquiries usually get missed?", "This only appears because missed enquiries look like the main leak.", [
+                option("after-hours", "After hours", "People message when nobody is watching."),
+                option("busy-day", "During busy periods", "The team is busy serving customers."),
+                option("no-next-step", "They get a reply but no clear next step", "The conversation starts but stalls.")
+            ])
         },
         {
             after: "mainLeak",
-            when: (answers) => answers.mainLeak === "follow-up" || answers.mainLeak === "repeat-revenue",
-            question: {
-                id: "followUpGap",
-                modeTitle: "Adaptive follow-up",
-                title: "Which follow-up gap costs you most?",
-                detail: "Dynmo asks this because your biggest leak is after the first touch.",
-                options: [
-                    { value: "quotes", label: "Quotes and enquiries go cold", hint: "People ask, then disappear." },
-                    { value: "reviews", label: "Reviews and referrals are not asked for", hint: "Happy customers are not being converted into proof." },
-                    { value: "repeat", label: "Repeat bookings are not prompted", hint: "Customers need nudging back at the right time." }
-                ]
-            }
+            when: (answers) => answers.mainLeak === "slow-follow-up" || answers.mainLeak === "repeat-revenue",
+            question: question("followGap", "Adaptive check", "What kind of follow-up slips most?", "This helps separate follow-up help from a broader admin issue.", [
+                option("quotes", "Quotes and warm leads go cold", "The next message does not happen."),
+                option("reviews", "Reviews and referrals never get asked for", "Proof and repeat business are being missed."),
+                option("rebook", "Repeat bookings are not prompted", "People would come back with the right nudge.")
+            ])
         },
         {
-            after: "leadVolume",
-            when: (answers) => answers.leadVolume === "heavy" || answers.channels === "multi" || answers.automationReadiness === "scale",
-            question: {
-                id: "handoffComplexity",
-                modeTitle: "Adaptive scale check",
-                title: "What makes the current handoff messy?",
-                detail: "This appears when Dynmo detects a likely Ops / Machine Agent pattern.",
-                options: [
-                    { value: "multiple-people", label: "Multiple people handle leads", hint: "Ownership gets blurry." },
-                    { value: "multiple-tools", label: "Too many tools or inboxes", hint: "Information is scattered." },
-                    { value: "no-priority", label: "No priority system", hint: "Hot leads are treated like normal admin." }
-                ]
-            }
+            after: "firstTouch",
+            when: (answers) => answers.firstTouch === "mixed" || answers.buildReadiness === "system" || answers.demandLevel === "heavy",
+            question: question("handoffMess", "Adaptive check", "What makes the current handoff messy?", "This appears when the pattern looks more operational.", [
+                option("people", "Multiple people handle leads", "Ownership gets blurry."),
+                option("tools", "Too many tools or inboxes", "Information is scattered."),
+                option("priority", "No clear priority system", "Hot leads look like normal admin.")
+            ])
         }
     ],
     side_hustle: [
         {
             after: "traction",
-            when: (answers) => answers.traction === "none" || answers.traction === "testing" || answers.offerType === "not-clear",
-            question: {
-                id: "validationBlocker",
-                modeTitle: "Adaptive validation check",
-                title: "What is blocking the first real proof?",
-                detail: "Because traction is early, Dynmo checks validation before recommending heavy automation.",
-                options: [
-                    { value: "unclear-offer", label: "The offer is not clear enough", hint: "People cannot quickly understand the value." },
-                    { value: "wrong-audience", label: "I am not sure who to sell to", hint: "The buyer needs sharpening." },
-                    { value: "not-asked", label: "I have not properly asked the market yet", hint: "The next move is direct testing." }
-                ]
-            }
+            when: (answers) => answers.traction === "testing" || answers.traction === "none" || answers.offerState === "fuzzy",
+            question: question("validationBlocker", "Adaptive check", "What blocks the first real proof?", "This appears because the hustle still needs validation.", [
+                option("offer", "The offer is not clear enough", "People do not get the value fast."),
+                option("audience", "I am not sure who to sell to", "The buyer needs sharpening."),
+                option("asked", "I have not properly asked the market yet", "The next move is direct testing.")
+            ])
         },
         {
-            after: "mainHustleLeak",
-            when: (answers) => answers.mainHustleLeak === "time-pressure",
-            question: {
-                id: "timePressureSource",
-                modeTitle: "Adaptive capacity check",
-                title: "Where is time leaking hardest?",
-                detail: "Dynmo asks this because leverage matters more than adding another task.",
-                options: [
-                    { value: "replying", label: "Replying and chasing people", hint: "Communication is eating the week." },
-                    { value: "admin", label: "Admin and organising work", hint: "Ops are stealing selling time." },
-                    { value: "content", label: "Posting/content without enough sales", hint: "Attention is not converting cleanly." }
-                ]
-            }
-        }
-    ],
-    idea_not_started: [
-        {
-            after: "confidence",
-            when: (answers) => answers.confidence === "shaky" || answers.ideaType === "not-sure",
-            question: {
-                id: "clarityBlocker",
-                modeTitle: "Adaptive clarity check",
-                title: "What part feels most unclear?",
-                detail: "This appears because the idea needs sharpening before an agent recommendation.",
-                options: [
-                    { value: "customer", label: "Who exactly it is for", hint: "Buyer clarity is missing." },
-                    { value: "offer", label: "What I actually sell", hint: "The offer needs shape." },
-                    { value: "channel", label: "Where I would find customers", hint: "The route to demand is unclear." }
-                ]
-            }
-        },
-        {
-            after: "validation",
-            when: (answers) => answers.validation === "people-asked",
-            question: {
-                id: "proofSource",
-                modeTitle: "Adaptive proof check",
-                title: "Where did that demand signal come from?",
-                detail: "Because there is already proof, Dynmo can recommend a faster first system lane.",
-                options: [
-                    { value: "dm", label: "Messages or DMs", hint: "Inbound conversation lane." },
-                    { value: "local", label: "Local/direct requests", hint: "Booking or service lane." },
-                    { value: "work", label: "Work/network contacts", hint: "B2B or service follow-up lane." }
-                ]
-            }
+            after: "hustleLeak",
+            when: (answers) => answers.hustleLeak === "time-pressure",
+            question: question("timeDrain", "Adaptive check", "Where is time leaking hardest?", "This shows up because you said time is the issue.", [
+                option("replying", "Replying and chasing people", "Messages eat the week."),
+                option("admin", "Admin and organising work", "Ops steal selling time."),
+                option("content", "Posting without enough sales", "Attention is not converting.")
+            ])
         }
     ],
     no_idea_yet: [
         {
             after: "interestLane",
-            when: (answers) => answers.interestLane === "ai-support" || answers.strengthZone === "ops-brain",
-            question: {
-                id: "operatorFit",
-                modeTitle: "Adaptive operator check",
-                title: "Do you want to sell outcomes or build systems for others?",
-                detail: "This appears because your answers suggest a possible AI/operator lane.",
-                options: [
-                    { value: "sell-service", label: "Sell a simple service outcome", hint: "Start practical and paid." },
-                    { value: "build-systems", label: "Build systems for businesses", hint: "More technical/operator route." },
-                    { value: "not-sure", label: "Not sure yet", hint: "Need a low-risk test first." }
-                ]
-            }
+            when: (answers) => answers.interestLane === "ai-support" || answers.strengthZone === "systems",
+            question: question("operatorFit", "Adaptive check", "Do you want to sell outcomes or build systems for others?", "This helps decide whether your first move is practical or more technical.", [
+                option("service", "Sell a simple service outcome", "Start practical and paid."),
+                option("systems", "Build systems for businesses", "More operator-led."),
+                option("unsure", "Not sure yet", "Need a low-risk test first.")
+            ])
         },
         {
             after: "customerClarity",
             when: (answers) => answers.customerClarity === "blank",
-            question: {
-                id: "audienceAccess",
-                modeTitle: "Adaptive audience check",
-                title: "Who can you realistically reach first?",
-                detail: "When the customer is blank, access beats random brainstorming.",
-                options: [
-                    { value: "friends-local", label: "People locally or in my network", hint: "Fastest first conversations." },
-                    { value: "online-niche", label: "An online niche/community", hint: "Specific audience with shared problems." },
-                    { value: "business-owners", label: "Business owners", hint: "B2B route with clearer money problems." }
-                ]
-            }
+            question: question("audienceAccess", "Adaptive check", "Who can you realistically reach first?", "When the customer is blank, access beats random ideas.", [
+                option("local", "People locally or in my network", "Fastest first conversations."),
+                option("online", "An online niche or community", "Specific audience with shared problems."),
+                option("owners", "Business owners", "B2B route with clearer money problems.")
+            ])
         }
     ]
 };
@@ -437,23 +169,26 @@ const adaptiveFollowUps = {
 const stageMeta = {
     existing_business: {
         label: "Existing business",
-        headline: "You already have motion. The right play is fixing the leak, not adding noise."
+        line: "You already have demand somewhere. The job is stopping the leak."
     },
     side_hustle: {
         label: "Side hustle",
-        headline: "You have enough movement to stop winging it and start systemising the useful parts."
-    },
-    idea_not_started: {
-        label: "Business idea not started",
-        headline: "You are pre-launch, so clarity and first proof matter more than heavy automation."
+        line: "You need a smarter first system without overbuilding too early."
     },
     no_idea_yet: {
         label: "No idea yet",
-        headline: "You do not need a build lane first. You need a starter route that turns energy into an offer."
+        line: "You need a clearer first move before any bigger build."
     }
 };
 
-const storedState = loadStoredState();
+const pricingTiers = {
+    Starter: "£97 setup + £20/mo",
+    Growth: "£150 setup + £30/mo",
+    Agency: "£297 setup + £50/mo"
+};
+
+const navToggle = document.querySelector(".nav-toggle");
+const navMenu = document.getElementById("navMenu");
 const stageEl = document.getElementById("assessmentStage");
 const nextButton = document.getElementById("nextButton");
 const backButton = document.getElementById("backButton");
@@ -461,16 +196,15 @@ const progressText = document.getElementById("progressText");
 const progressBar = document.getElementById("progressBar");
 const modeTitle = document.getElementById("assessmentModeTitle");
 const hasAssessment = Boolean(stageEl && nextButton && backButton && progressText && progressBar && modeTitle);
-const navToggle = document.querySelector(".nav-toggle");
-const navMenu = document.getElementById("navMenu");
 
 const state = {
     phase: "questions",
     index: 0,
-    selectedValue: "",
+    stage: "existing_business",
     answers: {},
+    selectedValue: "",
     questionSet: [],
-    lead: storedState.lead
+    lead: loadStoredState().lead || null
 };
 
 initSite();
@@ -478,16 +212,26 @@ initSite();
 function initSite() {
     bindNav();
     initReveal();
-    initHeroChat();
-    initDemoTrack();
-    initTilt();
+    initTextReveal();
+    initPreviewLoops();
     if (hasAssessment) {
         startAssessment();
     }
 }
 
+function option(value, label, hint) {
+    return { value, label, hint };
+}
+
+function question(id, modeTitle, title, detail, options) {
+    return { id, modeTitle, title, detail, options };
+}
+
 function bindNav() {
-    if (!navToggle) return;
+    if (!navToggle || !navMenu) {
+        return;
+    }
+
     navToggle.addEventListener("click", () => {
         const expanded = navToggle.getAttribute("aria-expanded") === "true";
         navToggle.setAttribute("aria-expanded", String(!expanded));
@@ -517,131 +261,119 @@ function initReveal() {
             entry.target.classList.add("is-visible");
             observer.unobserve(entry.target);
         });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.15 });
 
     revealEls.forEach((el) => observer.observe(el));
 }
 
-function initHeroChat() {
-    const heroChat = document.getElementById("heroChat");
-    if (!heroChat) return;
+function initTextReveal() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return;
+    }
 
-    const bubbles = [
-        { type: "user", text: "We miss leads after hours and follow-up is patchy." },
-        { type: "ai", text: "Understood. I’m checking whether this points to a Booking Agent or a Follow-Up / Revenue Agent." },
-        { type: "user", text: "Most leads come through calls and Instagram." },
-        { type: "success", text: "Best fit: Booking Agent." }
-    ];
-
-    let bubbleIndex = 0;
-    const renderNext = () => {
-        heroChat.innerHTML = "";
-        bubbles.forEach((bubble, index) => {
-            window.setTimeout(() => {
-                const el = document.createElement("div");
-                el.className = `chat-bubble ${bubble.type}`;
-                el.textContent = bubble.text;
-                heroChat.appendChild(el);
-            }, index * 650);
-        });
-        bubbleIndex += 1;
-        window.setTimeout(renderNext, 4200);
-    };
-
-    renderNext();
-}
-
-function initDemoTrack() {
-    const demoTrack = document.getElementById("demoTrack");
-    if (!demoTrack) return;
-
-    const sequences = [
-        [
-            { type: "user", text: "We keep losing hot enquiries after hours." },
-            { type: "ai", text: "That points to a Booking Agent build with instant reply and booking rescue." },
-            { type: "success", text: "Booking Agent matched" }
-        ],
-        [
-            { type: "user", text: "Old leads and past customers go cold." },
-            { type: "ai", text: "That is a Follow-Up / Revenue Agent case: nurture, reactivation, reviews, upsells." },
-            { type: "success", text: "Revenue Agent matched" }
-        ],
-        [
-            { type: "user", text: "Leads come from everywhere and handoffs are messy." },
-            { type: "ai", text: "That sounds like an Ops / Machine Agent with a deeper build lane." },
-            { type: "success", text: "Ops Agent matched" }
-        ]
-    ];
-
-    let sequenceIndex = 0;
-    const paintSequence = () => {
-        demoTrack.innerHTML = "";
-        sequences[sequenceIndex].forEach((bubble, idx) => {
-            window.setTimeout(() => {
-                const el = document.createElement("div");
-                el.className = `demo-bubble ${bubble.type}`;
-                el.textContent = bubble.text;
-                demoTrack.appendChild(el);
-            }, idx * 700);
-        });
-        sequenceIndex = (sequenceIndex + 1) % sequences.length;
-        window.setTimeout(paintSequence, 4600);
-    };
-
-    paintSequence();
-}
-
-function initTilt() {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    document.querySelectorAll(".tilt-card").forEach((card) => {
-        card.addEventListener("pointermove", (event) => {
-            const rect = card.getBoundingClientRect();
-            const x = (event.clientX - rect.left) / rect.width;
-            const y = (event.clientY - rect.top) / rect.height;
-            const rotateY = (x - 0.5) * 8;
-            const rotateX = (0.5 - y) * 8;
-            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-
-        card.addEventListener("pointerleave", () => {
-            card.style.transform = "";
-        });
+    document.querySelectorAll("[data-reveal-text]").forEach((heading) => {
+        const text = heading.textContent.trim().split(/\s+/);
+        heading.innerHTML = text.map((word, index) => `<span class="word" style="animation-delay:${index * 80}ms">${escapeHtml(word)}&nbsp;</span>`).join("");
     });
 }
 
-function startAssessment() {
-    state.answers = {};
-    state.phase = "questions";
-    state.index = 0;
-    state.questionSet = buildQuestionSet("existing_business");
-    renderCurrentView();
+function initPreviewLoops() {
+    paintLoop("heroPreviewChat", [
+        [
+            { type: "user", text: "We keep missing calls when the team is busy." },
+            { type: "ai", text: "That sounds like a Booking Helper job." },
+            { type: "result", text: "Fast reply. Clear next step. More bookings." }
+        ],
+        [
+            { type: "user", text: "Leads go cold after the first quote." },
+            { type: "ai", text: "That points to a Follow-Up Helper." },
+            { type: "result", text: "More nudges. More replies. More return business." }
+        ]
+    ], "preview-bubble");
+
+    paintLoop("demoTrack", [
+        [
+            { type: "ai", text: "What kind of business is this?" },
+            { type: "user", text: "Existing business" },
+            { type: "ai", text: "Where are you losing people?" },
+            { type: "user", text: "Missed enquiries" },
+            { type: "result", text: "Best fit: Booking Helper" }
+        ],
+        [
+            { type: "ai", text: "What slows the business down most?" },
+            { type: "user", text: "Too much admin" },
+            { type: "ai", text: "How broad does the fix need to be?" },
+            { type: "user", text: "Broader system" },
+            { type: "result", text: "Best fit: Admin Helper" }
+        ],
+        [
+            { type: "ai", text: "What would help most in the next 7 days?" },
+            { type: "user", text: "Shape a sellable offer" },
+            { type: "ai", text: "That points to a simpler first-move path." },
+            { type: "result", text: "Best fit: Idea Helper" }
+        ]
+    ], "device-bubble");
 }
 
-function buildQuestionSet(stage, answers = state.answers) {
-    const stageQuestion = {
-        id: "stage",
-        modeTitle: "Stage detection",
-        title: "Where are you right now?",
-        detail: "This first answer controls the next questions. The funnel does not show every user the same path.",
-        options: [
-            { value: "existing_business", label: "Existing business", hint: "You already trade and want better systems or more growth." },
-            { value: "side_hustle", label: "Side hustle", hint: "You have movement already, but it is not a full machine yet." },
-            { value: "idea_not_started", label: "Business idea not started", hint: "You have an idea, but it is not in motion yet." },
-            { value: "no_idea_yet", label: "No idea yet", hint: "You want a route, but the business itself is not chosen yet." }
-        ]
+function paintLoop(targetId, sequences, classPrefix) {
+    const target = document.getElementById(targetId);
+    if (!target) {
+        return;
+    }
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let sequenceIndex = 0;
+
+    const run = () => {
+        target.innerHTML = "";
+        const active = sequences[sequenceIndex];
+        active.forEach((item, idx) => {
+            const delay = reduceMotion ? 0 : idx * 650;
+            window.setTimeout(() => {
+                const el = document.createElement("div");
+                el.className = `${classPrefix} ${item.type}`;
+                el.textContent = item.text;
+                target.appendChild(el);
+            }, delay);
+        });
+        sequenceIndex = (sequenceIndex + 1) % sequences.length;
+        if (!reduceMotion) {
+            window.setTimeout(run, 4700);
+        }
     };
 
-    const activeStage = stage || "existing_business";
-    const questions = [stageQuestion];
-    const baseQuestions = branchQuestions[activeStage] || [];
-    const followUps = adaptiveFollowUps[activeStage] || [];
+    run();
+}
 
-    baseQuestions.forEach((question) => {
-        questions.push(question);
-        followUps
-            .filter((followUp) => followUp.after === question.id && followUp.when(answers))
-            .forEach((followUp) => questions.push(followUp.question));
+function startAssessment() {
+    state.phase = "questions";
+    state.index = 0;
+    state.answers = {};
+    state.stage = "existing_business";
+    state.questionSet = buildQuestionSet(state.stage, state.answers);
+    state.selectedValue = "";
+    renderCurrentView();
+
+    nextButton.addEventListener("click", nextStep);
+    backButton.addEventListener("click", previousStep);
+}
+
+function buildQuestionSet(stage, answers) {
+    const stageQuestion = question("stage", "Starting point", "Which of these sounds most like you right now?", "This first answer changes the route that follows.", [
+        option("existing_business", "Existing business", "You are already trading and want to fix a bottleneck."),
+        option("side_hustle", "Side hustle", "There is some movement already, but it is not a full machine yet."),
+        option("no_idea_yet", "No clear idea yet", "You want a smart first move before building anything.")
+    ]);
+
+    const questions = [stageQuestion];
+    const base = branches[stage] || [];
+    const extras = adaptive[stage] || [];
+
+    base.forEach((entry) => {
+        questions.push(entry);
+        extras.filter((extra) => extra.after === entry.id && extra.when(answers)).forEach((extra) => {
+            questions.push(extra.question);
+        });
     });
 
     return questions;
@@ -671,30 +403,27 @@ function renderCurrentView() {
 }
 
 function renderQuestion() {
-    const question = state.questionSet[state.index];
-    state.selectedValue = state.answers[question.id] || "";
-    modeTitle.textContent = question.modeTitle;
+    const current = state.questionSet[state.index];
+    state.selectedValue = state.answers[current.id] || "";
+    modeTitle.textContent = current.modeTitle;
     nextButton.textContent = state.index === state.questionSet.length - 1 ? "See preview" : "Next";
 
+    const transcript = buildTranscript(current.id);
     const card = document.createElement("section");
-    card.className = "question-card";
+    card.className = "chat-card";
     card.innerHTML = `
-        <div class="agent-chat-head">
-            <span class="agent-avatar">AI</span>
-            <div>
-                <div class="question-meta">${question.modeTitle}</div>
-                <h3>Assessment Agent</h3>
-            </div>
+        <div class="chat-transcript">
+            ${transcript}
         </div>
-        <div class="agent-prompt-bubble">
-            <strong>${question.title}</strong>
-            <span>${question.detail}</span>
+        <div class="chat-question">
+            <strong>${escapeHtml(current.title)}</strong>
+            <span>${escapeHtml(current.detail)}</span>
         </div>
-        <div class="options-grid agent-options">
-            ${question.options.map((option) => `
-                <button class="option-card${state.selectedValue === option.value ? " selected" : ""}" type="button" data-value="${option.value}">
-                    <strong>${option.label}</strong>
-                    <span>${option.hint}</span>
+        <div class="options-grid">
+            ${current.options.map((item) => `
+                <button class="option-card${state.selectedValue === item.value ? " selected" : ""}" type="button" data-value="${escapeAttr(item.value)}">
+                    <strong>${escapeHtml(item.label)}</strong>
+                    <span>${escapeHtml(item.hint)}</span>
                 </button>
             `).join("")}
         </div>
@@ -702,83 +431,93 @@ function renderQuestion() {
 
     stageEl.innerHTML = "";
     stageEl.appendChild(card);
-
     card.querySelectorAll(".option-card").forEach((button) => {
         button.addEventListener("click", () => {
-            state.selectedValue = button.dataset.value;
-            state.answers[question.id] = state.selectedValue;
-            const oldQuestionId = question.id;
-            const oldIndex = state.index;
-            if (oldQuestionId === "stage") {
-                state.questionSet = buildQuestionSet(state.selectedValue, state.answers);
-                pruneStageAnswers();
-            } else {
-                state.questionSet = buildQuestionSet(state.answers.stage || "existing_business", state.answers);
-                pruneStageAnswers();
-                const currentPosition = state.questionSet.findIndex((item) => item.id === oldQuestionId);
-                if (currentPosition >= 0) {
-                    state.index = currentPosition;
-                } else {
-                    state.index = Math.min(oldIndex, state.questionSet.length - 1);
-                }
+            state.selectedValue = button.dataset.value || "";
+            state.answers[current.id] = state.selectedValue;
+            if (current.id === "stage") {
+                state.stage = state.selectedValue;
+            }
+            state.questionSet = buildQuestionSet(state.stage, state.answers);
+            pruneAnswers();
+            const newIndex = state.questionSet.findIndex((entry) => entry.id === current.id);
+            if (newIndex >= 0) {
+                state.index = newIndex;
             }
             renderCurrentView();
         });
     });
 }
 
-function pruneStageAnswers() {
+function buildTranscript(currentId) {
+    const answered = state.questionSet.slice(0, state.index).filter((item) => state.answers[item.id]);
+    return answered.slice(-3).map((item) => `
+        <div class="chat-message ai">
+            <small>Dynmo</small>
+            <span>${escapeHtml(item.title)}</span>
+        </div>
+        <div class="chat-message user">
+            <small>You</small>
+            <span>${escapeHtml(getOptionLabel(item, state.answers[item.id]))}</span>
+        </div>
+    `).join("") + `
+        <div class="chat-message ai">
+            <small>Dynmo</small>
+            <span>${escapeHtml(stageMeta[state.stage].line)}</span>
+        </div>
+    `;
+}
+
+function pruneAnswers() {
+    const validIds = new Set(state.questionSet.map((entry) => entry.id));
     Object.keys(state.answers).forEach((key) => {
-        if (key === "stage") return;
-        const existsInSet = state.questionSet.some((question) => question.id === key);
-        if (!existsInSet) {
+        if (!validIds.has(key)) {
             delete state.answers[key];
         }
     });
 }
 
 function updateProgress() {
-    const totalQuestionCount = state.questionSet.length;
-    let progressCount = state.index + 1;
-    let label = `Question ${Math.min(progressCount, totalQuestionCount)} of ${totalQuestionCount}`;
+    const total = state.questionSet.length + 3;
+    let current = state.index + 1;
+    let label = `Question ${Math.min(current, state.questionSet.length)} of ${state.questionSet.length}`;
 
     if (state.phase === "teaser") {
-        progressCount = totalQuestionCount + 1;
-        label = "Teaser result";
+        current = state.questionSet.length + 1;
+        label = "Preview";
     } else if (state.phase === "lead") {
-        progressCount = totalQuestionCount + 2;
-        label = "Lead capture";
+        current = state.questionSet.length + 2;
+        label = "Your details";
     } else if (state.phase === "result") {
-        progressCount = totalQuestionCount + 3;
-        label = "Your plan";
+        current = state.questionSet.length + 3;
+        label = "Your result";
     }
 
-    const totalPhases = totalQuestionCount + 3;
     progressText.textContent = label;
-    progressBar.style.width = `${(progressCount / totalPhases) * 100}%`;
+    progressBar.style.width = `${(current / total) * 100}%`;
 }
 
 function nextStep() {
     if (state.phase === "questions") {
-        const question = state.questionSet[state.index];
-        if (!state.answers[question.id]) return;
-
+        const current = state.questionSet[state.index];
+        if (!state.answers[current.id]) {
+            return;
+        }
         if (state.index < state.questionSet.length - 1) {
             state.index += 1;
-            state.selectedValue = "";
+            state.selectedValue = state.answers[state.questionSet[state.index].id] || "";
             renderCurrentView();
             return;
         }
-
         state.phase = "teaser";
-        state.selectedValue = "continue";
+        state.selectedValue = "ready";
         renderCurrentView();
         return;
     }
 
     if (state.phase === "teaser") {
         state.phase = "lead";
-        state.selectedValue = "lead";
+        state.selectedValue = "";
         renderCurrentView();
     }
 }
@@ -787,7 +526,7 @@ function previousStep() {
     if (state.phase === "questions") {
         if (state.index === 0) return;
         state.index -= 1;
-        state.selectedValue = "";
+        state.selectedValue = state.answers[state.questionSet[state.index].id] || "";
         renderCurrentView();
         return;
     }
@@ -802,53 +541,55 @@ function previousStep() {
 
     if (state.phase === "lead") {
         state.phase = "teaser";
+        state.selectedValue = "ready";
         renderCurrentView();
         return;
     }
 
-    if (state.phase === "result") {
-        state.phase = "lead";
-        renderCurrentView();
-    }
+    state.phase = "lead";
+    renderCurrentView();
 }
 
 function renderTeaser() {
     const result = generatePlan(state.answers);
-    const adaptiveCount = state.questionSet.filter((question) => question.modeTitle && question.modeTitle.startsWith("Adaptive")).length;
-    modeTitle.textContent = "Personalised preview";
+    modeTitle.textContent = "Narrowing it down";
     nextButton.disabled = false;
-    nextButton.textContent = "Unlock full plan";
+    nextButton.textContent = "Unlock full result";
 
     stageEl.innerHTML = `
-        <section class="teaser-card">
-            <div class="question-meta">Adaptive engine teaser</div>
-            <h3>${result.teaserHeadline}</h3>
-            <p>${result.teaserCopy}</p>
-            <div class="teaser-highlight">
+        <section class="result-card">
+            <div class="result-head">
+                <span class="section-kicker">Preview</span>
+                <h3>${escapeHtml(result.teaserHeadline)}</h3>
+                <p>${escapeHtml(result.teaserCopy)}</p>
+            </div>
+            <div class="result-block">
                 <strong>Biggest opportunity</strong>
-                <span>${result.biggestOpportunity}</span>
+                <p>${escapeHtml(result.biggestOpportunity)}</p>
             </div>
-            <div class="result-chip-row">
-                <span class="chip">${result.stageLabel}</span>
-                <span class="chip">${result.recommendedPack}</span>
-                <span class="chip">${result.recommendedSystem}</span>
+            <div class="result-actions">
+                <span class="chip">${escapeHtml(result.helper)}</span>
+                <span class="chip">${escapeHtml(result.tier)}</span>
+                <span class="chip">${escapeHtml(stageMeta[state.stage].label)}</span>
             </div>
-            <p class="helper-text">Adaptive branch checks used: ${adaptiveCount}. Drop your details on the next screen and Dynmo will reveal the best-fit custom agent, build lane, and 7-day action summary on this device.</p>
+            <p style="margin-top:1rem;">Your fuller result is ready. Add your details on the next step and this static preview will show the best-fit helper, why it fits, first wins, and the build tier to consider.</p>
         </section>
     `;
 }
 
 function renderLeadCapture() {
     const lead = state.lead || {};
-    modeTitle.textContent = "Lead capture";
+    modeTitle.textContent = "Where should we send the plan?";
     nextButton.disabled = true;
     nextButton.textContent = "Next";
 
     stageEl.innerHTML = `
-        <section class="lead-card">
-            <div class="question-meta">Unlock the full plan</div>
-            <h3>Where should the Assessment Agent send the plan direction?</h3>
-            <p>This public version is static and honest: no hidden CRM, no exposed AI API key. Your details and plan stay in browser state on this device unless you copy or email them. A secure AI backend can be wired next.</p>
+        <section class="chat-card">
+            <div class="result-head">
+                <span class="section-kicker">Plan ready</span>
+                <h3>Your plan is ready. Where should we send it?</h3>
+                <p>This public version stays honest: no hidden CRM save, no fake backend, no pretend live model.</p>
+            </div>
             <form id="leadForm" novalidate>
                 <div class="lead-grid">
                     <label class="field">
@@ -864,347 +605,302 @@ function renderLeadCapture() {
                         <input type="text" name="phone" value="${escapeAttr(lead.phone || "")}">
                     </label>
                     <label class="field">
-                        <span>Build this for me?</span>
-                        <input type="text" name="intentText" value="${escapeAttr(lead.intentText || "")}" placeholder="Optional detail on what you want built first">
+                        <span>Would you want this built?</span>
+                        <input type="text" name="intent" value="${escapeAttr(lead.intent || "")}" placeholder="For example: yes, soon / maybe later">
                     </label>
                     <label class="field-wide">
-                        <span>Anything important Dynmo should know?</span>
-                        <textarea name="notes" placeholder="Optional context">${escapeText(lead.notes || "")}</textarea>
+                        <span>Anything else we should know?</span>
+                        <textarea name="notes" placeholder="Short note about the business, the problem, or urgency.">${escapeHtml(lead.notes || "")}</textarea>
                     </label>
                 </div>
-                <label class="intent-row">
-                    <input type="checkbox" name="buildIntent" ${lead.buildIntent ? "checked" : ""}>
-                    <span>Yes, I want Dynmo to build or map this system with me.</span>
-                </label>
                 <label class="checkbox-row">
                     <input type="checkbox" name="consent" ${lead.consent ? "checked" : ""} required>
-                    <span>I consent to Dynmo using these details to follow up about this assessment and related services.</span>
+                    <span>I understand this static preview stores details only on this device unless I copy or email the result.</span>
                 </label>
-                <div class="lead-actions">
-                    <button class="button button-primary" type="submit">Reveal my agent match</button>
+                <div class="result-actions">
+                    <button class="button button-primary button-sweep" type="submit">Show my result</button>
                 </div>
-                <p class="privacy-note">No guaranteed income claims. No backend storage claim. This is an on-device static-site fallback until a real pipeline exists.</p>
             </form>
         </section>
     `;
 
-    const leadForm = document.getElementById("leadForm");
-    leadForm.addEventListener("submit", (event) => {
+    document.getElementById("leadForm").addEventListener("submit", (event) => {
         event.preventDefault();
-        const form = new FormData(leadForm);
+        const form = new FormData(event.currentTarget);
         const payload = {
             name: String(form.get("name") || "").trim(),
             email: String(form.get("email") || "").trim(),
             phone: String(form.get("phone") || "").trim(),
+            intent: String(form.get("intent") || "").trim(),
             notes: String(form.get("notes") || "").trim(),
-            intentText: String(form.get("intentText") || "").trim(),
-            buildIntent: form.get("buildIntent") === "on",
             consent: form.get("consent") === "on"
         };
 
         if (!payload.name || !payload.email || !payload.consent) {
-            window.alert("Name, email, and consent are required before the full plan can be shown.");
+            window.alert("Name, email, and consent are required before the full result can be shown.");
             return;
         }
 
         state.lead = payload;
-        window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ answers: state.answers, lead: state.lead }));
+        persistState();
         state.phase = "result";
         renderCurrentView();
     });
 }
 
 function renderResult() {
-    const result = generatePlan(state.answers);
     const lead = state.lead || {};
+    const result = generatePlan(state.answers);
     const summary = buildSummaryText(result, lead, state.answers);
-    modeTitle.textContent = "Full plan";
+    const mailSubject = encodeURIComponent(`Dynmo result for ${lead.name || "new lead"} - ${result.helper}`);
+    const mailBody = encodeURIComponent(summary);
+
+    modeTitle.textContent = "Best fit ready";
     nextButton.disabled = true;
     nextButton.textContent = "Complete";
 
-    const mailSubject = encodeURIComponent(`Dynmo agent match for ${lead.name || "new lead"} - ${result.recommendedSystem}`);
-    const mailBody = encodeURIComponent(summary);
-
     stageEl.innerHTML = `
         <section class="result-card">
-            <div class="question-meta">Agent match</div>
-            <h3>${result.headline}</h3>
-            <p>${result.summary}</p>
-            <div class="result-chip-row">
-                <span class="chip">${result.stageLabel}</span>
-                <span class="chip">${result.recommendedSystem}</span>
-                <span class="chip">${result.recommendedPack}</span>
+            <div class="result-head">
+                <span class="section-kicker">Best fit</span>
+                <h3>${escapeHtml(result.helper)}</h3>
+                <p>${escapeHtml(result.summary)}</p>
             </div>
-
+            <div class="result-actions">
+                <span class="chip">${escapeHtml(stageMeta[state.stage].label)}</span>
+                <span class="chip">${escapeHtml(result.tier)}</span>
+                <span class="chip">${escapeHtml(pricingTiers[result.tier])}</span>
+            </div>
             <div class="result-grid">
                 <div class="result-block">
-                    <strong>Problem the agent is built to solve</strong>
-                    <p>${result.biggestOpportunity}</p>
+                    <strong>Why it fits</strong>
+                    <p>${escapeHtml(result.why)}</p>
                 </div>
                 <div class="result-block">
-                    <strong>7-day agent build path</strong>
-                    <ul>${result.sevenDayPlan.map((step) => `<li>${step}</li>`).join("")}</ul>
+                    <strong>First wins</strong>
+                    <ul>${result.firstWins.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
                 </div>
                 <div class="result-block">
-                    <strong>Why this agent fits</strong>
-                    <p>${result.reasonWhy}</p>
+                    <strong>Best path to build</strong>
+                    <p>${escapeHtml(result.tier)}: ${escapeHtml(pricingTiers[result.tier])}</p>
+                    <p style="margin-top:0.5rem;">${escapeHtml(result.tierReason)}</p>
                 </div>
                 <div class="result-block">
-                    <strong>CTA</strong>
-                    <p>${result.cta}</p>
+                    <strong>Pick your next move</strong>
+                    <div class="pricing-mini-grid">
+                        ${Object.entries(pricingTiers).map(([tier, price]) => `
+                            <div class="pricing-mini-card">
+                                <strong>${escapeHtml(tier)}</strong>
+                                <p>${escapeHtml(price)}</p>
+                            </div>
+                        `).join("")}
+                    </div>
                 </div>
             </div>
-
             <div class="result-actions">
-                <button class="button button-primary" type="button" id="copyPlanButton">Copy / send this plan</button>
-                <a class="button button-secondary" href="mailto:hello@dynmo.ai?subject=${mailSubject}&body=${mailBody}">Email this plan</a>
-                <a class="button button-ghost" href="#packs">Compare build lanes</a>
+                <button class="button button-primary button-sweep" type="button" id="copyPlanButton">Copy plan</button>
+                <a class="button button-secondary" href="mailto:hello@dynmo.ai?subject=${mailSubject}&body=${mailBody}">Email plan</a>
+                <a class="button button-secondary" href="build-lanes.html">Compare tiers</a>
+                <a class="button button-secondary" href="#assessmentPricing">See pricing below</a>
             </div>
-            <p class="result-note">Static fallback active. The plan is stored only in this browser for now. A real backend or CRM handoff still needs implementing.</p>
+            <p style="margin-top:1rem;">Static fallback active. This result is guided by your answers and saved only in this browser for now.</p>
         </section>
     `;
 
-    const copyButton = document.getElementById("copyPlanButton");
-    copyButton.addEventListener("click", async () => {
+    document.getElementById("copyPlanButton").addEventListener("click", async () => {
         try {
             await navigator.clipboard.writeText(summary);
-            copyButton.textContent = "Plan copied";
+            document.getElementById("copyPlanButton").textContent = "Copied";
         } catch (error) {
-            window.alert("Could not access the clipboard. You can still use the email button.");
+            window.alert("Clipboard access failed. You can still email the plan.");
         }
     });
 }
 
 function generatePlan(answers) {
-    const stage = answers.stage;
-    const meta = stageMeta[stage];
-    let recommendedPack = "Booking build lane";
-    let recommendedSystem = "Booking Agent";
-    let biggestOpportunity = "The fastest win is tightening up lead capture and response speed.";
-    let headline = meta.headline;
-    let summary = "";
-    let teaserHeadline = "";
-    let teaserCopy = "";
-    let reasonWhy = "";
-    let cta = "";
-    let sevenDayPlan = [];
+    const stage = answers.stage || "existing_business";
+    const result = {
+        helper: "Booking Helper",
+        tier: "Growth",
+        biggestOpportunity: "The fastest win is stopping warm enquiries from fading out.",
+        teaserHeadline: "A stronger reply-and-follow-through system looks like the right move.",
+        teaserCopy: "Dynmo sees a clear customer path problem that can be tightened quickly.",
+        summary: "This helper is designed to stop customers slipping away while you are busy.",
+        why: "Your answers point to slow or inconsistent response being the main leak.",
+        firstWins: [
+            "Reply faster to incoming interest.",
+            "Make the next step obvious.",
+            "Reduce the number of leads that quietly disappear."
+        ],
+        tierReason: "Growth is the best fit when you want a stronger customer path without jumping straight into a broad admin build."
+    };
 
     if (stage === "existing_business") {
-        const mainLeak = answers.mainLeak;
-        if (mainLeak === "missed-enquiries" || (answers.businessType === "appointment" && answers.channels === "phone-dm")) {
-            recommendedPack = "Booking build lane";
-            recommendedSystem = "Booking Agent";
-            biggestOpportunity = "You already have intent hitting the business. The leak is speed, response consistency, and booking capture.";
-        } else if (mainLeak === "follow-up" || mainLeak === "repeat-revenue") {
-            recommendedPack = "Revenue build lane";
-            recommendedSystem = "Follow-Up / Revenue Agent";
-            biggestOpportunity = "Your customers and leads need stronger follow-up, repeat-booking nudges, and reactivation loops.";
-        } else {
-            recommendedPack = "Machine build lane";
-            recommendedSystem = "Ops / Machine Agent";
-            biggestOpportunity = "The business has enough moving parts that routing, handoff, and channel coordination are the real bottlenecks now.";
+        if (answers.mainLeak === "admin-chaos" || answers.firstTouch === "mixed" || answers.buildReadiness === "system" || answers.demandLevel === "heavy") {
+            result.helper = "Admin Helper";
+            result.tier = "Agency";
+            result.biggestOpportunity = "The business is busy enough that routing, admin, and handoff are creating the real drag.";
+            result.teaserHeadline = "This looks like an Admin Helper build.";
+            result.teaserCopy = "The issue is not just volume. It is the mess created by volume.";
+            result.summary = "An Admin Helper would calm the handoff, sort the routing, and stop hot work getting buried in normal admin.";
+            result.why = "Your answers suggest customers and tasks are spread across channels or people, so clearer routing matters most.";
+            result.firstWins = [
+                "Create one calmer lead path.",
+                "Reduce messy handoffs across people or inboxes.",
+                "Prioritise hot work before it gets buried."
+            ];
+            result.tierReason = "Agency fits when the fix needs broader routing, admin support, and a calmer operating rhythm.";
+            return result;
         }
 
-        if (answers.automationReadiness === "scale" || answers.channels === "multi" || answers.leadVolume === "heavy") {
-            recommendedPack = "Machine build lane";
-            recommendedSystem = "Ops / Machine Agent";
+        if (answers.mainLeak === "slow-follow-up" || answers.mainLeak === "repeat-revenue" || answers.followGap) {
+            result.helper = "Follow-Up Helper";
+            result.tier = answers.buildReadiness === "simple" ? "Starter" : "Growth";
+            result.biggestOpportunity = "You already have people showing interest. The money leak is what happens after first contact.";
+            result.teaserHeadline = "This looks like a Follow-Up Helper play.";
+            result.teaserCopy = "Dynmo sees value in better nudges, reminders, and repeat-business prompts.";
+            result.summary = "A Follow-Up Helper would keep warm leads warm and bring more past customers back.";
+            result.why = "Your answers point to people going cold after the first touch or not returning often enough.";
+            result.firstWins = [
+                "Nudge quotes and warm leads faster.",
+                "Prompt repeat bookings at the right time.",
+                "Ask for reviews and referrals more consistently."
+            ];
+            result.tierReason = result.tier === "Starter"
+                ? "Starter works when one clean follow-up flow would solve the biggest problem first."
+                : "Growth works when the follow-up path needs stronger coverage across more than one moment.";
+            return result;
         }
 
-        teaserHeadline = `Dynmo sees a ${recommendedSystem.toLowerCase()} play.`;
-        teaserCopy = "You do not need more generic AI noise. You need the first system that stops the current leak and compounds into stronger revenue movement.";
-        summary = `For an existing business, the smartest move is to stabilise the current customer path first, then layer extra automation once that path is converting cleanly.`;
-        reasonWhy = `Your answers point to ${recommendedPack} because the real issue is ${biggestOpportunity.toLowerCase()}`;
-        cta = `Build the ${recommendedSystem} first, prove the gain, then decide how deep the ${recommendedPack} should go.`;
-        sevenDayPlan = [
-            "Day 1: map the first customer touchpoint and the moment leads currently stall.",
-            "Day 2: list the top questions, booking triggers, or follow-up moments Dynmo should handle.",
-            "Day 3: define the primary channel and the human handoff rule.",
-            "Day 4: script the strongest next-action message for the first workflow.",
-            "Day 5: choose one metric to watch, such as replies, booked calls, or repeat bookings.",
-            "Day 6: test the flow on a small live slice of enquiries.",
-            "Day 7: review the weak point and refine the system instead of adding more complexity."
+        result.helper = "Booking Helper";
+        result.tier = answers.buildReadiness === "simple" ? "Starter" : "Growth";
+        result.biggestOpportunity = "People are already reaching out. The win is capturing them faster and guiding them to book.";
+        result.teaserHeadline = "This looks like a Booking Helper play.";
+        result.teaserCopy = "Missed calls, slow replies, and vague next steps are costing you warm demand.";
+        result.summary = "A Booking Helper would respond faster, rescue missed interest, and make booking easier.";
+        result.why = "Your answers point to lost demand before the booking or before the next clear step.";
+        result.firstWins = [
+            "Rescue missed calls or messages.",
+            "Reply while the lead is still warm.",
+            "Turn more conversations into booked action."
         ];
+        result.tierReason = result.tier === "Starter"
+            ? "Starter fits when one focused booking fix can create the first measurable win."
+            : "Growth fits when you want booking help plus stronger follow-through.";
+        return result;
     }
 
     if (stage === "side_hustle") {
-        if (answers.mainHustleLeak === "not-enough-demand" || answers.traction === "none" || answers.growthChannel === "unsure") {
-            recommendedPack = "Starter build lane";
-            recommendedSystem = "Starter / Idea Agent";
-            biggestOpportunity = "The hustle needs a sharper offer and a clearer first demand lane before a bigger automation build makes sense.";
-        } else if (answers.buildIntent === "capture" || answers.offerType === "appointments" || answers.mainHustleLeak === "no-system") {
-            recommendedPack = "Booking build lane";
-            recommendedSystem = "Booking Agent";
-            biggestOpportunity = "You can create faster momentum by handling enquiries and booking moments cleanly instead of manually.";
-        } else if (answers.buildIntent === "grow" || answers.traction === "paying") {
-            recommendedPack = "Revenue build lane";
-            recommendedSystem = "Follow-Up / Revenue Agent";
-            biggestOpportunity = "You have enough signal already to benefit from follow-up, nurture, and better customer lifetime value.";
-        } else {
-            recommendedPack = "Machine build lane";
-            recommendedSystem = "Ops / Machine Agent";
-            biggestOpportunity = "Your time pressure is strong enough that small workflows and routing logic could create immediate leverage.";
+        if (answers.hustleLeak === "not-enough-demand" || answers.traction === "none" || answers.channel === "unsure" || answers.offerState === "fuzzy") {
+            result.helper = "Idea Helper";
+            result.tier = "Starter";
+            result.biggestOpportunity = "The hustle needs a clearer offer or first demand path before heavier automation makes sense.";
+            result.teaserHeadline = "This looks like an Idea Helper play.";
+            result.teaserCopy = "The best next step is clarity and proof, not a bigger build.";
+            result.summary = "An Idea Helper would help sharpen the offer and point you at the first useful customer path.";
+            result.why = "Your answers suggest the hustle still needs market clarity more than automation depth.";
+            result.firstWins = [
+                "Sharpen the offer in plain English.",
+                "Pick the first realistic customer lane.",
+                "Test demand without overcomplicating it."
+            ];
+            result.tierReason = "Starter fits because the next job is a smart first move, not a broad system.";
+            return result;
         }
 
-        teaserHeadline = `Dynmo reads this as a ${recommendedSystem.toLowerCase()} move.`;
-        teaserCopy = "The side hustle does not need a bloated system. It needs the smallest AI lane that creates proof, speed, and repeatability.";
-        summary = "For a side hustle, the right first step is usually the sharpest small system that creates momentum without adding chaos to a busy week.";
-        reasonWhy = `Your answers suggest ${recommendedPack} because the real unlock is ${biggestOpportunity.toLowerCase()}`;
-        cta = recommendedPack === "Starter build lane"
-            ? "Use Dynmo to shape the starter route first, then move into the first agent build once demand is clearer."
-            : `Use Dynmo to build the ${recommendedSystem} around the exact channel you expect the next customers to come from.`;
-        sevenDayPlan = [
-            "Day 1: define one offer and one customer type, not five versions.",
-            "Day 2: choose the single channel most likely to produce the next reply.",
-            "Day 3: write the fast-response message or booking prompt you would use every time.",
-            "Day 4: build the tiny flow that captures, follows up, or reactivates leads.",
-            "Day 5: send or test it with real people, not just drafts.",
-            "Day 6: look at which message got movement and remove the fluff.",
-            "Day 7: decide whether the hustle now needs a Booking Agent, Revenue Agent, or deeper Ops Agent."
-        ];
-    }
-
-    if (stage === "idea_not_started") {
-        recommendedPack = "Starter build lane";
-        recommendedSystem = "Starter / Idea Agent";
-        biggestOpportunity = "Your next win is not advanced automation. It is turning the idea into a concrete offer with real demand proof.";
-
-        if (answers.ideaType === "appointments") {
-            recommendedPack = "Likely first lane: Booking build";
-            recommendedSystem = "Booking Agent";
-            biggestOpportunity = "If this launches well, the first automation win will likely be booking capture and fast inbound handling.";
-        } else if (answers.ideaType === "service" && answers.validation === "people-asked") {
-            recommendedPack = "Likely first lane: Revenue build";
-            recommendedSystem = "Follow-Up / Revenue Agent";
-            biggestOpportunity = "There is enough signal to shape a service offer and then add stronger follow-up and customer growth logic.";
+        if (answers.hustleLeak === "time-pressure") {
+            result.helper = "Admin Helper";
+            result.tier = "Starter";
+            result.biggestOpportunity = "The hustle is losing momentum because basic organisation and handoff are eating time.";
+            result.teaserHeadline = "This looks like a lighter Admin Helper move.";
+            result.teaserCopy = "You need a calmer setup before you need a bigger system.";
+            result.summary = "A lighter Admin Helper would free up time and keep messages, tasks, and next steps tighter.";
+            result.why = "Your answers suggest time is leaking into admin instead of sales or delivery.";
+            result.firstWins = [
+                "Reduce admin drag.",
+                "Tighten message handling.",
+                "Create a clearer weekly rhythm."
+            ];
+            result.tierReason = "Starter fits because the first goal is reclaiming time, not building a full machine.";
+            return result;
         }
 
-        teaserHeadline = "Dynmo sees a Starter / Idea Agent first, build lane second.";
-        teaserCopy = "You are still pre-launch, so the AI move is to shape the idea into something the market can answer, then map the first custom agent naturally.";
-        summary = "For an unstarted business idea, the job is to narrow the niche, define the offer, and create the first demand signal before building the heavier system.";
-        reasonWhy = `This recommendation exists because ${biggestOpportunity.toLowerCase()}`;
-        cta = "Use the starter path to get the idea launchable, then move into the likely first custom agent once the offer is live.";
-        sevenDayPlan = [
-            "Day 1: define the customer, the problem, and the promised outcome in one sentence.",
-            "Day 2: write a simple first offer that someone could actually buy.",
-            "Day 3: collect or create three proof points that the problem is real.",
-            "Day 4: choose the best first channel to test the idea.",
-            "Day 5: put the offer in front of real people and watch the reaction.",
-            "Day 6: tighten the wording based on what confused or attracted them.",
-            "Day 7: decide whether the first custom agent should be Booking or Revenue once the idea becomes a real offer."
+        result.helper = "Booking Helper";
+        result.tier = "Growth";
+        result.biggestOpportunity = "The hustle can grow faster by handling enquiries and booking moments more cleanly.";
+        result.teaserHeadline = "This looks like a Booking Helper play.";
+        result.teaserCopy = "There is enough signal here to justify a cleaner customer path.";
+        result.summary = "A Booking Helper would help turn interest into booked action with less chasing.";
+        result.why = "Your answers show that demand exists, but the handling still needs tightening.";
+        result.firstWins = [
+            "Respond faster to warm interest.",
+            "Make the booking path simpler.",
+            "Stop leads drifting between messages."
         ];
+        result.tierReason = "Growth fits when the hustle has enough movement to benefit from a stronger booking and follow-through path.";
+        return result;
     }
 
-    if (stage === "no_idea_yet") {
-        recommendedPack = "Starter build lane";
-        recommendedSystem = "Starter / Idea Agent";
-        biggestOpportunity = "The biggest win is picking a lane that matches your strengths and your time budget instead of chasing random business ideas.";
-
-        if (answers.interestLane === "appointments") {
-            recommendedPack = "Likely first lane: Booking build";
-            recommendedSystem = "Booking Agent";
-            biggestOpportunity = "An appointment-style business could get to a first booking system quickly once the offer is defined.";
-        } else if (answers.interestLane === "service" && answers.incomeAim !== "quick-cash") {
-            recommendedPack = "Likely first lane: Revenue build";
-            recommendedSystem = "Follow-Up / Revenue Agent";
-            biggestOpportunity = "A service business with repeat demand could grow into follow-up and retention systems fast.";
-        } else if (answers.interestLane === "ai-support" || answers.incomeAim === "big-build") {
-            recommendedPack = "Likely first lane: Machine build";
-            recommendedSystem = "Ops / Machine Agent";
-            biggestOpportunity = "You seem drawn to a more system-heavy route, which could later justify an Ops / Machine Agent build.";
-        }
-
-        teaserHeadline = "Dynmo is not forcing a build lane too early.";
-        teaserCopy = "The smartest move is to find the starter route first, then point you toward the first custom agent that makes sense once the business exists.";
-        summary = "If there is no idea yet, the first plan should reduce confusion, pick a profitable direction, and create a sellable first offer before any bigger automation layer.";
-        reasonWhy = `This starter recommendation fits because ${biggestOpportunity.toLowerCase()}`;
-        cta = "Use Dynmo to choose the lane, shape the first offer, and only then move into the likely first custom agent.";
-        sevenDayPlan = [
-            "Day 1: list your strongest skills, trust assets, and interests.",
-            "Day 2: pick one customer type you understand or can reach.",
-            "Day 3: generate three simple offer ideas around that customer and choose one.",
-            "Day 4: write the first message or pitch that explains the offer clearly.",
-            "Day 5: test that pitch with real people or communities.",
-            "Day 6: cut the weak ideas and keep the lane that got curiosity.",
-            "Day 7: decide the likely first custom agent Dynmo should help build once the idea has shape."
-        ];
-    }
-
-    return {
-        stageLabel: meta.label,
-        recommendedPack,
-        recommendedSystem,
-        biggestOpportunity,
-        headline,
-        summary,
-        teaserHeadline,
-        teaserCopy,
-        reasonWhy,
-        cta,
-        sevenDayPlan
-    };
+    result.helper = "Idea Helper";
+    result.tier = "Starter";
+    result.biggestOpportunity = "The clearest win is picking a lane and turning it into a simple plan.";
+    result.teaserHeadline = "This looks like an Idea Helper route.";
+    result.teaserCopy = "Before building anything bigger, the next step is making the idea and audience clearer.";
+    result.summary = "An Idea Helper would help you narrow the lane, shape the offer, and find the first useful move.";
+    result.why = "Your answers suggest clarity matters more than automation depth right now.";
+    result.firstWins = [
+        "Pick the strongest starting idea.",
+        "Shape a simple offer people understand.",
+        "Figure out the first realistic customer route."
+    ];
+    result.tierReason = "Starter fits because this is about getting moving with clarity, not building a broad system yet.";
+    return result;
 }
 
 function buildSummaryText(result, lead, answers) {
-    const answerLines = Object.entries(answers)
-        .map(([key, value]) => `${key}: ${value}`)
-        .join("\n");
-
     return [
-        `Dynmo assessment plan for ${lead.name || "new lead"}`,
-        ``,
-        `Email: ${lead.email || "n/a"}`,
-        `Phone/WhatsApp: ${lead.phone || "n/a"}`,
-        `Build intent: ${lead.buildIntent ? "Yes" : "No"}`,
-        `Extra notes: ${lead.notes || "n/a"}`,
-        ``,
-        `Stage: ${result.stageLabel}`,
-        `Recommended agent: ${result.recommendedSystem}`,
-        `Build lane: ${result.recommendedPack}`,
-        ``,
-        `Headline: ${result.headline}`,
-        `Problem the agent solves: ${result.biggestOpportunity}`,
-        `Reason: ${result.reasonWhy}`,
-        ``,
-        `7-day agent build path:`,
-        ...result.sevenDayPlan.map((step, index) => `${index + 1}. ${step}`),
-        ``,
-        `CTA: ${result.cta}`,
-        ``,
-        `Structured answers:`,
-        answerLines
-    ].join("\n");
+        `Dynmo result for ${lead.name || "new lead"}`,
+        `Email: ${lead.email || "not provided"}`,
+        lead.phone ? `Phone: ${lead.phone}` : "",
+        `Stage: ${stageMeta[answers.stage || "existing_business"].label}`,
+        `Best-fit helper: ${result.helper}`,
+        `Best build tier: ${result.tier} (${pricingTiers[result.tier]})`,
+        `Why it fits: ${result.why}`,
+        "First wins:",
+        ...result.firstWins.map((item) => `- ${item}`),
+        lead.notes ? `Notes: ${lead.notes}` : ""
+    ].filter(Boolean).join("\n");
+}
+
+function getOptionLabel(questionEntry, value) {
+    const found = questionEntry.options.find((item) => item.value === value);
+    return found ? found.label : value;
+}
+
+function persistState() {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        answers: state.answers,
+        lead: state.lead
+    }));
 }
 
 function loadStoredState() {
     try {
-        const raw = window.localStorage.getItem(STORAGE_KEY);
-        if (!raw) return { lead: null, answers: null };
-        const parsed = JSON.parse(raw);
-        return {
-            lead: parsed.lead || null,
-            answers: parsed.answers || null
-        };
+        return JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "{}");
     } catch (error) {
-        return { lead: null, answers: null };
+        return {};
     }
 }
 
-function escapeAttr(value) {
+function escapeHtml(value) {
     return String(value)
         .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
+        .replace(/'/g, "&#39;");
 }
 
-function escapeText(value) {
-    return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;");
-}
-
-if (hasAssessment) {
-    nextButton.addEventListener("click", nextStep);
-    backButton.addEventListener("click", previousStep);
+function escapeAttr(value) {
+    return escapeHtml(value);
 }

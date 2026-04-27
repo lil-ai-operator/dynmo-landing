@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" role="img" aria-label="Admin helper icon">
+<defs><linearGradient id="g" x1="30" y1="30" x2="150" y2="150"><stop stop-color="#ff6f91"/><stop offset="1" stop-color="#217cff"/></linearGradient></defs>
+<rect x="34" y="34" width="112" height="112" rx="34" fill="#f8fbff" stroke="url(#g)" stroke-width="10"/>
+<circle cx="62" cy="65" r="11" fill="#ff6f91"/><circle cx="118" cy="65" r="11" fill="#217cff"/><circle cx="90" cy="116" r="11" fill="#5de6ff"/>
+<path d="M73 70h34M68 76l16 30M112 76l-16 30" stroke="url(#g)" stroke-width="8" stroke-linecap="round"/>
+</svg>

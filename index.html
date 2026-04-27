@@ -3,160 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Dynmo | Custom AI Agents That Fix Revenue Leaks</title>
-    <meta name="description" content="Talk to the Dynmo Assessment Agent and get matched to the custom AI agent your business actually needs.">
-    <meta property="og:title" content="Dynmo | Custom AI Agents That Fix Revenue Leaks">
-    <meta property="og:description" content="Assessment-first AI agent matching for bookings, follow-up, operations, and starter ideas.">
+    <title>Dynmo | More replies. More bookings. Less chaos.</title>
+    <meta name="description" content="Dynmo builds custom AI helpers that reply fast, follow up, cut admin, and give everyday businesses a clearer next move.">
+    <meta property="og:title" content="Dynmo | More replies. More bookings. Less chaos.">
+    <meta property="og:description" content="See which custom AI helper fits your business, then choose a simple build tier.">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&family=Sora:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/site.css">
 </head>
-<body class="premium-home">
-    <div class="site-shell" aria-hidden="true">
-        <div class="ambient ambient-one"></div>
-        <div class="ambient ambient-two"></div>
-        <div class="ambient-grid"></div>
+<body class="page-home">
+    <div class="site-bg" aria-hidden="true">
+        <div class="bg-orb bg-orb-one"></div>
+        <div class="bg-orb bg-orb-two"></div>
+        <div class="bg-grid"></div>
     </div>
 
-    <header class="nav-wrap">
-        <nav class="nav premium-nav">
-            <a class="brand premium-brand" href="index.html" aria-label="Dynmo home"><img src="dynmo-logo.svg" alt="Dynmo"></a>
-            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu"><span></span><span></span></button>
+    <header class="site-header">
+        <nav class="nav">
+            <a class="brand" href="index.html" aria-label="Dynmo home">
+                <img src="assets/img/dynmo-logo-minimal.svg" alt="Dynmo">
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navMenu">
+                <span></span>
+                <span></span>
+            </button>
             <div class="nav-menu" id="navMenu">
                 <a href="assessment.html">Assessment</a>
-                <a href="agents.html">Agents</a>
-                <a href="build-lanes.html">Build Lanes</a>
+                <a href="agents.html">Ways Dynmo Can Help</a>
+                <a href="build-lanes.html">Ways To Build</a>
                 <a href="how-it-works.html">How It Works</a>
                 <a href="demo.html">Demo</a>
-                <a class="nav-cta" href="assessment.html">Find My Agent</a>
+                <a class="button button-nav" href="assessment.html">See What Would Help</a>
             </div>
         </nav>
     </header>
 
-    <main id="top">
-        <section class="hero section premium-hero">
-            <div class="container hero-grid premium-hero-grid">
+    <main>
+        <section class="section hero hero-home">
+            <div class="container hero-grid">
                 <div class="hero-copy reveal">
-                    <div class="eyebrow"><span class="eyebrow-dot"></span>Stop buying generic automation</div>
-                    <h1>Your business needs the right AI agent. Not another boring chatbot.</h1>
-                    <p class="hero-text">Dynmo starts with an Assessment Agent, finds the leak, then maps a custom AI agent built for the exact problem costing you momentum.</p>
+                    <div class="eyebrow">Built for busy everyday businesses</div>
+                    <h1 class="hero-title" data-reveal-text>More replies. More bookings. Less chaos.</h1>
+                    <p class="hero-lead">Missed calls, slow follow-up, admin mess, and no clear next move quietly cost you money. Dynmo builds a custom AI helper that keeps things moving when you cannot.</p>
                     <div class="hero-actions">
-                        <a class="button button-primary" href="assessment.html">Find My AI Agent</a>
-                        <a class="button button-secondary" href="agents.html">See The Agents</a>
+                        <a class="button button-primary button-sweep" href="assessment.html">See What Would Help My Business</a>
+                        <a class="button button-secondary" href="demo.html">Watch The Demo</a>
                     </div>
-                    <div class="hero-microproof premium-proofline">
-                        <span>Booking leaks</span><span>Dead follow-up</span><span>Messy ops</span><span>No idea yet</span>
+                    <div class="trust-inline">
+                        <span>No tech skills needed</span>
+                        <span>Built around your business</span>
+                        <span>Starts with a simple assessment</span>
                     </div>
                 </div>
-
                 <div class="hero-visual reveal" data-delay="120">
-                    <div class="agent-console">
-                        <div class="console-top">
-                            <span class="console-dot"></span>
-                            <strong>Dynmo Assessment Agent</strong>
-                            <em>live match</em>
+                    <div class="hero-flow-card">
+                        <div class="flow-header">
+                            <span>Customer flow preview</span>
+                            <strong>Dynmo Helper</strong>
                         </div>
-                        <div class="chat-stack" id="heroChat" aria-label="Dynmo assessment preview"></div>
-                        <div class="agent-match-card">
-                            <span>Best-fit agent</span>
-                            <strong>Booking Agent</strong>
-                            <small>Instant replies · lead capture · handoff</small>
+                        <div class="flow-columns">
+                            <div class="flow-stack">
+                                <span class="flow-pill problem">Missed call</span>
+                                <span class="flow-pill problem">Late reply</span>
+                                <span class="flow-pill problem">No follow-up</span>
+                            </div>
+                            <div class="flow-center">
+                                <img src="assets/img/dynmo-logo-icon.svg" alt="" aria-hidden="true">
+                                <div class="flow-ring"></div>
+                            </div>
+                            <div class="flow-stack flow-stack-success">
+                                <span class="flow-pill success">Booked in</span>
+                                <span class="flow-pill success">Prompt follow-up</span>
+                                <span class="flow-pill success">Clear next step</span>
+                            </div>
+                        </div>
+                        <div class="hero-preview-chat" id="heroPreviewChat" aria-label="Animated helper preview"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-tight">
+            <div class="container">
+                <div class="problem-strip">
+                    <article class="problem-chip reveal">
+                        <strong>Missed calls</strong>
+                        <p>People ring once and move on.</p>
+                    </article>
+                    <article class="problem-chip reveal" data-delay="80">
+                        <strong>Slow follow-up</strong>
+                        <p>Warm leads cool off fast.</p>
+                    </article>
+                    <article class="problem-chip reveal" data-delay="160">
+                        <strong>Admin mess</strong>
+                        <p>Notes, inboxes, and tasks pile up.</p>
+                    </article>
+                    <article class="problem-chip reveal" data-delay="240">
+                        <strong>No clear next move</strong>
+                        <p>You know something needs fixing.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <span class="section-kicker">Ways Dynmo Can Help</span>
+                    <h2>Four custom AI helpers. Matched to the job that matters most.</h2>
+                    <p>Each helper solves a different bottleneck. The assessment works out which one gives you the fastest win.</p>
+                </div>
+                <div class="helper-grid">
+                    <article class="helper-card reveal" data-delay="0">
+                        <img src="assets/img/helper-booking.svg" alt="Booking Helper visual">
+                        <div class="helper-card-copy">
+                            <span class="helper-tag">Booking Helper</span>
+                            <h3>Catch leads before they disappear.</h3>
+                            <p>Great for missed calls, DMs, forms, and booking requests that need a fast reply.</p>
+                            <a href="agents.html">See booking help</a>
+                        </div>
+                    </article>
+                    <article class="helper-card reveal" data-delay="80">
+                        <img src="assets/img/helper-follow-up.svg" alt="Follow-Up Helper visual">
+                        <div class="helper-card-copy">
+                            <span class="helper-tag">Follow-Up Helper</span>
+                            <h3>Bring warm leads and past customers back.</h3>
+                            <p>Ideal when quotes stall, reviews never get asked for, or repeat bookings keep slipping.</p>
+                            <a href="agents.html">See follow-up help</a>
+                        </div>
+                    </article>
+                    <article class="helper-card reveal" data-delay="160">
+                        <img src="assets/img/helper-admin.svg" alt="Admin Helper visual">
+                        <div class="helper-card-copy">
+                            <span class="helper-tag">Admin Helper</span>
+                            <h3>Sort the chaos behind the scenes.</h3>
+                            <p>Useful when leads land everywhere, handoffs are messy, and nobody knows what happens next.</p>
+                            <a href="agents.html">See admin help</a>
+                        </div>
+                    </article>
+                    <article class="helper-card reveal" data-delay="240">
+                        <img src="assets/img/helper-idea.svg" alt="Idea Helper visual">
+                        <div class="helper-card-copy">
+                            <span class="helper-tag">Idea Helper</span>
+                            <h3>Find the first smart move.</h3>
+                            <p>For side hustles, new offers, and people who want a simple path before building anything bigger.</p>
+                            <a href="agents.html">See idea help</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-tint">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <span class="section-kicker">Who It Is For</span>
+                    <h2>Made for everyday people running everyday businesses.</h2>
+                </div>
+                <div class="audience-grid">
+                    <article class="audience-card reveal"><strong>Salons, barbers, beauty</strong><p>Fill more slots without chasing messages all day.</p></article>
+                    <article class="audience-card reveal" data-delay="60"><strong>Clinics, wellness, dentists</strong><p>Reply faster, reduce no-shows, and rebook more easily.</p></article>
+                    <article class="audience-card reveal" data-delay="120"><strong>Trades and home services</strong><p>Catch the jobs you are losing when calls and quote requests get missed.</p></article>
+                    <article class="audience-card reveal" data-delay="180"><strong>Restaurants and hospitality</strong><p>Bring people back during quiet periods and recover missed enquiries.</p></article>
+                    <article class="audience-card reveal" data-delay="240"><strong>Agencies and local pros</strong><p>Keep leads from disappearing across inboxes, forms, and DMs.</p></article>
+                    <article class="audience-card reveal" data-delay="300"><strong>Side hustles and new founders</strong><p>Get a clearer offer and a first plan you can actually start.</p></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container process-layout">
+                <div class="section-heading reveal">
+                    <span class="section-kicker">How It Starts</span>
+                    <h2>Simple in four steps.</h2>
+                </div>
+                <div class="process-rail">
+                    <article class="process-step reveal">
+                        <span>01</span>
+                        <h3>Assessment</h3>
+                        <p>Tell Dynmo what is slowing things down.</p>
+                    </article>
+                    <article class="process-step reveal" data-delay="90">
+                        <span>02</span>
+                        <h3>Recommendation</h3>
+                        <p>See your best-fit helper and why it fits.</p>
+                    </article>
+                    <article class="process-step reveal" data-delay="180">
+                        <span>03</span>
+                        <h3>Build tier</h3>
+                        <p>Choose a simple setup based on depth and budget.</p>
+                    </article>
+                    <article class="process-step reveal" data-delay="270">
+                        <span>04</span>
+                        <h3>Launch support</h3>
+                        <p>Go live with a clear first workflow and next step.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section-dark" id="demo">
+            <div class="container preview-grid">
+                <div class="reveal">
+                    <span class="section-kicker">Assessment Preview</span>
+                    <h2>Feels like a guided helper conversation.</h2>
+                    <p>This GitHub Pages version is guided by your answers and shows an adaptive preview. It does not pretend there is a live model or hidden backend.</p>
+                    <a class="button button-primary" href="assessment.html">Try The Guided Assessment</a>
+                </div>
+                <div class="preview-device reveal" data-delay="120">
+                    <div class="device-screen">
+                        <div class="device-top">
+                            <strong>Dynmo helper check</strong>
+                            <span>Adaptive preview</span>
+                        </div>
+                        <div class="device-chat" id="demoTrack" aria-label="Animated assessment preview"></div>
+                        <div class="device-progress">
+                            <span></span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="signal-strip premium-strip">
-            <div class="container signal-grid">
-                <div class="signal-item reveal"><strong>1. Diagnose</strong><span>The Assessment Agent finds the real leak.</span></div>
-                <div class="signal-item reveal" data-delay="80"><strong>2. Match</strong><span>You get one clear agent direction.</span></div>
-                <div class="signal-item reveal" data-delay="160"><strong>3. Build</strong><span>Dynmo turns it into a working AI system.</span></div>
-            </div>
-        </section>
-
-        <section class="section systems-section" id="agents">
+        <section class="section" id="pricing">
             <div class="container">
-                <div class="section-heading reveal premium-heading">
-                    <span class="section-kicker">Custom AI Agents</span>
-                    <h2>Four agent paths. One sharp recommendation.</h2>
+                <div class="section-heading reveal">
+                    <span class="section-kicker">Ways To Build</span>
+                    <h2>Pick the build depth once you know what needs fixing.</h2>
+                    <p>The helper match comes first. Pricing only shows up once the right job is clear.</p>
                 </div>
-                <div class="systems-grid agent-card-grid">
-                    <article class="system-card premium-agent-card reveal tilt-card">
-                        <span class="system-tag">Booking Agent</span>
-                        <h3>Turns hot enquiries into booked action.</h3>
-                        <p>For missed calls, DMs, forms, WhatsApp, and appointment flow.</p>
-                        <a href="assessment.html">Match me →</a>
+                <div class="pricing-grid">
+                    <article class="pricing-card reveal">
+                        <span class="pricing-tag">Starter</span>
+                        <h3>One sharp first win</h3>
+                        <div class="price-line"><strong>£97</strong><span>setup</span></div>
+                        <div class="price-sub">+ £20/mo</div>
+                        <p>Best for first experiments, lean setups, and simple message or booking flows.</p>
+                        <ul>
+                            <li>1 core helper flow</li>
+                            <li>Simple setup guidance</li>
+                            <li>Light launch support</li>
+                        </ul>
+                        <a class="button button-secondary" href="build-lanes.html">See Starter</a>
                     </article>
-                    <article class="system-card premium-agent-card reveal tilt-card" data-delay="80">
-                        <span class="system-tag">Revenue Agent</span>
-                        <h3>Wakes up old leads and past customers.</h3>
-                        <p>For follow-up, reviews, reactivation, referrals, and upsells.</p>
-                        <a href="assessment.html">Match me →</a>
+                    <article class="pricing-card pricing-card-featured reveal" data-delay="100">
+                        <span class="pricing-badge">Most popular</span>
+                        <span class="pricing-tag">Growth</span>
+                        <h3>More replies. More follow-through.</h3>
+                        <div class="price-line"><strong>£150</strong><span>setup</span></div>
+                        <div class="price-sub">+ £30/mo</div>
+                        <p>Best when you want stronger lead handling, follow-up, and a cleaner customer path.</p>
+                        <ul>
+                            <li>2 linked helper flows</li>
+                            <li>Custom message logic</li>
+                            <li>Launch review and tune-up</li>
+                        </ul>
+                        <a class="button button-primary" href="build-lanes.html">See Growth</a>
                     </article>
-                    <article class="system-card premium-agent-card reveal tilt-card" data-delay="160">
-                        <span class="system-tag">Ops Agent</span>
-                        <h3>Cleans the chaos behind the scenes.</h3>
-                        <p>For multi-channel routing, admin, handoffs, and team workflows.</p>
-                        <a href="assessment.html">Match me →</a>
-                    </article>
-                    <article class="system-card premium-agent-card reveal tilt-card" data-delay="240">
-                        <span class="system-tag">Starter Agent</span>
-                        <h3>Finds the business lane before you build.</h3>
-                        <p>For side hustles, early ideas, and “I know I want something” energy.</p>
-                        <a href="assessment.html">Match me →</a>
+                    <article class="pricing-card reveal" data-delay="200">
+                        <span class="pricing-tag">Agency</span>
+                        <h3>A calmer system for busy teams</h3>
+                        <div class="price-line"><strong>£297</strong><span>setup</span></div>
+                        <div class="price-sub">+ £50/mo</div>
+                        <p>Best for multi-step admin, lead routing, team handoff, and a broader helper setup.</p>
+                        <ul>
+                            <li>Multi-step helper system</li>
+                            <li>Richer routing and admin support</li>
+                            <li>Priority launch support</li>
+                        </ul>
+                        <a class="button button-secondary" href="build-lanes.html">See Agency</a>
                     </article>
                 </div>
             </div>
         </section>
 
-        <section class="section process-section" id="how">
-            <div class="container">
-                <div class="section-heading reveal premium-heading">
-                    <span class="section-kicker">The Offer</span>
-                    <h2>Not templates. Custom agents.</h2>
+        <section class="section">
+            <div class="container trust-panel reveal">
+                <div>
+                    <span class="section-kicker">Why People Pick Dynmo</span>
+                    <h2>Clear help. Honest setup. No fake magic.</h2>
                 </div>
-                <div class="process-grid premium-process">
-                    <article class="process-card reveal"><span>01</span><h3>Talk to the Assessment Agent</h3><p>Short, focused, adaptive questions.</p></article>
-                    <article class="process-card reveal" data-delay="80"><span>02</span><h3>Get your agent match</h3><p>Booking, Revenue, Ops, or Starter.</p></article>
-                    <article class="process-card reveal" data-delay="160"><span>03</span><h3>Build the working version</h3><p>Clear scope. Clear handoff. No fake promises.</p></article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section proof-section" id="proof">
-            <div class="container proof-grid premium-demo-grid">
-                <div class="proof-copy reveal">
-                    <span class="section-kicker">Preview</span>
-                    <h2>Feels like a diagnosis. Ends with a build plan.</h2>
-                    <p>That is the hook: people do not choose from a menu — they get told what agent they need.</p>
-                    <a class="button button-primary" href="assessment.html">Start Assessment</a>
-                </div>
-                <div class="demo-shell reveal" data-delay="120">
-                    <div class="demo-screen">
-                        <div class="demo-header"><span>Agent match demo</span><strong>●</strong></div>
-                        <div class="demo-track" id="demoTrack"></div>
-                    </div>
-                    <div class="demo-caption"><strong>Problem → Agent → Plan</strong><span>Simple. Clean. Sellable.</span></div>
+                <div class="trust-list">
+                    <p>Built around your business instead of a generic template.</p>
+                    <p>Plain-English recommendation before you spend money.</p>
+                    <p>Static preview now, secure backend later when it is real.</p>
                 </div>
             </div>
         </section>
 
-        <section class="section final-cta">
-            <div class="container final-cta-box reveal premium-final">
-                <span class="section-kicker">Next Move</span>
-                <h2>Let the Assessment Agent pick the build.</h2>
-                <a class="button button-primary" href="assessment.html">Find My Agent</a>
-                <p>No guaranteed income claims. Static preview uses an honest rules engine; real model-backed AI needs a secure backend.</p>
+        <section class="section">
+            <div class="container cta-panel reveal">
+                <span class="section-kicker">Ready</span>
+                <h2>Your next customer should not have to wait.</h2>
+                <p>Start with the guided assessment. See the best-fit helper. Then choose the build tier that makes sense.</p>
+                <div class="hero-actions hero-actions-center">
+                    <a class="button button-primary button-sweep" href="assessment.html">Start The Assessment</a>
+                    <a class="button button-secondary" href="how-it-works.html">See How It Works</a>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <div class="container footer-grid"><div><strong>Dynmo</strong><p>Custom AI agents for real business leaks.</p></div><div><span>Static preview</span><p>No fake CRM/backend claim. Lead details stay on-device until a real backend exists.</p></div></div>
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <strong>Dynmo</strong>
+                <p>Custom AI helpers for everyday businesses that need faster replies, cleaner follow-up, and less chaos.</p>
+            </div>
+            <div>
+                <strong>Static preview note</strong>
+                <p>This public site uses guided answers and local browser storage only. A secure backend still needs adding before live AI or CRM automation exists.</p>
+            </div>
+        </div>
     </footer>
+
     <script src="assets/js/site.js"></script>
 </body>
 </html>
