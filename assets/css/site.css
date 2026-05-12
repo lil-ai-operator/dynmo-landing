@@ -169,10 +169,10 @@ textarea {
 }
 
 .brand img {
-    width: 2.6rem;
-    height: 2.6rem;
-    object-fit: cover;
-    border-radius: 50%;
+    width: clamp(9.5rem, 15vw, 13.5rem);
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
 }
 
 .nav-menu {
@@ -1341,6 +1341,11 @@ ul {
     filter: drop-shadow(0 12px 24px rgba(121, 241, 203, 0.18));
 }
 
+.pilot-console-top img.console-logo {
+    width: clamp(7rem, 16vw, 10rem);
+    height: auto;
+}
+
 .leak-scan {
     position: relative;
     z-index: 1;
@@ -2262,35 +2267,25 @@ ul {
     gap: .72rem;
 }
 
-.dynmo-brand-lockup .brand-mark-img {
-    width: 2.7rem;
-    height: 2.7rem;
-    border-radius: 13px;
+.dynmo-brand-lockup .brand-wordmark-img {
+    width: clamp(8.9rem, 13vw, 12.2rem);
+    height: auto;
+    border-radius: 0;
     object-fit: contain;
-    box-shadow: 0 12px 28px rgba(37, 99, 255, .16);
+    filter: drop-shadow(0 12px 24px rgba(37, 99, 255, .13));
     animation: logo-breathe 4s ease-in-out infinite;
 }
 
-.brand-word-stack {
-    display: grid;
-    line-height: 1;
-}
-
-.brand-word-stack strong {
-    font-family: "Sora", sans-serif;
-    font-size: 1.18rem;
-    letter-spacing: -.055em;
-    color: var(--dynmo-ink);
-}
-
-.brand-word-stack em {
-    margin-top: .24rem;
-    font-style: normal;
-    font-size: .68rem;
-    font-weight: 900;
-    letter-spacing: .16em;
-    text-transform: uppercase;
+.brand-product-name {
+    padding: .36rem .52rem;
+    border-radius: 999px;
     color: var(--dynmo-blue);
+    background: rgba(37, 99, 255, .08);
+    font-size: .66rem;
+    font-weight: 900;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    white-space: nowrap;
 }
 
 .page-dynmo-brand .nav-menu a:not(.button) {
@@ -2472,6 +2467,11 @@ ul {
 .mini-lockup img {
     width: 2.55rem;
     height: 2.55rem;
+}
+
+.window-brand .window-logo-img {
+    width: clamp(8rem, 15vw, 11rem);
+    height: auto;
 }
 
 .live-pill {
@@ -2741,9 +2741,8 @@ ul {
 }
 
 @media (max-width: 760px) {
-    .dynmo-brand-lockup .brand-mark-img { width: 2.7rem; height: 2.7rem; }
-    .brand-word-stack strong { font-size: 1.1rem; }
-    .brand-word-stack em { font-size: .58rem; }
+    .dynmo-brand-lockup .brand-wordmark-img { width: 8.8rem; }
+    .brand-product-name { display: none; }
     .page-dynmo-brand .dynmo-hero-title { font-size: clamp(3.2rem, 17vw, 4.65rem); max-width: 8.5ch; }
     .product-window { transform: none; animation: product-float-mobile 6s ease-in-out infinite; }
     .dashboard-grid { grid-template-columns: 1fr; }
