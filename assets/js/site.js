@@ -211,9 +211,10 @@ initSite();
 
 function initSite() {
     bindNav();
-    initReveal();
     initTextReveal();
+    initReveal();
     initPreviewLoops();
+    initQuoteEngineLanding();
     if (hasAssessment) {
         startAssessment();
     }
@@ -313,6 +314,52 @@ function initPreviewLoops() {
             { type: "result", text: "Best fit: Idea Helper" }
         ]
     ], "device-bubble");
+}
+
+function initQuoteEngineLanding() {
+    const line = document.getElementById("quoteEngineLine");
+    if (!line) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const messages = [
+        "Mapping quote pain…",
+        "Finding missing job details…",
+        "Building good / better / premium options…",
+        "Writing professional follow-up messages…",
+        "Protecting margin before the quote goes out…"
+    ];
+
+    if (reduceMotion) {
+        line.textContent = messages[4];
+        return;
+    }
+
+    let messageIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    const tick = () => {
+        const active = messages[messageIndex];
+        if (!deleting) {
+            charIndex = Math.min(charIndex + 1, active.length);
+            line.textContent = active.slice(0, charIndex);
+            if (charIndex === active.length) {
+                deleting = true;
+                window.setTimeout(tick, 1150);
+                return;
+            }
+        } else {
+            charIndex = Math.max(charIndex - 2, 0);
+            line.textContent = active.slice(0, charIndex);
+            if (charIndex === 0) {
+                deleting = false;
+                messageIndex = (messageIndex + 1) % messages.length;
+            }
+        }
+        window.setTimeout(tick, deleting ? 34 : 42);
+    };
+
+    tick();
 }
 
 function paintLoop(targetId, sequences, classPrefix) {
