@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 112" role="img" aria-labelledby="title">
+  <title id="title">Dynmo</title>
+  <rect width="360" height="112" fill="none"/>
+  <g transform="translate(8 8)">
+    <rect x="0" y="0" width="70" height="88" rx="14" fill="#fff" stroke="#11203f" stroke-width="5"/>
+    <path d="M20 25h27M20 40h22M20 55h30" fill="none" stroke="#11203f" stroke-width="5" stroke-linecap="round"/>
+    <path d="M50 60h18v18L50 96V60Z" fill="#2ed3a7" stroke="#11203f" stroke-width="5" stroke-linejoin="round"/>
+  </g>
+  <text x="96" y="74" fill="#11203f" font-family="Sora, Instrument Sans, Arial, sans-serif" font-size="58" font-weight="800">Dynmo</text>
+</svg>

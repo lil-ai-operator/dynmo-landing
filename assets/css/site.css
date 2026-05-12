@@ -1547,3 +1547,636 @@ ul {
         gap: 0.55rem;
     }
 }
+
+/* Quote Engine demand-test landing */
+.page-quote-engine {
+    --bg: #f7f8fb;
+    --bg-soft: #ffffff;
+    --surface: #ffffff;
+    --surface-strong: #ffffff;
+    --line: rgba(17, 32, 63, 0.12);
+    --line-strong: rgba(38, 94, 210, 0.28);
+    --text: #11203f;
+    --muted: #5e6675;
+    --muted-strong: #3f4756;
+    --navy: #11203f;
+    --blue: #265ed2;
+    --mint: #2ed3a7;
+    --peach: #ffcf87;
+    --rose: #e85d75;
+    --shadow: 0 18px 48px rgba(17, 32, 63, 0.08);
+    --shadow-strong: 0 28px 70px rgba(17, 32, 63, 0.14);
+    --radius: 8px;
+    --radius-md: 8px;
+    --radius-sm: 8px;
+    background:
+        linear-gradient(180deg, #ffffff 0%, #f7f8fb 42%, #ffffff 100%);
+}
+
+.page-quote-engine .bg-orb {
+    display: none;
+}
+
+.page-quote-engine .bg-grid {
+    background-image:
+        linear-gradient(rgba(17, 32, 63, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(17, 32, 63, 0.035) 1px, transparent 1px);
+    background-size: 84px 84px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.6), transparent 62%);
+}
+
+.page-quote-engine h1,
+.page-quote-engine h2,
+.page-quote-engine h3,
+.page-quote-engine .brand,
+.page-quote-engine .section-kicker,
+.page-quote-engine .quote-note span,
+.page-quote-engine .status-dot,
+.page-quote-engine .doc-section span,
+.page-quote-engine .message-card span {
+    letter-spacing: 0;
+}
+
+.page-quote-engine .reveal {
+    opacity: 1;
+    transform: none;
+}
+
+.page-quote-engine [data-reveal-text] .word {
+    opacity: 1;
+    transform: none;
+    animation: none;
+}
+
+.page-quote-engine .site-header {
+    padding-top: 0.8rem;
+}
+
+.page-quote-engine .nav {
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.9);
+    border-color: rgba(17, 32, 63, 0.1);
+    box-shadow: 0 14px 36px rgba(17, 32, 63, 0.08);
+}
+
+.page-quote-engine .brand img {
+    width: clamp(7.6rem, 12vw, 9.6rem);
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+}
+
+.page-quote-engine .nav-menu {
+    gap: 1.05rem;
+}
+
+.page-quote-engine .nav-menu a {
+    font-size: 0.93rem;
+    font-weight: 700;
+}
+
+.page-quote-engine .button {
+    border-radius: 8px;
+    min-height: 3.1rem;
+    padding: 0.85rem 1.1rem;
+}
+
+.page-quote-engine .button-primary,
+.page-quote-engine .button-nav {
+    color: #ffffff;
+    background: #11203f;
+    box-shadow: 0 14px 28px rgba(17, 32, 63, 0.22);
+}
+
+.page-quote-engine .button-primary:hover,
+.page-quote-engine .button-nav:hover,
+.page-quote-engine .button-primary:focus-visible,
+.page-quote-engine .button-nav:focus-visible {
+    background: #265ed2;
+}
+
+.page-quote-engine .button-secondary {
+    background: #ffffff;
+    border-color: rgba(17, 32, 63, 0.14);
+    box-shadow: 0 10px 24px rgba(17, 32, 63, 0.06);
+}
+
+.quote-hero {
+    padding-top: clamp(4.8rem, 8vw, 7.3rem);
+    padding-bottom: clamp(3.5rem, 6vw, 5rem);
+}
+
+.quote-hero-grid,
+.split-section,
+.sample-output-grid,
+.trust-grid {
+    display: grid;
+    gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.quote-hero-grid {
+    grid-template-columns: minmax(0, 1.02fr) minmax(22rem, 0.86fr);
+    align-items: center;
+}
+
+.page-quote-engine .hero-title {
+    max-width: 14ch;
+    font-size: clamp(2.75rem, 6.6vw, 5.45rem);
+    line-height: 0.98;
+}
+
+.page-quote-engine .hero-lead {
+    max-width: 46rem;
+    color: #40495a;
+    font-size: clamp(1.02rem, 1.4vw, 1.16rem);
+    line-height: 1.68;
+}
+
+.page-quote-engine .hero-actions {
+    margin-top: 1.65rem;
+}
+
+.page-quote-engine .trust-inline-strong {
+    max-width: 48rem;
+}
+
+.page-quote-engine .trust-inline-strong span {
+    border-radius: 8px;
+    background: #ffffff;
+    border-color: rgba(17, 32, 63, 0.1);
+    box-shadow: none;
+    color: #3f4756;
+}
+
+.quote-mockup,
+.sample-document,
+.output-side,
+.trust-card,
+.process-panel,
+.faq-card {
+    border: 1px solid rgba(17, 32, 63, 0.12);
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.quote-mockup {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(1rem, 2.4vw, 1.35rem);
+}
+
+.quote-mockup::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-top: 5px solid var(--mint);
+    pointer-events: none;
+}
+
+.mockup-topbar,
+.doc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.mockup-brand,
+.doc-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.mockup-brand img,
+.doc-header img {
+    width: 2.9rem;
+    height: 2.9rem;
+    object-fit: contain;
+}
+
+.mockup-brand span,
+.doc-header span,
+.quote-output-card span,
+.quote-note span,
+.doc-section span,
+.message-card span {
+    display: block;
+    color: #697386;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.mockup-brand strong,
+.doc-header strong {
+    display: block;
+    margin-top: 0.15rem;
+    font-family: "Sora", sans-serif;
+    font-size: 1rem;
+    line-height: 1.2;
+}
+
+.status-dot {
+    flex: 0 0 auto;
+    padding: 0.42rem 0.55rem;
+    border-radius: 8px;
+    background: rgba(46, 211, 167, 0.16);
+    color: #0b765c;
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.quote-before-after {
+    display: grid;
+    gap: 0.8rem;
+    margin-top: 1.1rem;
+}
+
+.quote-note {
+    position: relative;
+    padding: 0.95rem;
+    border: 1px solid rgba(17, 32, 63, 0.1);
+    border-radius: 8px;
+    background: #f8fafc;
+}
+
+.quote-note::after {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    bottom: -0.55rem;
+    width: 1px;
+    height: 0.55rem;
+    background: rgba(17, 32, 63, 0.18);
+}
+
+.quote-note:last-child::after {
+    display: none;
+}
+
+.quote-note p,
+.quote-note ul {
+    margin-top: 0.42rem;
+    color: #2f3747;
+    line-height: 1.55;
+}
+
+.quote-note ul {
+    padding-left: 1.05rem;
+}
+
+.quote-note-messy {
+    border-left: 4px solid var(--rose);
+}
+
+.quote-note-system {
+    border-left: 4px solid var(--blue);
+}
+
+.quote-note-output {
+    border-left: 4px solid var(--mint);
+}
+
+.quote-output-card {
+    margin-top: 0.95rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background: #11203f;
+    color: #ffffff;
+}
+
+.quote-output-card span {
+    color: rgba(255, 255, 255, 0.66);
+}
+
+.quote-output-card strong {
+    display: block;
+    margin-top: 0.35rem;
+    font-family: "Sora", sans-serif;
+    font-size: clamp(1.15rem, 2vw, 1.45rem);
+    line-height: 1.22;
+}
+
+.quote-output-card p {
+    margin-top: 0.5rem;
+    color: rgba(255, 255, 255, 0.76);
+    line-height: 1.55;
+}
+
+.qualification-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.9rem;
+}
+
+.page-quote-engine .problem-chip,
+.page-quote-engine .deliverable-card,
+.page-quote-engine .claim-steps article,
+.page-quote-engine .pilot-cta-box {
+    border-radius: 8px;
+    background: #ffffff;
+    border: 1px solid rgba(17, 32, 63, 0.12);
+    box-shadow: 0 10px 28px rgba(17, 32, 63, 0.06);
+    backdrop-filter: none;
+}
+
+.page-quote-engine .problem-chip {
+    padding: 1.05rem;
+}
+
+.page-quote-engine .problem-chip strong {
+    display: block;
+    color: #11203f;
+    margin-bottom: 0.35rem;
+}
+
+.page-quote-engine .problem-chip p {
+    line-height: 1.55;
+}
+
+.split-section {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    align-items: start;
+}
+
+.page-quote-engine .section-kicker {
+    padding: 0;
+    margin-bottom: 0.8rem;
+    border-radius: 0;
+    background: transparent;
+    color: #265ed2;
+    border: 0;
+    font-size: 0.86rem;
+    text-transform: uppercase;
+}
+
+.page-quote-engine .section-heading h2 {
+    line-height: 1.08;
+}
+
+.page-quote-engine .section-heading p {
+    margin-top: 1rem;
+}
+
+.deliverable-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.9rem;
+}
+
+.page-quote-engine .deliverable-card {
+    padding: 1.05rem;
+}
+
+.page-quote-engine .deliverable-card span,
+.page-quote-engine .claim-steps span {
+    width: auto;
+    height: auto;
+    display: inline-flex;
+    margin-bottom: 0.7rem;
+    padding: 0.28rem 0.5rem;
+    border-radius: 8px;
+    background: rgba(38, 94, 210, 0.1);
+    color: #265ed2;
+    font-family: "Sora", sans-serif;
+    font-weight: 800;
+}
+
+.page-quote-engine .deliverable-card h3 {
+    font-size: 1.12rem;
+    line-height: 1.24;
+}
+
+.example-output-section {
+    background: #11203f;
+    color: #ffffff;
+}
+
+.example-output-section .section-heading p,
+.example-output-section p {
+    color: rgba(255, 255, 255, 0.74);
+}
+
+.example-output-section .section-kicker {
+    color: #8df0d5;
+}
+
+.sample-output-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(20rem, 0.9fr);
+    align-items: stretch;
+}
+
+.sample-document {
+    padding: clamp(1rem, 3vw, 1.5rem);
+    color: #11203f;
+}
+
+.doc-section {
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background: #f8fafc;
+    border: 1px solid rgba(17, 32, 63, 0.1);
+}
+
+.doc-section p {
+    margin-top: 0.4rem;
+    color: #354052;
+}
+
+.quote-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.quote-options div {
+    min-height: 7.2rem;
+    padding: 0.85rem;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 1px solid rgba(17, 32, 63, 0.12);
+}
+
+.quote-options strong {
+    display: block;
+    color: #11203f;
+}
+
+.quote-options p {
+    margin-top: 0.35rem;
+    color: #5e6675;
+    line-height: 1.45;
+}
+
+.output-side {
+    display: grid;
+    gap: 0.9rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.16);
+    box-shadow: none;
+}
+
+.message-card {
+    padding: 1rem;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #11203f;
+}
+
+.message-card p {
+    margin-top: 0.4rem;
+    color: #3f4756;
+    line-height: 1.55;
+}
+
+.message-card-accent {
+    background: #eafff8;
+    border: 1px solid rgba(46, 211, 167, 0.28);
+}
+
+.founder-note {
+    max-width: 57rem;
+    margin-top: 1.2rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.trust-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.trust-card {
+    padding: clamp(1.25rem, 3vw, 1.8rem);
+}
+
+.trust-card h2 {
+    font-size: clamp(1.7rem, 3vw, 2.65rem);
+}
+
+.process-panel {
+    padding: clamp(1.2rem, 4vw, 2rem);
+}
+
+.page-quote-engine .claim-steps {
+    margin-top: 1.35rem;
+}
+
+.page-quote-engine .claim-steps article {
+    padding: 1.05rem;
+}
+
+.page-quote-engine .pilot-cta-box {
+    margin-top: 0.9rem;
+    padding: 1rem;
+    background:
+        linear-gradient(90deg, rgba(46, 211, 167, 0.16), rgba(38, 94, 210, 0.08)),
+        #ffffff;
+}
+
+.faq-section {
+    padding-top: clamp(3.5rem, 7vw, 5.5rem);
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.9rem;
+}
+
+.faq-card {
+    padding: 1.1rem;
+}
+
+.faq-card h3 {
+    font-size: 1.05rem;
+    line-height: 1.25;
+}
+
+.faq-card p {
+    margin-top: 0.5rem;
+    line-height: 1.55;
+}
+
+.page-quote-engine .site-footer {
+    padding-top: 1rem;
+}
+
+.page-quote-engine .footer-grid {
+    color: #11203f;
+}
+
+@media (max-width: 1100px) {
+    .quote-hero-grid,
+    .split-section,
+    .sample-output-grid,
+    .trust-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .qualification-strip,
+    .faq-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .page-quote-engine .hero-title {
+        max-width: 16ch;
+    }
+}
+
+@media (max-width: 760px) {
+    .page-quote-engine .nav {
+        border-radius: 12px;
+        align-items: center;
+    }
+
+    .page-quote-engine .nav-menu {
+        align-items: stretch;
+    }
+
+    .page-quote-engine .nav-menu a:not(.button) {
+        padding: 0.35rem 0;
+    }
+
+    .page-quote-engine .button,
+    .page-quote-engine .hero-actions .button {
+        width: 100%;
+    }
+
+    .quote-hero {
+        padding-top: 3.6rem;
+    }
+
+    .page-quote-engine .hero-title {
+        font-size: clamp(2.35rem, 13vw, 3.45rem);
+    }
+
+    .mockup-topbar,
+    .doc-header,
+    .page-quote-engine .pilot-cta-box {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .status-dot {
+        width: 100%;
+        text-align: center;
+    }
+
+    .qualification-strip,
+    .deliverable-list,
+    .quote-options,
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .quote-options div {
+        min-height: auto;
+    }
+}
